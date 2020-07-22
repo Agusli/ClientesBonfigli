@@ -5,9 +5,12 @@ C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.runtimeconfig.json
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.runtimeconfig.dev.json
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.dll
-C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csprojAssemblyReference.cache
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.pdb
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.Views.dll
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.Views.pdb
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.AssemblyInfoInputs.cache
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.AssemblyInfo.cs
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csproj.CoreCompileInputs.cache
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.RazorAssemblyInfo.cache
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.RazorAssemblyInfo.cs
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.TagHelpers.input.cache
@@ -23,4 +26,9 @@ C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.RazorTargetAssemblyInfo.cache
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.RazorTargetAssemblyInfo.cs
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.Views.pdb
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.dll
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.pdb
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.genruntimeconfig.cache
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csproj.CopyComplete
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csprojAssemblyReference.cache
