@@ -61,6 +61,11 @@ namespace Clientes.Services
 
         }
 
+        internal static void Buscar()
+        {
+            throw new NotImplementedException();
+        }
+
         public Boolean Agregar(Models.Clientes _clientes )
         {
             try
