@@ -36,14 +36,21 @@
             <td>@item.VencimientoP</td>
             <td>@item.Pantallas</td>
 
+
+            <div class="btnb">
+                <button onclick="btn('@item.Id')">Borrar</button>
+            </div>
+
+            <div class="btne">
+                <button onclick="btnE('@item.Id')">Editar</button>
+            </div>
+            
         </tr>
-        <button onclick="btn('@item.Id')">Borrar</button>
-        <button onclick="btnE('@item.Id')">Editar</button>
     }
 
 
 
-</table>
+    </table>
 
 
 

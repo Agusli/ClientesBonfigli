@@ -37,5 +37,33 @@ function agregar() {
 }
 
 function submit() {
+    
+    data = {
+        Nombre: $("#Nombre").val(),
+        Cuenta: $("#Cuenta").val(),
+        Email: $("#Email").val(),
+        Contraseña: $("#Contraseña").val(),
+        VencimientoP: $("#VencimientoP").val(),
+        VencimientoC: $("#VencimientoC").val(),
+        Tipo: $("#Tipo").val(),
+        Pantallas: $("#Pantallas").val(),
+
+    }
+
+
+    $.ajax({
+        url: '/Home/NuevoCliente', //'urlcontroller',ruta de controller
+        dataType: 'json',
+        type: "POST",
+        data: { Cliente:cliente },
+        error: function (data) {
+
+        },
+        success: function (data) {
+                
+        }, 
+        
+    }); 
+    
 
 }

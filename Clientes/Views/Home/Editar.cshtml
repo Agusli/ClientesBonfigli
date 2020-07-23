@@ -9,23 +9,23 @@
     <form>
         <div class="form-group" >
             <label for="exampleFormControlInput1">Nombre</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="@Model.Nombre">
+            <input id="@Model.Nombre" type="text" class="form-control" placeholder="@Model.Nombre">
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Cuenta</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="@Model.Cuenta">
+            <input  id="@Model.Cuenta" type="email" class="form-control" placeholder="@Model.Cuenta">
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Contraseña</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="@Model.Contraseña">
+            <input id="@Model.Contraseña"type="text" class="form-control"  placeholder="@Model.Contraseña">
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Fecha de vencimiento de la Cuenta</label>@*validacion datetime*@
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="@Model.VencimientoC">
+            <input id="@Model.VencimientoC" type="datetime" class="form-control"  placeholder="@Model.VencimientoC">
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Fecha de vencimiento del pago</label>@*validacion datetime*@
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="@Model.VencimientoP">
+            <input id="@Model.VencimientoP" type="datetime" class="form-control" placeholder="@Model.VencimientoP">
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Tipo</label>
@@ -51,3 +51,4 @@
 
     </form>
 
+<button onclick="submit()">Enviar</button>

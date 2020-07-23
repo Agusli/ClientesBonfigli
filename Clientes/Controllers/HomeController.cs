@@ -8,17 +8,18 @@ using Clientes.Models;
 using System.Security.Cryptography.X509Certificates;
 using Clientes.Services;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Http;
 
 namespace Clientes.Controllers
 {
     public class HomeController : Controller
-    { 
-        
+    {
+
         public IActionResult Index()
         {
             ClientesServices ClienteService = new ClientesServices();
 
-            
+
 
             return View(ClienteService.Obtener());
 
@@ -27,8 +28,8 @@ namespace Clientes.Controllers
 
         public IActionResult Privacy()
         {
-            
-        
+
+
             return View();
         }
 
@@ -38,17 +39,27 @@ namespace Clientes.Controllers
             ClientesServices _clientesServices = new ClientesServices();
 
             var cliente = _clientesServices.Buscar(id);
-            
-           
+
+
             return View(cliente);
 
         }
 
         public IActionResult NuevoCliente()
         {
-            ClientesServices clientesServices = new ClientesServices();
 
             return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult NuevoCliente(ClienteModel cliente)
+        {
+            ClientesServices clientesServices = new ClientesServices();
+
+            var clienteNuevo = clientesServices.Obtener();
+
+            return View("Index");
 
         }
 
@@ -59,21 +70,21 @@ namespace Clientes.Controllers
         }
 
         //crear un metodo de tipo string q reciba como parametro id que toma de ajax
-       
-           public Boolean Recibir(int id)
+
+        public Boolean Recibir(int id)
         {
             bool exito = false;
 
             try
             {
-               ClientesServices _clientesServices = new ClientesServices();
-                
-               var cliente= _clientesServices.Buscar(id);
+                ClientesServices _clientesServices = new ClientesServices();
 
-                if(cliente != null)
+                var cliente = _clientesServices.Buscar(id);
+
+                if (cliente != null)
                 {
-                   exito = _clientesServices.Delete(cliente);
-                    
+                    exito = _clientesServices.Delete(cliente);
+
                 }
 
                 return exito;
@@ -83,9 +94,12 @@ namespace Clientes.Controllers
             catch (Exception error)
             {
 
-                return false; 
+                return false;
             }
         }
-        //llamar el metodo del service el buscar y el eliminar 
+
+        
+
+
     }
 }
