@@ -7,7 +7,7 @@
 function btn(id) {
 
     $.ajax({
-      url:'HomeController.cs', //'urlcontroller',ruta de controller
+      url:'/Home/Recibir', //'urlcontroller',ruta de controller
     dataType: 'json',
         type: "POST",
         data: { Id: id },
@@ -15,7 +15,8 @@ function btn(id) {
 
     },
     success: function (data) {
-        if (success === true) {
+        if (data == true) {
+            $("#" + id).remove();
             alert('se elimino con exito')
         }
         else {
@@ -23,4 +24,18 @@ function btn(id) {
         }
     }
     }); 
+}
+
+function btnE(id) {
+
+    window.location.href = '/Home/Editar/' + id;
+
+}
+
+function agregar() {
+    window.location.href = '/Home/NuevoCliente/';
+}
+
+function submit() {
+
 }

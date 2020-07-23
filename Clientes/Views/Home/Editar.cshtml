@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Clientes
+
+<h1>Editar</h1>
+    <form>
+        <div class="form-group" >
+            <label for="exampleFormControlInput1">Nombre</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="@Model.Nombre">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Cuenta</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="@Model.Cuenta">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Contraseña</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="@Model.Contraseña">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Fecha de vencimiento de la Cuenta</label>@*validacion datetime*@
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="@Model.VencimientoC">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Fecha de vencimiento del pago</label>@*validacion datetime*@
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="@Model.VencimientoP">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Tipo</label>
+            <select class="form-control" id="@Model.Tipo">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Cantidad de pantallas</label>
+            <select class="form-control" id="@Model.Pantallas">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+
+
+    </form>
+

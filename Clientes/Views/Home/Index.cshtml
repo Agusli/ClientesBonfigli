@@ -5,6 +5,8 @@
 
 <h1>Clientes</h1>
 
+<h2>Nuevo cliente</h2>
+<button onclick="agregar()">Agregar</button>
 
 <table id="customers">
     <tr>
@@ -23,7 +25,7 @@
     @foreach (var item in Model)
     {
 
-        <tr>
+        <tr id="@item.Id">
             <td id="@item.Tipo.ToString()" style="width:5px"></td>
             <td>@item.Id</td>
             <td>@item.Nombre</td>
@@ -33,9 +35,10 @@
             <td>@item.VencimientoC</td>
             <td>@item.VencimientoP</td>
             <td>@item.Pantallas</td>
-            <button onclick="btn('@item.Id')">Borrar</button>
-        </tr>
 
+        </tr>
+        <button onclick="btn('@item.Id')">Borrar</button>
+        <button onclick="btnE('@item.Id')">Editar</button>
     }
 
 

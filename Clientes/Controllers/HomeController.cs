@@ -32,6 +32,26 @@ namespace Clientes.Controllers
             return View();
         }
 
+
+        public IActionResult Editar(int id)
+        {
+            ClientesServices _clientesServices = new ClientesServices();
+
+            var cliente = _clientesServices.Buscar(id);
+            
+           
+            return View(cliente);
+
+        }
+
+        public IActionResult NuevoCliente()
+        {
+            ClientesServices clientesServices = new ClientesServices();
+
+            return View();
+
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -40,15 +60,23 @@ namespace Clientes.Controllers
 
         //crear un metodo de tipo string q reciba como parametro id que toma de ajax
        
-           public Boolean Recibir(int Id)
+           public Boolean Recibir(int id)
         {
+            bool exito = false;
+
             try
             {
-               
-
+               ClientesServices _clientesServices = new ClientesServices();
                 
+               var cliente= _clientesServices.Buscar(id);
 
-                return true;
+                if(cliente != null)
+                {
+                   exito = _clientesServices.Delete(cliente);
+                    
+                }
+
+                return exito;
             }
 
 
