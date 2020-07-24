@@ -6,49 +6,52 @@
 @model Clientes
 
 <h1>Editar</h1>
-    <form>
-        <div class="form-group" >
-            <label for="exampleFormControlInput1">Nombre</label>
-            <input id="@Model.Nombre" type="text" class="form-control" placeholder="@Model.Nombre">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Cuenta</label>
-            <input  id="@Model.Cuenta" type="email" class="form-control" placeholder="@Model.Cuenta">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Contraseña</label>
-            <input id="@Model.Contraseña"type="text" class="form-control"  placeholder="@Model.Contraseña">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Fecha de vencimiento de la Cuenta</label>@*validacion datetime*@
-            <input id="@Model.VencimientoC" type="datetime" class="form-control"  placeholder="@Model.VencimientoC">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Fecha de vencimiento del pago</label>@*validacion datetime*@
-            <input id="@Model.VencimientoP" type="datetime" class="form-control" placeholder="@Model.VencimientoP">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Tipo</label>
-            <select class="form-control" id="@Model.Tipo">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Cantidad de pantallas</label>
-            <select class="form-control" id="@Model.Pantallas">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-        </div>
+<form>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Nombre</label>
+    </div>        <input id="Nombre" type="text" class="form-control" placeholder="@Model.Nombre" value="@Model.Nombre">
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Cuenta</label>
+        <input id="Cuenta" type="text" class="form-control" placeholder="@Model.Cuenta"value="@Model.Cuenta">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Email</label>
+        <input id="Email" type="email" class="form-control" placeholder="@Model.Email"value="@Model.Email">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Contraseña</label>
+        <input id="Contraseña" type="text" class="form-control" placeholder="@Model.Contraseña" value="@Model.Contraseña">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Fecha de vencimiento de la Cuenta</label>@*validacion datetime*@
+        <input id="VencimientoC" type="datetime" class="form-control" placeholder="@Model.VencimientoC" value="@Model.VencimientoC">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Fecha de vencimiento del pago</label>@*validacion datetime*@
+        <input id="VencimientoP" type="datetime" class="form-control" placeholder="@Model.VencimientoP" value="@Model.VencimientoP">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Tipo</label>
+        <select id="Tipo" class="form-control" value="@Model.Tipo">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Cantidad de pantallas</label>
+        <select id="Pantallas" class="form-control" value="@Model.Pantallas">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
 
 
 
-    </form>
-
-<button onclick="submit()">Enviar</button>
+</form>
+<button onclick="EnviarEdicion('@Model.Id')">Enviar</button>

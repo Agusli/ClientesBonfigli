@@ -22,11 +22,11 @@
     </tr>
 
 
-    @foreach (var item in Model)
+    @foreach (var item in Model)//desconfigure la exepcion 
     {
 
         <tr id="@item.Id">
-            <td id="@item.Tipo.ToString()" style="width:5px"></td>
+            <td id="@item.Tipo.ToString()"></td>
             <td>@item.Id</td>
             <td>@item.Nombre</td>
             <td>@item.Cuenta</td>
@@ -38,17 +38,14 @@
 
 
             <div class="btnb">
-                <button onclick="btn('@item.Id')">Borrar</button>
+                <button onclick="Borrar('@item.Id')">Borrar</button>
             </div>
-
             <div class="btne">
-                <button onclick="btnE('@item.Id')">Editar</button>
+                <button onclick="Editar('@item.Id')">Editar</button>
             </div>
             
         </tr>
     }
-
-
 
     </table>
 

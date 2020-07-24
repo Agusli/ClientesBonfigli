@@ -4,29 +4,29 @@
 // Write your JavaScript code.
 
 
-function btn(id) {
+function Borrar(id) {
 
     $.ajax({
-      url:'/Home/Recibir', //'urlcontroller',ruta de controller
-    dataType: 'json',
+        url: '/Home/Recibir', //'urlcontroller',ruta de controller
+        dataType: 'json',
         type: "POST",
         data: { Id: id },
-    error: function (data) {
+        error: function (data) {
 
-    },
-    success: function (data) {
-        if (data == true) {
-            $("#" + id).remove();
-            alert('se elimino con exito')
+        },
+        success: function (data) {
+            if (data == true) {
+                $("#" + id).remove();
+                alert('se elimino con exito')
+            }
+            else {
+                return alert('Error');
+            }
         }
-        else {
-           return alert('Error');
-        }
-    }
-    }); 
+    });
 }
 
-function btnE(id) {
+function Editar(id) {
 
     window.location.href = '/Home/Editar/' + id;
 
@@ -36,8 +36,8 @@ function agregar() {
     window.location.href = '/Home/NuevoCliente/';
 }
 
-function submit() {
-    
+function Nuevo() {
+
     data = {
         Nombre: $("#Nombre").val(),
         Cuenta: $("#Cuenta").val(),
@@ -55,15 +55,57 @@ function submit() {
         url: '/Home/NuevoCliente', //'urlcontroller',ruta de controller
         dataType: 'json',
         type: "POST",
-        data: { Cliente:cliente },
+        data: { data: data },
         error: function (data) {
+            //alert('error')
 
         },
         success: function (data) {
-                
-        }, 
-        
-    }); 
-    
+            if (data == true){
+                window.location.href = '/Home/Index/';
+            }
+
+            else {
+                alert('error')
+            }
+        },
+
+    });
 
 }
+
+function EnviarEdicion(id) {
+
+    data = {
+        Nombre: $("#Nombre").val(),
+        Cuenta: $("#Cuenta").val(),
+        Email: $("#Email").val(),
+        Contraseña: $("#Contraseña").val(),
+        VencimientoP: $("#VencimientoP").val(),
+        VencimientoC: $("#VencimientoC").val(),
+        Tipo: $("#Tipo").val(),
+        Pantallas: $("#Pantallas").val(),
+
+    }
+
+
+    $.ajax({
+        url: '/Home/Editar', //'urlcontroller',ruta de controller
+        dataType: 'json',
+        type: "POST",
+        data: { data: data, id: id },
+        error: function (data) {
+            //alert('error')
+
+        },
+        success: function (data) {
+            window.location.href = '/Home';
+
+        },
+
+    });
+    
+    
+}
+
+

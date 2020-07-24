@@ -45,6 +45,24 @@ namespace Clientes.Controllers
 
         }
 
+        [HttpPost]
+        public IActionResult Editar(Models.Clientes data, int id )
+        {
+           
+            ClientesServices _clientesServices = new ClientesServices();
+
+            var cliente = _clientesServices.Buscar(id);
+
+            if(cliente != null)
+            {
+               
+                _clientesServices.Delete(cliente);
+                _clientesServices.Nuevo(data);
+            }
+
+            return View("Index");
+        }
+
         public IActionResult NuevoCliente()
         {
 
@@ -53,11 +71,14 @@ namespace Clientes.Controllers
         }
 
         [HttpPost]
-        public IActionResult NuevoCliente(ClienteModel cliente)
+        public IActionResult NuevoCliente(Models.Clientes data)
         {
             ClientesServices clientesServices = new ClientesServices();
 
-            var clienteNuevo = clientesServices.Obtener();
+            var clienteN = data;
+
+            clientesServices.Nuevo(clienteN);
+
 
             return View("Index");
 

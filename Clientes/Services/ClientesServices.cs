@@ -9,6 +9,7 @@ using Clientes.Models;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Remotion.Linq.Clauses;
 
 namespace Clientes.Services
@@ -29,15 +30,16 @@ namespace Clientes.Services
 
             foreach (var item in resultado)
             {
-                ClienteModel cliente = new ClienteModel() {
+                ClienteModel cliente = new ClienteModel()
+                {
                     Id = item.Id,
                     Cuenta = item.Cuenta,
                     Contraseña = item.Contraseña,
                     Email = item.Email,
                     Nombre = item.Nombre,
-                    Pantallas= item.Pantallas, 
+                    Pantallas = item.Pantallas,
                     VencimientoC = item.VencimientoC,
-                    VencimientoP=item.VencimientoP,
+                    VencimientoP = item.VencimientoP,
 
                 };
 
@@ -56,7 +58,7 @@ namespace Clientes.Services
 
                 clientes.Add(cliente);
             }
-            
+
             return clientes;
 
         }
@@ -66,7 +68,7 @@ namespace Clientes.Services
             throw new NotImplementedException();
         }
 
-        public Boolean Agregar(Models.Clientes _clientes )
+        public Boolean Agregar(Models.Clientes _clientes)
         {
             try
             {
@@ -84,12 +86,13 @@ namespace Clientes.Services
 
         }
 
-        public  Boolean Delete(Models.Clientes clientes)
+        public Boolean Delete(Models.Clientes clientes)
         {
-            try { 
-            _clientesContext.Clientes.Remove(clientes);
-            _clientesContext.SaveChanges();
-            return true;
+            try
+            {
+                _clientesContext.Clientes.Remove(clientes);
+                _clientesContext.SaveChanges();
+                return true;
 
             }
 
@@ -101,24 +104,42 @@ namespace Clientes.Services
 
         public Models.Clientes Buscar(int id)
         {
-            var x = _clientesContext.Clientes.FirstOrDefault(l=> l.Id == id);
+            var x = _clientesContext.Clientes.FirstOrDefault(l => l.Id == id);
 
             return x;
-            
-            
+
+
+        }
+
+
+        public void Nuevo(Models.Clientes data)
+        {
+            var _cliente = data;
+
+            _clientesContext.Clientes.Add(_cliente);
+            _clientesContext.SaveChanges();
+
+           
+       
         }
 
        
-        //crear un metodo q busque el id q coincida con el que estoy seleccionando
+
+
+        
+
+
+
+
 
 
 
 
     }
 
-    
 
-    
+
+
 
 
 
