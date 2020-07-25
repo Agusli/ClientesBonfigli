@@ -112,24 +112,42 @@ namespace Clientes.Services
         }
 
 
-        public void Nuevo(Models.Clientes data)
+        public Boolean Nuevo(Models.Clientes data)
         {
             var _cliente = data;
+            try
+            {
+                _clientesContext.Clientes.Add(_cliente);
+                _clientesContext.SaveChanges();
 
-            _clientesContext.Clientes.Add(_cliente);
-            _clientesContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            
 
            
-       
         }
 
-       
+       public bool Actualizar (Models.Clientes data)
+        {
+            try
+            {
+                _clientesContext.Clientes.Update(data);
+                _clientesContext.SaveChanges();
 
+                return true;
 
-        
-
-
-
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+          
+        }
 
 
 

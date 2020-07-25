@@ -57,7 +57,7 @@ function Nuevo() {
         type: "POST",
         data: { data: data },
         error: function (data) {
-            //alert('error')
+ 
 
         },
         success: function (data) {
@@ -77,6 +77,7 @@ function Nuevo() {
 function EnviarEdicion(id) {
 
     data = {
+        Id: id,
         Nombre: $("#Nombre").val(),
         Cuenta: $("#Cuenta").val(),
         Email: $("#Email").val(),
@@ -95,11 +96,16 @@ function EnviarEdicion(id) {
         type: "POST",
         data: { data: data, id: id },
         error: function (data) {
-            //alert('error')
-
+        
         },
         success: function (data) {
-            window.location.href = '/Home';
+            if (data ==true)
+            {
+                window.location.href = '/Home';
+            }
+            else {
+                alert('Error');
+            }
 
         },
 

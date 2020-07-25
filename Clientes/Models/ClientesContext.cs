@@ -77,5 +77,7 @@ namespace Clientes.Models
                     .IsUnicode(false);
             });
         }
+
+      
     }
 }

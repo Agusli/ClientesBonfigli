@@ -19,8 +19,6 @@ namespace Clientes.Controllers
         {
             ClientesServices ClienteService = new ClientesServices();
 
-
-
             return View(ClienteService.Obtener());
 
         }
@@ -45,22 +43,41 @@ namespace Clientes.Controllers
 
         }
 
-        [HttpPost]
-        public IActionResult Editar(Models.Clientes data, int id )
-        {
+        //[HttpPost]
+        //public IActionResult Editar(Models.Clientes data, int id )
+        //{
            
+        //    ClientesServices _clientesServices = new ClientesServices();
+
+        //    var cliente = _clientesServices.Buscar(id);
+
+        //    if(cliente != null)
+        //    {
+               
+        //        _clientesServices.Delete(cliente);
+        //        _clientesServices.Nuevo(data);
+        //    }
+
+        //    return View("Index");
+        //}
+
+
+        [HttpPost]
+        public bool Editar(Models.Clientes data)
+        {
+            bool exito = false;
+
             ClientesServices _clientesServices = new ClientesServices();
 
-            var cliente = _clientesServices.Buscar(id);
+            var cliente = _clientesServices.Buscar(data.Id);
 
-            if(cliente != null)
+            if (cliente != null)
             {
-               
                 _clientesServices.Delete(cliente);
-                _clientesServices.Nuevo(data);
+                exito = _clientesServices.Actualizar(data);
             }
 
-            return View("Index");
+            return exito ;
         }
 
         public IActionResult NuevoCliente()
@@ -71,16 +88,18 @@ namespace Clientes.Controllers
         }
 
         [HttpPost]
-        public IActionResult NuevoCliente(Models.Clientes data)
+        public Boolean NuevoCliente(Models.Clientes data)
         {
+
             ClientesServices clientesServices = new ClientesServices();
 
-            var clienteN = data;
+            bool clienteN = false;
 
-            clientesServices.Nuevo(clienteN);
+            clienteN=clientesServices.Nuevo(data);
+            
+                return clienteN;
 
-
-            return View("Index");
+          
 
         }
 
