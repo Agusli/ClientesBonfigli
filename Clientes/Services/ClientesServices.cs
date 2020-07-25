@@ -139,7 +139,10 @@ namespace Clientes.Services
             {
                 Models.Clientes cliente = _clientesContext.Clientes.FirstOrDefault(x => x.Id == data.Id);
 
-                cliente = data;
+                _clientesContext.Clientes.Remove(cliente);
+
+                _clientesContext.Clientes.Add(data);
+
                 _clientesContext.SaveChanges();
 
                 return true;
