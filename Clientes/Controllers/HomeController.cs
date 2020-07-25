@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using Clientes.Services;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
 
 namespace Clientes.Controllers
 {
@@ -63,21 +64,17 @@ namespace Clientes.Controllers
 
 
         [HttpPost]
-        public bool Editar(Models.Clientes data)
+        public Boolean Editar(Models.Clientes data)
         {
-            bool exito = false;
+            bool Exito = false; 
+            ClientesServices clientesServices = new ClientesServices();
 
-            ClientesServices _clientesServices = new ClientesServices();
+            Exito= clientesServices.Actualizar(data);
+            
 
-            var cliente = _clientesServices.Buscar(data.Id);
+            return Exito;
 
-            if (cliente != null)
-            {
-                _clientesServices.Delete(cliente);
-                exito = _clientesServices.Actualizar(data);
-            }
 
-            return exito ;
         }
 
         public IActionResult NuevoCliente()
@@ -109,9 +106,9 @@ namespace Clientes.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //crear un metodo de tipo string q reciba como parametro id que toma de ajax
+       
 
-        public Boolean Recibir(int id)
+        public Boolean Borrar(int id)
         {
             bool exito = false;
 

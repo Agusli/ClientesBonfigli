@@ -104,12 +104,13 @@ namespace Clientes.Services
 
         public Models.Clientes Buscar(int id)
         {
-            var x = _clientesContext.Clientes.FirstOrDefault(l => l.Id == id);
+           var x = _clientesContext.Clientes.FirstOrDefault(l => l.Id == id);
 
-            return x;
+           return x;
 
 
         }
+
 
 
         public Boolean Nuevo(Models.Clientes data)
@@ -136,7 +137,9 @@ namespace Clientes.Services
         {
             try
             {
-                _clientesContext.Clientes.Update(data);
+                Models.Clientes cliente = _clientesContext.Clientes.FirstOrDefault(x => x.Id == data.Id);
+
+                cliente = data;
                 _clientesContext.SaveChanges();
 
                 return true;

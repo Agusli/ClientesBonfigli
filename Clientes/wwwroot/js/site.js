@@ -7,7 +7,7 @@
 function Borrar(id) {
 
     $.ajax({
-        url: '/Home/Recibir', //'urlcontroller',ruta de controller
+        url: '/Home/Borrar', //'urlcontroller',ruta de controller
         dataType: 'json',
         type: "POST",
         data: { Id: id },
@@ -94,7 +94,7 @@ function EnviarEdicion(id) {
         url: '/Home/Editar', //'urlcontroller',ruta de controller
         dataType: 'json',
         type: "POST",
-        data: { data: data, id: id },
+        data: { data: data},
         error: function (data) {
         
         },
