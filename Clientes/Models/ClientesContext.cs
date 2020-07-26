@@ -22,8 +22,7 @@ namespace Clientes.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-KUAIQE3;Initial Catalog=Clientes;Integrated Security=True");
+                optionsBuilder.UseSqlServer("workstation id=Clientes.mssql.somee.com;packet size=4096;user id=IvanBon_SQLLogin_1;pwd=fuely5ob4z;data source=Clientes.mssql.somee.com;persist security info=False;initial catalog=Clientes");
             }
         }
 
@@ -74,6 +73,11 @@ namespace Clientes.Models
                     .IsRequired()
                     .HasColumnName("Usuario")
                     .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Token)
+                    .HasColumnName("Token")
+                    .HasMaxLength(40)
                     .IsUnicode(false);
             });
         }

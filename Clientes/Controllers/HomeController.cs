@@ -10,18 +10,17 @@ using Clientes.Services;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Clientes.Controllers
 {
     public class HomeController : Controller
     {
-
         public IActionResult Index()
         {
-            ClientesServices ClienteService = new ClientesServices();
+            ClientesServices ClienteService = new ClientesServices();   
 
             return View(ClienteService.Obtener());
-
         }
 
 
@@ -32,7 +31,7 @@ namespace Clientes.Controllers
             return View();
         }
 
-
+        [HttpGet]
         public IActionResult Editar(int id)
         {
             ClientesServices _clientesServices = new ClientesServices();
@@ -44,25 +43,6 @@ namespace Clientes.Controllers
 
         }
 
-        //[HttpPost]
-        //public IActionResult Editar(Models.Clientes data, int id )
-        //{
-           
-        //    ClientesServices _clientesServices = new ClientesServices();
-
-        //    var cliente = _clientesServices.Buscar(id);
-
-        //    if(cliente != null)
-        //    {
-               
-        //        _clientesServices.Delete(cliente);
-        //        _clientesServices.Nuevo(data);
-        //    }
-
-        //    return View("Index");
-        //}
-
-
         [HttpPost]
         public Boolean Editar(Models.Clientes data)
         {
@@ -71,9 +51,7 @@ namespace Clientes.Controllers
 
             Exito= clientesServices.Actualizar(data);
             
-
             return Exito;
-
 
         }
 
@@ -106,8 +84,6 @@ namespace Clientes.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-       
-
         public Boolean Borrar(int id)
         {
             bool exito = false;
@@ -134,9 +110,6 @@ namespace Clientes.Controllers
                 return false;
             }
         }
-
-        
-
 
     }
 }

@@ -155,17 +155,46 @@ namespace Clientes.Services
           
         }
 
+        public Models.Usuario GetUserByCredentials(Models.Usuario data)
+        {
+            try
+            {
+               return _clientesContext.Usuario.FirstOrDefault(u => u.Usuario1 == data.Usuario1 && u.Password == data.Password);
+            }
+            catch (System.Exception e)
+            {
+                return null;
+            }
+        }
 
+        public bool UpdateUserToken(Models.Usuario data, string token)
+        {
+            try{
+                _clientesContext.Usuario.FirstOrDefault(u => u.Id == data.Id).Token = token;
+                _clientesContext.SaveChanges();
+                return true;
+            }
+            catch(Exception e){
+                return false;
+            }
+        }
 
+        public bool ValidateToken(string token, string id)
+        {
+            Usuario user = _clientesContext.Usuario.FirstOrDefault(u => u.Id == int.Parse(id));
 
+            if(user != null)
+            {
+                if(user.Token == token)
+                {
+                    return true;
+                }
+            }        
+            
+            return false;            
+
+        }
 
     }
-
-
-
-
-
-
-
 
 }
