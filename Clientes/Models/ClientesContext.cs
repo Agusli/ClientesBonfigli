@@ -60,6 +60,11 @@ namespace Clientes.Models
                 entity.Property(e => e.VencimientoC).HasColumnType("datetime");
 
                 entity.Property(e => e.VencimientoP).HasColumnType("datetime");
+
+                 entity.Property(e => e.Comentario)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
             });
 
             modelBuilder.Entity<Usuario>(entity =>

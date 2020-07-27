@@ -14,5 +14,6 @@ namespace Clientes.Models
         public string Nombre { get; set; }
         public int? Tipo { get; set; }
         public string Pantallas { get; set; }
+        public string Comentario {get; set;}
     }
 }
