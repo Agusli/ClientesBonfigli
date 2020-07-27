@@ -11,14 +11,19 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
+
 
 namespace Clientes.Controllers
 {
     public class HomeController : Controller
     {
+        public ClientesServices ClienteService;
+        public HomeController (ClientesContext db){
+            ClienteService = new ClientesServices(db);
+        }
         public IActionResult Index()
         {
-            ClientesServices ClienteService = new ClientesServices();
             string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
             string id = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
@@ -36,15 +41,14 @@ namespace Clientes.Controllers
         [HttpGet]
         public IActionResult Editar(int id)
         {
-            ClientesServices ClienteServices = new ClientesServices();
             string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
             string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
             if (Token != null)
             {
-                if (ClienteServices.ValidateToken(Token, UserId))
+                if (ClienteService.ValidateToken(Token, UserId))
                 {
-                    var cliente = ClienteServices.Buscar(id);
+                    var cliente = ClienteService.Buscar(id);
 
                     return View(cliente);
                 }
@@ -57,15 +61,14 @@ namespace Clientes.Controllers
         public Boolean Editar(Models.Clientes data)
         {
             bool Exito = false;
-            ClientesServices ClienteServices = new ClientesServices();
             string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
             string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
             if (Token != null)
             {
-                if (ClienteServices.ValidateToken(Token, UserId))
+                if (ClienteService.ValidateToken(Token, UserId))
                 {
-                    Exito = ClienteServices.Actualizar(data);
+                    Exito = ClienteService.Actualizar(data);
                     return Exito;
                 }
             }
@@ -76,13 +79,12 @@ namespace Clientes.Controllers
 
         public IActionResult NuevoCliente()
         {
-            ClientesServices ClienteServices = new ClientesServices();
             string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
             string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
             if (Token != null)
             {
-                if (ClienteServices.ValidateToken(Token, UserId))
+                if (ClienteService.ValidateToken(Token, UserId))
                 {
                     return View();
                 }
@@ -95,16 +97,15 @@ namespace Clientes.Controllers
         [HttpPost]
         public Boolean NuevoCliente(Models.Clientes data)
         {
-            ClientesServices ClienteServices = new ClientesServices();
             string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
             string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
             bool clienteN = false;
 
             if (Token != null)
             {
-                if (ClienteServices.ValidateToken(Token, UserId))
+                if (ClienteService.ValidateToken(Token, UserId))
                 {
-                    clienteN = ClienteServices.Nuevo(data);
+                    clienteN = ClienteService.Nuevo(data);
                 }
             }
 
@@ -124,19 +125,18 @@ namespace Clientes.Controllers
 
             try
             {
-                ClientesServices ClienteServices = new ClientesServices();
                 string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
                 string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
                 if (Token != null)
                 {
-                    if (ClienteServices.ValidateToken(Token, UserId))
+                    if (ClienteService.ValidateToken(Token, UserId))
                     {
-                        cliente = ClienteServices.Buscar(id);
+                        cliente = ClienteService.Buscar(id);
 
                         if (cliente != null)
                         {
-                            exito = ClienteServices.Delete(cliente);
+                            exito = ClienteService.Delete(cliente);
                         }
 
                     }

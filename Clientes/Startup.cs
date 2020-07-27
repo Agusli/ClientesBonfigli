@@ -42,8 +42,7 @@ namespace Clientes
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Produccion"));
             });
-
-            services.AddSession();
+            
 
             services.AddSession();
 

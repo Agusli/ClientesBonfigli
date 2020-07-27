@@ -11,13 +11,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Remotion.Linq.Clauses;
+using Microsoft.Extensions.DependencyInjection;
+
 
 namespace Clientes.Services
 {
     public class ClientesServices
     {
         public readonly ClientesContext _clientesContext;
-
         public ClientesServices(ClientesContext db)
         {
             _clientesContext = db;
