@@ -22,7 +22,6 @@ namespace Clientes.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("workstation id=Clientes.mssql.somee.com;packet size=4096;user id=IvanBon_SQLLogin_1;pwd=fuely5ob4z;data source=Clientes.mssql.somee.com;persist security info=False;initial catalog=Clientes");
             }
         }
 

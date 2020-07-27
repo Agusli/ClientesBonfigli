@@ -18,9 +18,9 @@ namespace Clientes.Services
     {
         public readonly ClientesContext _clientesContext;
 
-        public ClientesServices()
+        public ClientesServices(ClientesContext db)
         {
-            _clientesContext = new ClientesContext();
+            _clientesContext = db;
         }
 
         public List<ClienteModel> Obtener()
