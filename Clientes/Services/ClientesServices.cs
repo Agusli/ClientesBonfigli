@@ -6,8 +6,10 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Clientes.Controllers;
 using Clientes.Models;
+using Microsoft.AspNetCore.JsonPatch.Internal;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Remotion.Linq.Clauses;
@@ -104,9 +106,9 @@ namespace Clientes.Services
 
         public Models.Clientes Buscar(int id)
         {
-           var x = _clientesContext.Clientes.FirstOrDefault(l => l.Id == id);
+            var x = _clientesContext.Clientes.FirstOrDefault(l => l.Id == id);
 
-           return x;
+            return x;
 
 
         }
@@ -128,12 +130,12 @@ namespace Clientes.Services
 
                 return false;
             }
-            
 
-           
+
+
         }
 
-       public bool Actualizar (Models.Clientes data)
+        public bool Actualizar(Models.Clientes data)
         {
             try
             {
@@ -152,20 +154,23 @@ namespace Clientes.Services
             {
                 return false;
             }
-          
+
         }
 
+        public List<ClienteModel> FiltrarNombre(string Nombre, List<ClienteModel> ListaClientes)
+        {
+
+            List<ClienteModel> ClientesFiltrados = new List<ClienteModel>();
 
 
+            ClientesFiltrados = ListaClientes.Where(x => x.Nombre == Nombre).ToList();
 
+
+            return ClientesFiltrados;
+
+
+        }
 
     }
-
-
-
-
-
-
-
 
 }

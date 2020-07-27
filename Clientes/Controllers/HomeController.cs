@@ -10,6 +10,7 @@ using Clientes.Services;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
+using System.Linq.Expressions;
 
 namespace Clientes.Controllers
 {
@@ -44,23 +45,7 @@ namespace Clientes.Controllers
 
         }
 
-        //[HttpPost]
-        //public IActionResult Editar(Models.Clientes data, int id )
-        //{
-           
-        //    ClientesServices _clientesServices = new ClientesServices();
 
-        //    var cliente = _clientesServices.Buscar(id);
-
-        //    if(cliente != null)
-        //    {
-               
-        //        _clientesServices.Delete(cliente);
-        //        _clientesServices.Nuevo(data);
-        //    }
-
-        //    return View("Index");
-        //}
 
 
         [HttpPost]
@@ -135,7 +120,25 @@ namespace Clientes.Controllers
             }
         }
 
-        
+
+
+        //public List<ClienteModel> Filtrar(string Search)
+        //{
+        //    ClientesServices clientesServices = new ClientesServices();
+
+        //    clientesServices.FiltrarNombre()
+           
+            
+
+
+        //}
+
+
+
+
+
+
+
 
 
     }

@@ -3,7 +3,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1>Clientes</h1>
+<h1 class="titulo"> Clientes</h1>
 
 <h2>Nuevo cliente</h2>
 <button onclick="agregar()">Agregar</button>
@@ -36,14 +36,18 @@
             <td>@item.VencimientoP</td>
             <td>@item.Pantallas</td>
 
+            <td>
+                <div class="eliminar">
+                    <button onclick="Borrar('@item.Id')"></button>
+                </div>
 
-            <div class="btnb">
-                <button onclick="Borrar('@item.Id')">Borrar</button>
-            </div>
-            <div class="btne">
-                <button onclick="Editar('@item.Id')">Editar</button>
-            </div>
-            
+            </td>
+
+            <td>
+                <div class="btne">
+                    <button onclick="Editar('@item.Id')">Editar</button>
+                </div>
+            </td>
         </tr>
     }
 

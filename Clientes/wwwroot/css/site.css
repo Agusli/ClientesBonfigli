@@ -97,15 +97,12 @@ body {
     color: white;
 }
 
-
-.btnb{
-    
+.titulo{
+    text-align:center;
 }
 
-.btne{
-   
-   
-   
+.eliminar{
+    background-image:url(../iconos/Eliminar.png);
+    width:20px;
+    border-radius:50%;
 }
-
-

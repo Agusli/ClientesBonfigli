@@ -15,7 +15,7 @@ function Borrar(id) {
 
         },
         success: function (data) {
-            if (data == true) {
+            if (data === true) {
                 $("#" + id).remove();
                 alert('se elimino con exito')
             }
@@ -61,7 +61,7 @@ function Nuevo() {
 
         },
         success: function (data) {
-            if (data == true){
+            if (data === true){
                 window.location.href = '/Home/Index/';
             }
 
@@ -99,7 +99,7 @@ function EnviarEdicion(id) {
         
         },
         success: function (data) {
-            if (data ==true)
+            if (data ===true)
             {
                 window.location.href = '/Home';
             }
@@ -114,4 +114,31 @@ function EnviarEdicion(id) {
     
 }
 
+function BuscarCliente()
+{
+    $.ajax({
+        url: '/Home/Filtrar', //'urlcontroller',ruta de controller
+        dataType: 'json',
+        type: "POST",
+        data: {
+            Search: $("#Search").value(),
+            
+            },
+        error: function (data) {
 
+        },
+        success: function (data) {
+            if (data === true) {
+                window.location.href = '/Home';
+            }
+            else {
+                alert('Error');
+            }
+
+        },
+
+    });
+
+
+
+}
