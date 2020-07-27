@@ -28,7 +28,7 @@ function Borrar(id) {
 
 function Editar(id) {
 
-    window.location.href = '/Home/Editar/' + id;
+    window.location.href = '/Home/Editar?id=' + id;
 
 }
 
@@ -88,8 +88,6 @@ function EnviarEdicion(id) {
         Pantallas: $("#Pantallas").val(),
 
     }
-
-
     $.ajax({
         url: '/Home/Editar', //'urlcontroller',ruta de controller
         dataType: 'json',
@@ -101,7 +99,7 @@ function EnviarEdicion(id) {
         success: function (data) {
             if (data ===true)
             {
-                window.location.href = '/Home';
+                window.location.href = '/Home/Index';
             }
             else {
                 alert('Error');
@@ -111,19 +109,45 @@ function EnviarEdicion(id) {
 
     });
     
-    
 }
+$("#LogInBtn").click(function (){
 
-function BuscarCliente()
-{
+    console.log("Hola");
+    data = {
+        Usuario1: $("#UserInput").val(),
+        Password: $("#PasswordInput").val()
+    }
+
+    $.ajax({
+        url:'/User/Login', //'urlcontroller',ruta de controller
+        dataType: 'json',
+          type: "POST",
+          data: { Data: data },
+      error: function (data) {
+  
+      },
+      success: function (data) {
+          if (data === true) {
+              window.location.href = "/Home/Index";
+          }
+          else
+          {
+              $("#Message").removeAttr('hidden');
+              $("#Message").html("Usuario o contraseña incorrecto");
+          }
+         }
+      }); 
+})
+
+function BuscarCliente() {
     $.ajax({
         url: '/Home/Filtrar', //'urlcontroller',ruta de controller
         dataType: 'json',
         type: "POST",
         data: {
             Search: $("#Search").value(),
-            
-            },
+
+        },
         error: function (data) {
 
         },

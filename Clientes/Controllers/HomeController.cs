@@ -10,39 +10,52 @@ using Clientes.Services;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
 using System.Linq.Expressions;
+
 
 namespace Clientes.Controllers
 {
     public class HomeController : Controller
     {
-
+        public ClientesServices ClienteService;
+        public HomeController (ClientesContext db){
+            ClienteService = new ClientesServices(db);
+        }
         public IActionResult Index()
         {
-            ClientesServices ClienteService = new ClientesServices();
+            string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+            string id = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-            return View(ClienteService.Obtener());
+            if (Token != null)
+            {
+                if (ClienteService.ValidateToken(Token, id))
+                {
+                    return View(ClienteService.Obtener());
+                }
+            }
+            return RedirectToAction("Login", "User");
 
         }
 
-
-        public IActionResult Privacy()
-        {
-
-
-            return View();
-        }
-
-
+        [HttpGet]
         public IActionResult Editar(int id)
         {
-            ClientesServices _clientesServices = new ClientesServices();
+            string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+            string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-            var cliente = _clientesServices.Buscar(id);
+            if (Token != null)
+            {
+                if (ClienteService.ValidateToken(Token, UserId))
+                {
+                    var cliente = ClienteService.Buscar(id);
 
+                    return View(cliente);
+                }
+            }
 
-            return View(cliente);
-
+            return RedirectToAction("Login", "User");
         }
 
 
@@ -51,38 +64,56 @@ namespace Clientes.Controllers
         [HttpPost]
         public Boolean Editar(Models.Clientes data)
         {
-            bool Exito = false; 
-            ClientesServices clientesServices = new ClientesServices();
+            bool Exito = false;
+            string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+            string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-            Exito= clientesServices.Actualizar(data);
-            
+            if (Token != null)
+            {
+                if (ClienteService.ValidateToken(Token, UserId))
+                {
+                    Exito = ClienteService.Actualizar(data);
+                    return Exito;
+                }
+            }
 
             return Exito;
-
 
         }
 
         public IActionResult NuevoCliente()
         {
+            string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+            string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-            return View();
+            if (Token != null)
+            {
+                if (ClienteService.ValidateToken(Token, UserId))
+                {
+                    return View();
+                }
+            }
+
+            return RedirectToAction("Login", "User");
 
         }
 
         [HttpPost]
         public Boolean NuevoCliente(Models.Clientes data)
         {
-
-            ClientesServices clientesServices = new ClientesServices();
-
+            string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+            string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
             bool clienteN = false;
 
-            clienteN=clientesServices.Nuevo(data);
-            
-                return clienteN;
+            if (Token != null)
+            {
+                if (ClienteService.ValidateToken(Token, UserId))
+                {
+                    clienteN = ClienteService.Nuevo(data);
+                }
+            }
 
-          
-
+            return clienteN;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -91,28 +122,32 @@ namespace Clientes.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-       
-
         public Boolean Borrar(int id)
         {
             bool exito = false;
+            Models.Clientes cliente = new Models.Clientes();
 
             try
             {
-                ClientesServices _clientesServices = new ClientesServices();
+                string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+                string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-                var cliente = _clientesServices.Buscar(id);
-
-                if (cliente != null)
+                if (Token != null)
                 {
-                    exito = _clientesServices.Delete(cliente);
+                    if (ClienteService.ValidateToken(Token, UserId))
+                    {
+                        cliente = ClienteService.Buscar(id);
 
+                        if (cliente != null)
+                        {
+                            exito = ClienteService.Delete(cliente);
+                        }
+
+                    }
                 }
 
                 return exito;
             }
-
-
             catch (Exception error)
             {
 

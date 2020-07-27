@@ -13,16 +13,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Remotion.Linq.Clauses;
+using Microsoft.Extensions.DependencyInjection;
+
 
 namespace Clientes.Services
 {
     public class ClientesServices
     {
         public readonly ClientesContext _clientesContext;
-
-        public ClientesServices()
+        public ClientesServices(ClientesContext db)
         {
-            _clientesContext = new ClientesContext();
+            _clientesContext = db;
         }
 
         public List<ClienteModel> Obtener()
@@ -157,20 +158,56 @@ namespace Clientes.Services
 
         }
 
+        public Models.Usuario GetUserByCredentials(Models.Usuario data)
+        {
+            try
+            {
+               return _clientesContext.Usuario.FirstOrDefault(u => u.Usuario1 == data.Usuario1 && u.Password == data.Password);
+            }
+            catch (System.Exception e)
+            {
+                return null;
+            }
+        }
+
+
+        public bool UpdateUserToken(Models.Usuario data, string token)
+        {
+            try{
+                _clientesContext.Usuario.FirstOrDefault(u => u.Id == data.Id).Token = token;
+                _clientesContext.SaveChanges();
+                return true;
+            }
+            catch(Exception e){
+                return false;
+            }
+        }
+
+     
+
+        public bool ValidateToken(string token, string id)
+        {
+            Usuario user = _clientesContext.Usuario.FirstOrDefault(u => u.Id == int.Parse(id));
+
+            if(user != null)
+            {
+                if(user.Token == token)
+                {
+                    return true;
+                }
+            }        
+            
+            return false;            
+
+        }
+
         public List<ClienteModel> FiltrarNombre(string Nombre, List<ClienteModel> ListaClientes)
         {
-
-            List<ClienteModel> ClientesFiltrados = new List<ClienteModel>();
-
-
             ClientesFiltrados = ListaClientes.Where(x => x.Nombre == Nombre).ToList();
 
 
             return ClientesFiltrados;
 
-
         }
-
-    }
 
 }

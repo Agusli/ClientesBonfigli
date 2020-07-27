@@ -8,7 +8,6 @@ C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.pdb
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.Views.dll
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.Views.pdb
-C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csprojAssemblyReference.cache
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.AssemblyInfoInputs.cache
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.AssemblyInfo.cs
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csproj.CoreCompileInputs.cache
@@ -17,9 +16,7 @@ C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.TagHelpers.input.cache
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.TagHelpers.output.cache
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.RazorCoreGenerate.cache
-C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Editar.cshtml.g.cs
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\NuevoCliente.cshtml.g.cs
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
@@ -34,3 +31,42 @@ C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.pdb
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.genruntimeconfig.cache
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csproj.CopyComplete
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csprojAssemblyReference.cache
+<<<<<<< Updated upstream
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Editar.cshtml.g.cs
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\NuevoCliente.cshtml.g.cs
+=======
+>>>>>>> Stashed changes
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.deps.json
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.runtimeconfig.json
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.runtimeconfig.dev.json
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.dll
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.pdb
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.Views.dll
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.Views.pdb
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csprojAssemblyReference.cache
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csproj.CoreCompileInputs.cache
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.RazorAssemblyInfo.cache
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.RazorAssemblyInfo.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.AssemblyInfoInputs.cache
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.AssemblyInfo.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.TagHelpers.input.cache
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.TagHelpers.output.cache
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.RazorCoreGenerate.cache
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.RazorTargetAssemblyInfo.cache
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.RazorTargetAssemblyInfo.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.Views.pdb
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.dll
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.pdb
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csproj.CopyComplete
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\User\Login.g.cshtml.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Editar.g.cshtml.cs
+C:\Users\ivan.g.bonfigli\Desktop\Clientes\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\NuevoCliente.g.cshtml.cs

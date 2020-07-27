@@ -18,12 +18,11 @@ namespace Clientes.Models
         public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-KUAIQE3;Initial Catalog=Clientes;Integrated Security=True");
             }
         }
 
@@ -61,6 +60,11 @@ namespace Clientes.Models
                 entity.Property(e => e.VencimientoC).HasColumnType("datetime");
 
                 entity.Property(e => e.VencimientoP).HasColumnType("datetime");
+
+                 entity.Property(e => e.Comentario)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
             });
 
             modelBuilder.Entity<Usuario>(entity =>
@@ -74,6 +78,11 @@ namespace Clientes.Models
                     .IsRequired()
                     .HasColumnName("Usuario")
                     .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Token)
+                    .HasColumnName("Token")
+                    .HasMaxLength(40)
                     .IsUnicode(false);
             });
         }

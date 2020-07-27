@@ -12,6 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+
 
 namespace Clientes
 {
@@ -34,12 +37,14 @@ namespace Clientes
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<Models.ClientesContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("conexionClientes"));
+                options.UseSqlServer(Configuration.GetConnectionString("Produccion"));
             });
+            
+
+            services.AddSession();
 
         }
 
@@ -60,12 +65,12 @@ namespace Clientes
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=User}/{action=Login}");
             });
         }
     }
