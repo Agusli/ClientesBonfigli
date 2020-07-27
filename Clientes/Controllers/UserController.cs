@@ -9,6 +9,8 @@ using System.Security.Cryptography.X509Certificates;
 using Clientes.Services;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
+
 
 namespace User.Controllers
 {
@@ -16,10 +18,10 @@ namespace User.Controllers
     { 
         private ClientesServices _ClienteServices { get; set;}
 
-        public UserController()
+        public UserController(ClientesContext db) 
         {
-            this._ClienteServices = new ClientesServices();
-        }
+            this._ClienteServices = new ClientesServices(db) ;
+        } 
         
         public IActionResult Login()
         {            

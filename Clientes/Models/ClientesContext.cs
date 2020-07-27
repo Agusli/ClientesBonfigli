@@ -18,11 +18,11 @@ namespace Clientes.Models
         public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("workstation id=Clientes.mssql.somee.com;packet size=4096;user id=IvanBon_SQLLogin_1;pwd=fuely5ob4z;data source=Clientes.mssql.somee.com;persist security info=False;initial catalog=Clientes");
             }
         }
 
@@ -60,6 +60,11 @@ namespace Clientes.Models
                 entity.Property(e => e.VencimientoC).HasColumnType("datetime");
 
                 entity.Property(e => e.VencimientoP).HasColumnType("datetime");
+
+                 entity.Property(e => e.Comentario)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
             });
 
             modelBuilder.Entity<Usuario>(entity =>

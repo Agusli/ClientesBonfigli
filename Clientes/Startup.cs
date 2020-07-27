@@ -40,10 +40,9 @@ namespace Clientes
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<Models.ClientesContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("conexionClientes"));
+                options.UseSqlServer(Configuration.GetConnectionString("Produccion"));
             });
-
-            services.AddSession();
+            
 
             services.AddSession();
 
