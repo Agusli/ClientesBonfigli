@@ -18,64 +18,97 @@ namespace Clientes.Controllers
     {
         public IActionResult Index()
         {
-            ClientesServices ClienteService = new ClientesServices();   
+            ClientesServices ClienteService = new ClientesServices();
+            string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+            string id = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-            return View(ClienteService.Obtener());
-        }
+            if (Token != null)
+            {
+                if (ClienteService.ValidateToken(Token, id))
+                {
+                    return View(ClienteService.Obtener());
+                }
+            }
+            return RedirectToAction("Login", "User");
 
-
-        public IActionResult Privacy()
-        {
-
-
-            return View();
         }
 
         [HttpGet]
         public IActionResult Editar(int id)
         {
-            ClientesServices _clientesServices = new ClientesServices();
+            ClientesServices ClienteServices = new ClientesServices();
+            string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+            string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-            var cliente = _clientesServices.Buscar(id);
+            if (Token != null)
+            {
+                if (ClienteServices.ValidateToken(Token, UserId))
+                {
+                    var cliente = ClienteServices.Buscar(id);
 
+                    return View(cliente);
+                }
+            }
 
-            return View(cliente);
-
+            return RedirectToAction("Login", "User");
         }
 
         [HttpPost]
         public Boolean Editar(Models.Clientes data)
         {
-            bool Exito = false; 
-            ClientesServices clientesServices = new ClientesServices();
+            bool Exito = false;
+            ClientesServices ClienteServices = new ClientesServices();
+            string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+            string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-            Exito= clientesServices.Actualizar(data);
-            
+            if (Token != null)
+            {
+                if (ClienteServices.ValidateToken(Token, UserId))
+                {
+                    Exito = ClienteServices.Actualizar(data);
+                    return Exito;
+                }
+            }
+
             return Exito;
 
         }
 
         public IActionResult NuevoCliente()
         {
+            ClientesServices ClienteServices = new ClientesServices();
+            string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+            string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-            return View();
+            if (Token != null)
+            {
+                if (ClienteServices.ValidateToken(Token, UserId))
+                {
+                    return View();
+                }
+            }
+
+            return RedirectToAction("Login", "User");
 
         }
 
         [HttpPost]
         public Boolean NuevoCliente(Models.Clientes data)
         {
-
-            ClientesServices clientesServices = new ClientesServices();
-
+            ClientesServices ClienteServices = new ClientesServices();
+            string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+            string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
             bool clienteN = false;
 
-            clienteN=clientesServices.Nuevo(data);
-            
-                return clienteN;
+            if (Token != null)
+            {
+                if (ClienteServices.ValidateToken(Token, UserId))
+                {
+                    clienteN = ClienteServices.Nuevo(data);
+                }
+            }
 
-          
-
+            return clienteN;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -87,23 +120,30 @@ namespace Clientes.Controllers
         public Boolean Borrar(int id)
         {
             bool exito = false;
+            Models.Clientes cliente = new Models.Clientes();
 
             try
             {
-                ClientesServices _clientesServices = new ClientesServices();
+                ClientesServices ClienteServices = new ClientesServices();
+                string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+                string UserId = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-                var cliente = _clientesServices.Buscar(id);
-
-                if (cliente != null)
+                if (Token != null)
                 {
-                    exito = _clientesServices.Delete(cliente);
+                    if (ClienteServices.ValidateToken(Token, UserId))
+                    {
+                        cliente = ClienteServices.Buscar(id);
 
+                        if (cliente != null)
+                        {
+                            exito = ClienteServices.Delete(cliente);
+                        }
+
+                    }
                 }
 
                 return exito;
             }
-
-
             catch (Exception error)
             {
 

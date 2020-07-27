@@ -28,7 +28,7 @@ function Borrar(id) {
 
 function Editar(id) {
 
-    window.location.href = '/Home/Editar/' + id;
+    window.location.href = '/Home/Editar?id=' + id;
 
 }
 
@@ -99,7 +99,7 @@ function EnviarEdicion(id) {
         success: function (data) {
             if (data ==true)
             {
-                window.location.href = '/Home';
+                window.location.href = '/Home/Index';
             }
             else {
                 alert('Error');
