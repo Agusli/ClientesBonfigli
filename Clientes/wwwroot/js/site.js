@@ -4,8 +4,11 @@
 // Write your JavaScript code.
 
 
-function Borrar(id) {
 
+function Borrar(id) {
+    var bool = confirm("Seguro de eliminar el dato?");
+    if (bool === true) {
+      
     $.ajax({
         url: '/Home/Borrar', //'urlcontroller',ruta de controller
         dataType: 'json',
@@ -24,6 +27,13 @@ function Borrar(id) {
             }
         }
     });
+
+    }
+    else
+    {
+        alert("cancelo la solicitud");
+    }
+
 }
 
 function Editar(id) {
