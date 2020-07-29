@@ -37,52 +37,51 @@ namespace User.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-
             return View();
 
         }
 
         //Metodo para leer data de un archivo y cargarlo a la bd
 
-        // static List<Clientes.Models.Clientes> ReadFile()
-        // {
-        //     using (var reader = new StreamReader(@"C:\Cuentas.csv"))
-        //     {
-        //         List<Clientes.Models.Clientes> listA = new List<Clientes.Models.Clientes>();
+        //static List<Clientes.Models.Clientes> ReadFile()
+        //{
+        //    using (var reader = new StreamReader(@"C:\Cuentas.csv"))
+        //    {
+        //        List<Clientes.Models.Clientes> listA = new List<Clientes.Models.Clientes>();
+        //        int contador = 0;
+        //        try
+        //        {
+        //            while (!reader.EndOfStream)
+        //            {
+        //                var line = reader.ReadLine();
+        //                var values = line.Split(',');
+        //                var vencimientoP = values[3].Split("/");
+        //                var vencimientoC = values[4].Split("/");
 
-        //         try
-        //         {
-        //             while (!reader.EndOfStream)
-        //             {
-        //                 var line = reader.ReadLine();
-        //                 var values = line.Split(',');
-        //                 var vencimientoP = values[3].Split("/");
-        //                 var vencimientoC = values[4].Split("/");
+        //                listA.Add(new Clientes.Models.Clientes()
+        //                {
+        //                    Cuenta = values[0],
+        //                    Email = values[1],
+        //                    Contraseña = values[2],
+        //                    VencimientoP = new DateTime(2020, int.Parse(vencimientoP[1]), int.Parse(vencimientoP[0])),
+        //                    VencimientoC = new DateTime(2020, int.Parse(vencimientoC[1]), int.Parse(vencimientoC[0])),
+        //                    Nombre = values[5],
+        //                    Tipo = int.Parse(values[6]),
+        //                    Pantallas = values[7],
+        //                    Comentario = values[8]
+        //                });
+        //                contador++;
+        //            }
 
-        //                 listA.Add(new Clientes.Models.Clientes()
-        //                 {
-        //                     Cuenta = values[0],
-        //                     Email = values[1],
-        //                     Contraseña = values[2],
-        //                     VencimientoP = new DateTime(2020, int.Parse(vencimientoP[1]), int.Parse(vencimientoP[0])),
-        //                     VencimientoC = new DateTime(2020, int.Parse(vencimientoC[1]), int.Parse(vencimientoC[0])),
-        //                     Nombre = values[5],
-        //                     Tipo = int.Parse(values[6]),
-        //                     Pantallas = values[7],
-        //                     Comentario = values[8]
-        //                 });
+        //            return listA;
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            return listA;
+        //        }
 
-        //             }
-
-        //             return listA;
-        //         }
-        //         catch (Exception e)
-        //         {
-        //             return listA;
-        //         }
-
-        //     }
-        // }
+        //    }
+        //}
 
         //        var userInfo= HttpContext.Session.GetObjectFromJson<string>("SessionToken");
         //        HttpContext.Session.Remove("UserInfo");

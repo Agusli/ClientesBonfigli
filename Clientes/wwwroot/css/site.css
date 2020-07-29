@@ -64,12 +64,15 @@ body {
 
 /*tabla styles*/
 
+#container{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 #customers {
-    font-family: "Trebuchet MS", Arial,/* Helvetica, sans-serif*/;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    margin-left: -5%;
-    margin-top: 6%;
 }
 
     #customers td, #customers th {
@@ -77,9 +80,9 @@ body {
         padding: 8px;
     }
 
-    #customers tr:nth-child(even) {
+/*    #customers tr:nth-child(even) {
         background-color: #f2f2f2;
-    }
+    }*/
 
     #customers tr:hover {
         background-color: #ddd;
@@ -109,21 +112,18 @@ body {
 
 #buscar {
     position: fixed;
-    margin-left:-190px;
-    margin-top:200px;
+    margin-left:1%;
+    margin-top:1%;
 }
 
 
 #nuevo {
     position: fixed;
-    margin-left:-190px;
-    margin-top:250px;
+    margin-left:1%;
+    margin-top:4%
 
 }
 
-#Netflix {
-    width: 20PX;
-}
 
 .IconBtn {
     cursor: pointer;
