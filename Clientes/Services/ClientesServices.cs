@@ -43,6 +43,8 @@ namespace Clientes.Services
                     Pantallas = item.Pantallas,
                     VencimientoC = item.VencimientoC,
                     VencimientoP = item.VencimientoP,
+                    Comentario = item.Comentario,
+                   
 
                 };
 
@@ -57,8 +59,19 @@ namespace Clientes.Services
                     case 3:
                         cliente.Tipo = Tipo.IPTV;
                         break;
+                    case 4:
+                        cliente.Tipo = Tipo.DirecTVGo;
+                            break;
+                    case 5:
+                        cliente.Tipo = Tipo.AmazonPrime;
+                            break;
+
+                    case 6:
+                        cliente.Tipo = Tipo.Spotify;
+                            break;
                 }
 
+     
                 clientes.Add(cliente);
             }
 
@@ -162,7 +175,7 @@ namespace Clientes.Services
         {
             try
             {
-               return _clientesContext.Usuario.FirstOrDefault(u => u.Usuario1 == data.Usuario1 && u.Password == data.Password);
+                return _clientesContext.Usuario.FirstOrDefault(u => u.Usuario1 == data.Usuario1 && u.Password == data.Password);
             }
             catch (System.Exception e)
             {
@@ -173,41 +186,53 @@ namespace Clientes.Services
 
         public bool UpdateUserToken(Models.Usuario data, string token)
         {
-            try{
+            try
+            {
                 _clientesContext.Usuario.FirstOrDefault(u => u.Id == data.Id).Token = token;
                 _clientesContext.SaveChanges();
                 return true;
             }
-            catch(Exception e){
+            catch (Exception e)
+            {
                 return false;
             }
         }
 
-     
+
 
         public bool ValidateToken(string token, string id)
         {
             Usuario user = _clientesContext.Usuario.FirstOrDefault(u => u.Id == int.Parse(id));
 
-            if(user != null)
+            if (user != null)
             {
-                if(user.Token == token)
+                if (user.Token == token)
                 {
                     return true;
                 }
-            }        
-            
-            return false;            
+            }
+
+            return false;
 
         }
 
         public List<ClienteModel> FiltrarNombre(string Nombre, List<ClienteModel> ListaClientes)
         {
-            ClientesFiltrados = ListaClientes.Where(x => x.Nombre == Nombre).ToList();
+            List<ClienteModel> ClientesFiltrados = new List<ClienteModel>();
+
+            if(!string.IsNullOrEmpty(Nombre))
+            {
+                ClientesFiltrados = ListaClientes.Where(x => x.Nombre.ToLower().StartsWith(Nombre.ToLower())).ToList();
+            }
+            else
+            {
+                ClientesFiltrados = ListaClientes;
+            }
 
 
             return ClientesFiltrados;
 
         }
 
+    }
 }

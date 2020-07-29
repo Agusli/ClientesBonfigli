@@ -47,6 +47,7 @@ function Nuevo() {
         VencimientoC: $("#VencimientoC").val(),
         Tipo: $("#Tipo").val(),
         Pantallas: $("#Pantallas").val(),
+        Comentario: $("#Comentario").val(),
 
     }
 
@@ -86,6 +87,7 @@ function EnviarEdicion(id) {
         VencimientoC: $("#VencimientoC").val(),
         Tipo: $("#Tipo").val(),
         Pantallas: $("#Pantallas").val(),
+        Comentario:$("#Comentario").val(),
 
     }
     $.ajax({
@@ -145,24 +147,35 @@ function BuscarCliente() {
         dataType: 'json',
         type: "POST",
         data: {
-            Search: $("#Search").value(),
+            Search: $("#Search").val(),
 
         },
         error: function (data) {
 
         },
         success: function (data) {
-            if (data === true) {
-                window.location.href = '/Home';
-            }
-            else {
-                alert('Error');
+            if (data !== null) {
+                $(".DataRows").remove("");
+                data.forEach(function (element) {
+                    $("#customers").append(
+                        "<tr id='" + element.id + "' class='DataRows'>" 
+                        +"<td id='" + element.id + "'</td>"
+                        + "<td>" + element.id + "</td>"
+                        +"<td>" + element.nombre + "</td>"
+                        + "<td>" + element.cuenta + "</td>"
+                        + "<td>" + element.email + "</td>"
+                        + "<td>" + element.contraseña + "</td >"
+                        + "<td>" + element.vencimientoC + "</td >"
+                        + "<td>" + element.vencimientoP + "</td>"
+                        + "<td>" + element.pantallas + "</td >"
+                        + "<td>" + element.comentario + "</td>"
+                        + "<td>" + "<a onclick='Borrar('"+element.id+"')' class='IconBtn'> <i class='fas fa-trash-alt'> </i></a ></td>"
+                        + "<td>" + "<a onclick='Editar('"+element.Id+"')' class='IconBtn'> <i class='far fa-edit'> </i></a></td>"
+                        + "<tr />");
+                })
             }
 
         },
 
     });
-
-
-
 }

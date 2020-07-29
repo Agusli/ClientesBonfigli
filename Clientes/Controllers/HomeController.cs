@@ -157,21 +157,16 @@ namespace Clientes.Controllers
 
 
 
-        //public List<ClienteModel> Filtrar(string Search)
-        //{
-        //    ClientesServices clientesServices = new ClientesServices();
+        public List<ClienteModel> Filtrar(string Search)
+        {
+            List<ClienteModel> listaNombres = new List<ClienteModel>();
 
-        //    clientesServices.FiltrarNombre()
-           
-            
+            var list=ClienteService.Obtener();
 
+            var filtrarNombre = ClienteService.FiltrarNombre(Search, list);
 
-        //}
-
-
-
-
-
+            return filtrarNombre;
+        }
 
 
 

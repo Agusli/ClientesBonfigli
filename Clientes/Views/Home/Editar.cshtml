@@ -9,15 +9,15 @@
 <form>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nombre</label>
-    </div>        <input id="Nombre" type="text" class="form-control" placeholder="@Model.Nombre" value="@Model.Nombre">
+    </div>        <input id="Nombre" type="text" class="form-control" placeholder="@Model.Nombre" value="@Model.Nombre" required>
 
     <div class="form-group">
         <label for="exampleFormControlInput1">Cuenta</label>
-        <input id="Cuenta" type="text" class="form-control" placeholder="@Model.Cuenta"value="@Model.Cuenta">
+        <input id="Cuenta" type="text" class="form-control" placeholder="@Model.Cuenta" value="@Model.Cuenta">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Email</label>
-        <input id="Email" type="email" class="form-control" placeholder="@Model.Email"value="@Model.Email">
+        <input id="Email" type="email" class="form-control" placeholder="@Model.Email" value="@Model.Email" required>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Contraseña</label>
@@ -28,30 +28,35 @@
         <input id="VencimientoC" type="datetime" class="form-control" placeholder="@Model.VencimientoC" value="@Model.VencimientoC">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlInput1">Fecha de vencimiento del pago</label>@*validacion datetime*@
+        <label for="exampleFormControlInput1">Fecha de vencimiento del Cliente</label>@*validacion datetime*@
         <input id="VencimientoP" type="datetime" class="form-control" placeholder="@Model.VencimientoP" value="@Model.VencimientoP">
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Tipo</label>
         <select id="Tipo" class="form-control" value="@Model.Tipo">
-            <option>@Tipo.Flow</option>
-            <option>@Tipo.IPTV</option>
-            <option>@Tipo.Netflix</option>
+            <option value="2">@Tipo.Flow</option>
+            <option value="3">@Tipo.IPTV</option>
+            <option value="1">@Tipo.Netflix</option>
+            <option value="5">@Tipo.AmazonPrime</option>
+            <option value="4">@Tipo.DirecTVGo</option>
+            <option value="6">@Tipo.Spotify</option>
 
         </select>
     </div>
+
+
     <div class="form-group">
         <label for="exampleFormControlSelect1">Cantidad de pantallas</label>
-        <select id="Pantallas" class="form-control" value="@Model.Pantallas">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
+        <input id="Pantallas" type="text" class="form-control" placeholder="Pantallas">
     </div>
 
+    <div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Comentario</label>
+            <textarea class="form-control" id="Comentario" rows="3"></textarea>
+        </div>
+    </div>
 
 
 </form>
-<button onclick="EnviarEdicion('@Model.Id')">Enviar</button>
+<button onclick="EnviarEdicion('@Model.Id')"class="btn btn-outline-success btn-lg">Enviar</button>

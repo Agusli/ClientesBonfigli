@@ -5,6 +5,7 @@ a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
+
 }
 
 /* Sticky footer styles
@@ -64,9 +65,11 @@ body {
 /*tabla styles*/
 
 #customers {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family: "Trebuchet MS", Arial,/* Helvetica, sans-serif*/;
     border-collapse: collapse;
     width: 100%;
+    margin-left: -5%;
+    margin-top: 6%;
 }
 
     #customers td, #customers th {
@@ -83,10 +86,25 @@ body {
     }
 
 #Netflix {
-    background-image:url('../iconos/netflix (1).png');
-   /* width:20px;*/
- 
-    
+    background-image:url();
+}
+
+#Flow{
+
+}
+
+#IPTV{
+
+}
+
+#AmazonPrime{
+
+}
+#DirecTVGo{
+
+}
+#Spotify{
+
 }
 
 #customers th {
@@ -95,14 +113,58 @@ body {
     text-align: left;
     background-color: #4CAF50;
     color: white;
+   
 }
 
-.titulo{
-    text-align:center;
+.titulo {
+    text-align: center;
 }
 
-.eliminar{
-    background-image:url(../iconos/Eliminar.png);
-    width:20px;
-    border-radius:50%;
+#eliminar {
+    background: url(../iconos/Eliminar.png);
+    width: 20%;
+}
+
+
+/*---------------------------------------------------------------*/
+
+
+input:invalid {
+    border: 2px solid red;
+}
+
+    input:invalid:required {
+        background-color:pink;
+    }
+
+input:valid {
+    border: 2px solid black;
+}
+
+
+
+#buscar {
+    position: fixed;
+    margin-left:-190px;
+    margin-top:200px;
+}
+
+
+#nuevo {
+    position: fixed;
+    margin-left:-190px;
+    margin-top:250px;
+
+}
+
+#Netflix {
+    width: 20PX;
+}
+
+.IconBtn {
+    cursor: pointer;
+}
+
+i:hover {
+    color: #0000005e;
 }

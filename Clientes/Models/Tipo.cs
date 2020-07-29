@@ -9,6 +9,9 @@ namespace Clientes.Models
     {
         Netflix = 1,
         Flow = 2,
-        IPTV = 3
+        IPTV = 3,
+        DirecTVGo = 4,
+        AmazonPrime =5,                   
+        Spotify= 6,
     }
 }
