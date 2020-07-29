@@ -100,7 +100,21 @@ namespace Clientes.Services
                 return false;
             }
 
+        }
 
+        public Boolean AgregarVarios(List<Models.Clientes> _clientes)
+        {
+            try
+            {
+                _clientesContext.Clientes.AddRange(_clientes);
+                _clientesContext.SaveChanges();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+                return false;
+            }
 
         }
 

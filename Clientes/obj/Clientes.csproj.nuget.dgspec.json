@@ -1,32 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ivan Bonfigli\\Desktop\\ClientesBonfigli\\Clientes\\Clientes.csproj": {}
+    "C:\\Users\\ivan.g.bonfigli\\Desktop\\Clientes\\ClientesBonfigli\\Clientes\\Clientes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ivan Bonfigli\\Desktop\\ClientesBonfigli\\Clientes\\Clientes.csproj": {
+    "C:\\Users\\ivan.g.bonfigli\\Desktop\\Clientes\\ClientesBonfigli\\Clientes\\Clientes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ivan Bonfigli\\Desktop\\ClientesBonfigli\\Clientes\\Clientes.csproj",
+        "projectUniqueName": "C:\\Users\\ivan.g.bonfigli\\Desktop\\Clientes\\ClientesBonfigli\\Clientes\\Clientes.csproj",
         "projectName": "Clientes",
-        "projectPath": "C:\\Users\\Ivan Bonfigli\\Desktop\\ClientesBonfigli\\Clientes\\Clientes.csproj",
-        "packagesPath": "C:\\Users\\Ivan Bonfigli\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ivan Bonfigli\\Desktop\\ClientesBonfigli\\Clientes\\obj\\",
+        "projectPath": "C:\\Users\\ivan.g.bonfigli\\Desktop\\Clientes\\ClientesBonfigli\\Clientes\\Clientes.csproj",
+        "packagesPath": "C:\\Users\\ivan.g.bonfigli\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ivan.g.bonfigli\\Desktop\\Clientes\\ClientesBonfigli\\Clientes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ivan Bonfigli\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ivan.g.bonfigli\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -96,16 +92,10 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

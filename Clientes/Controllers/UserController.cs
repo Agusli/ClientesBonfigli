@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -15,23 +16,24 @@ using Microsoft.Extensions.DependencyInjection;
 namespace User.Controllers
 {
     public class UserController : Controller
-    { 
-        private ClientesServices _ClienteServices { get; set;}
+    {
+        private ClientesServices _ClienteServices { get; set; }
 
-        public UserController(ClientesContext db) 
+        public UserController(ClientesContext db)
         {
-            this._ClienteServices = new ClientesServices(db) ;
-        } 
-        
+            this._ClienteServices = new ClientesServices(db);
+        }
+
         public IActionResult Login()
-        {            
+        {
             string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
             string id = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
 
-            if(Token != null)
+            if (Token != null)
             {
-                if(_ClienteServices.ValidateToken(Token, id))
+                if (_ClienteServices.ValidateToken(Token, id))
                 {
+
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -40,8 +42,50 @@ namespace User.Controllers
 
         }
 
-//        var userInfo= HttpContext.Session.GetObjectFromJson<string>("SessionToken");
-//        HttpContext.Session.Remove("UserInfo");
+        //Metodo para leer data de un archivo y cargarlo a la bd
+
+        // static List<Clientes.Models.Clientes> ReadFile()
+        // {
+        //     using (var reader = new StreamReader(@"C:\Cuentas.csv"))
+        //     {
+        //         List<Clientes.Models.Clientes> listA = new List<Clientes.Models.Clientes>();
+
+        //         try
+        //         {
+        //             while (!reader.EndOfStream)
+        //             {
+        //                 var line = reader.ReadLine();
+        //                 var values = line.Split(',');
+        //                 var vencimientoP = values[3].Split("/");
+        //                 var vencimientoC = values[4].Split("/");
+
+        //                 listA.Add(new Clientes.Models.Clientes()
+        //                 {
+        //                     Cuenta = values[0],
+        //                     Email = values[1],
+        //                     Contraseña = values[2],
+        //                     VencimientoP = new DateTime(2020, int.Parse(vencimientoP[1]), int.Parse(vencimientoP[0])),
+        //                     VencimientoC = new DateTime(2020, int.Parse(vencimientoC[1]), int.Parse(vencimientoC[0])),
+        //                     Nombre = values[5],
+        //                     Tipo = int.Parse(values[6]),
+        //                     Pantallas = values[7],
+        //                     Comentario = values[8]
+        //                 });
+
+        //             }
+
+        //             return listA;
+        //         }
+        //         catch (Exception e)
+        //         {
+        //             return listA;
+        //         }
+
+        //     }
+        // }
+
+        //        var userInfo= HttpContext.Session.GetObjectFromJson<string>("SessionToken");
+        //        HttpContext.Session.Remove("UserInfo");
 
         [HttpPost]
         public bool Login(Usuario Data)
@@ -56,7 +100,7 @@ namespace User.Controllers
                 HttpContext.Session.SetObjectAsJson("SessionToken", token);
                 HttpContext.Session.SetObjectAsJson("SessionUserID", userFinded.Id);
 
-                return true; 
+                return true;
             }
             else
             {
