@@ -31,6 +31,8 @@ namespace Clientes.Services
             var resultado = _clientesContext.Clientes.ToList();
             List<ClienteModel> clientes = new List<ClienteModel>();
 
+            resultado = resultado.OrderBy(x => x.VencimientoP).ToList();
+
             foreach (var item in resultado)
             {
                 ClienteModel cliente = new ClienteModel()
@@ -41,8 +43,8 @@ namespace Clientes.Services
                     Email = item.Email,
                     Nombre = item.Nombre,
                     Pantallas = item.Pantallas,
-                    VencimientoC = item.VencimientoC,
-                    VencimientoP = item.VencimientoP,
+                    VencimientoC = item.VencimientoC.Value.ToString("dd/MM/yyyy"),
+                    VencimientoP = item.VencimientoP.Value.ToString("dd/MM/yyyy"),
                     Comentario = item.Comentario,
                    
 

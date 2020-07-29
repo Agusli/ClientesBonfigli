@@ -85,28 +85,6 @@ body {
         background-color: #ddd;
     }
 
-#Netflix {
-    background-image:url();
-}
-
-#Flow{
-
-}
-
-#IPTV{
-
-}
-
-#AmazonPrime{
-
-}
-#DirecTVGo{
-
-}
-#Spotify{
-
-}
-
 #customers th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -127,20 +105,6 @@ body {
 
 
 /*---------------------------------------------------------------*/
-
-
-input:invalid {
-    border: 2px solid red;
-}
-
-    input:invalid:required {
-        background-color:pink;
-    }
-
-input:valid {
-    border: 2px solid black;
-}
-
 
 
 #buscar {

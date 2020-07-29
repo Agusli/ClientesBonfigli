@@ -27,8 +27,8 @@
         <th>Cuenta</th>
         <th>Email</th>
         <th>Contraseña</th>
-        <th>Vencimiento Cliente</th>
         <th>Vencimiento Cuenta</th>
+        <th>Vencimiento Cliente</th>
         <th>Pantallas</th>
         <th>Comentario</th>
         <th style="background-color:red">Borrar</th>
@@ -38,8 +38,8 @@
     @foreach (var item in Model)//desconfigure la exepcion
     {
 
-        <tr id="@item.Id" class="DataRows">
-            <td id="@item.Tipo.ToString()"></td>
+            <tr id="@item.Id" class="DataRows">
+            <td>@item.Tipo.ToString()</td>
             <td>@item.Id</td>
             <td>@item.Nombre</td>
             <td>@item.Cuenta</td>

@@ -168,8 +168,8 @@ function BuscarCliente() {
                 $(".DataRows").remove("");
                 data.forEach(function (element) {
                     $("#customers").append(
-                        "<tr id='" + element.id + "' class='DataRows'>" 
-                        +"<td id='" + element.id + "'</td>"
+                        "<tr id='" + element.id + "' class='DataRows'>"
+                        + "<td>" + getTipo(element.tipo) + "</td>"
                         + "<td>" + element.id + "</td>"
                         +"<td>" + element.nombre + "</td>"
                         + "<td>" + element.cuenta + "</td>"
@@ -188,4 +188,35 @@ function BuscarCliente() {
         },
 
     });
+}
+
+
+function getTipo(id) {
+
+    var Tipo = "";
+
+    switch (id) {
+
+        case 1:
+             Tipo = "Netflix"
+            break;
+        case 2:
+            Tipo = "Flow"
+            break;
+        case 3:
+            Tipo = "IPTV"
+            break;
+        case 4:
+            Tipo = "DirecTVGo"
+            break;
+        case 5:
+            Tipo = "AmazonPrime"
+            break;
+
+        case 6:
+            Tipo = "Spotify"
+            break;
+    }
+
+    return Tipo;
 }

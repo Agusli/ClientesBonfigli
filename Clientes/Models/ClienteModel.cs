@@ -12,8 +12,8 @@ namespace Clientes.Models
         public string Cuenta { get; set; }
         public string Email { get; set; }
         public string Contraseña { get; set; }
-        public DateTime? VencimientoP { get; set; }
-        public DateTime? VencimientoC { get; set; }
+        public string VencimientoP { get; set; }
+        public string VencimientoC { get; set; }
         public string Nombre { get; set; }
         public Tipo Tipo { get; set; }
         public string Pantallas { get; set; }
