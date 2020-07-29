@@ -83,7 +83,21 @@ namespace Clientes.Services
                 return false;
             }
 
+        }
 
+        public Boolean AgregarVarios(List<Models.Clientes> _clientes)
+        {
+            try
+            {
+                _clientesContext.Clientes.AddRange(_clientes);
+                _clientesContext.SaveChanges();
+                return true;
+
+            }
+            catch (Exception error)
+            {
+                return false;
+            }
 
         }
 
@@ -105,9 +119,9 @@ namespace Clientes.Services
 
         public Models.Clientes Buscar(int id)
         {
-           var x = _clientesContext.Clientes.FirstOrDefault(l => l.Id == id);
+            var x = _clientesContext.Clientes.FirstOrDefault(l => l.Id == id);
 
-           return x;
+            return x;
 
 
         }
@@ -129,12 +143,12 @@ namespace Clientes.Services
 
                 return false;
             }
-            
 
-           
+
+
         }
 
-       public bool Actualizar (Models.Clientes data)
+        public bool Actualizar(Models.Clientes data)
         {
             try
             {
@@ -153,14 +167,14 @@ namespace Clientes.Services
             {
                 return false;
             }
-          
+
         }
 
         public Models.Usuario GetUserByCredentials(Models.Usuario data)
         {
             try
             {
-               return _clientesContext.Usuario.FirstOrDefault(u => u.Usuario1 == data.Usuario1 && u.Password == data.Password);
+                return _clientesContext.Usuario.FirstOrDefault(u => u.Usuario1 == data.Usuario1 && u.Password == data.Password);
             }
             catch (System.Exception e)
             {
@@ -170,12 +184,14 @@ namespace Clientes.Services
 
         public bool UpdateUserToken(Models.Usuario data, string token)
         {
-            try{
+            try
+            {
                 _clientesContext.Usuario.FirstOrDefault(u => u.Id == data.Id).Token = token;
                 _clientesContext.SaveChanges();
                 return true;
             }
-            catch(Exception e){
+            catch (Exception e)
+            {
                 return false;
             }
         }
@@ -184,15 +200,15 @@ namespace Clientes.Services
         {
             Usuario user = _clientesContext.Usuario.FirstOrDefault(u => u.Id == int.Parse(id));
 
-            if(user != null)
+            if (user != null)
             {
-                if(user.Token == token)
+                if (user.Token == token)
                 {
                     return true;
                 }
-            }        
-            
-            return false;            
+            }
+
+            return false;
 
         }
 
