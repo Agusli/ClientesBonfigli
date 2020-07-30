@@ -33,7 +33,8 @@
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Tipo</label>
-        <select id="Tipo" class="form-control" value="@Model.Tipo">
+        <select id="Tipo" class="form-control">
+            <option value="@Model.Tipo">@(((Tipo)Model.Tipo).ToString())</option>
             <option value="2">@Tipo.Flow</option>
             <option value="3">@Tipo.IPTV</option>
             <option value="1">@Tipo.Netflix</option>
@@ -47,7 +48,7 @@
 
     <div class="form-group">
         <label for="exampleFormControlSelect1">Cantidad de pantallas</label>
-        <input id="Pantallas" type="text" class="form-control" placeholder="Pantallas">
+        <input id="Pantallas" type="text" class="form-control" placeholder="@Model.Pantallas" value="@Model.Pantallas">
     </div>
 
     <div>

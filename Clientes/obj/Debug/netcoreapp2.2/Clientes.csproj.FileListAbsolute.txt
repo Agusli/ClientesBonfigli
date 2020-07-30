@@ -1,3 +1,5 @@
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\appsettings.Development .json
+C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\appsettings.json
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.deps.json
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\Clientes.runtimeconfig.json
@@ -32,6 +34,4 @@ C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.pdb
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.genruntimeconfig.cache
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csproj.CopyComplete
-C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\appsettings.Development .json
-C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\bin\Debug\netcoreapp2.2\appsettings.json
 C:\Users\Ivan Bonfigli\Desktop\ClientesBonfigli\Clientes\obj\Debug\netcoreapp2.2\Clientes.csprojAssemblyReference.cache

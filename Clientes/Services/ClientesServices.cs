@@ -238,6 +238,15 @@ namespace Clientes.Services
 
             if(!string.IsNullOrEmpty(Nombre))
             {
+
+                foreach (var item in ListaClientes)
+                {
+                    if (string.IsNullOrEmpty(item.Nombre))
+                    {
+                        item.Nombre = "";
+                    }
+                }
+
                 ClientesFiltrados = ListaClientes.Where(x => x.Nombre.ToLower().StartsWith(Nombre.ToLower())).ToList();
             }
             else
