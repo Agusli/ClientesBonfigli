@@ -168,7 +168,17 @@ namespace Clientes.Controllers
             return listaNombres;
         }
 
+        public List<ClienteModel> FiltrarCuenta(string Cuenta) 
+        {
+            List<ClienteModel> ListaCuentas = new List<ClienteModel>();
 
+            var lista = ClienteService.Obtener();
+            
+            ListaCuentas = ClienteService.FiltrarCuenta(Cuenta, lista);
+
+            return ListaCuentas;
+            
+        }
 
 
     }

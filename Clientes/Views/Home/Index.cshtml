@@ -4,14 +4,21 @@
 }
 
 
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand"><h2>Buscar Cliente</h2></a>
+    <div class="form-inline">
+        <input class="form-control" onkeyup="Filtro()" type="search" aria-label="Search" id="Search">
+        <select id="opciFiltro" class="form-control">
+            <option>Nombre</option>
+            <option>Cuenta</option>
+        </select>
+    </div>
+</nav>
 
 
-<div>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand"><h2>Buscar Cliente</h2></a>
-        <input class="form-control mr-sm-2" onkeyup="BuscarCliente()" type="search" aria-label="Search" id="Search">
-    </nav>
-</div>
+
+
+
 <div class="row">
     <div class="col">
         <a onclick="agregar()" id="nuevo" class="btn btn-" data-toggle="tooltip" data-placement="top" title="Agregar"><i class="fas fa-plus-circle"></i></a>
@@ -34,29 +41,29 @@
     </tr>
 
     @foreach (var item in Model)//desconfigure la exepcion
-        {
+    {
 
-    <tr id="@item.Id" class="DataRows">
-        <td>@item.Tipo.ToString()</td>
-        @*<td>@item.Id</td>*@
-        <td>@item.Nombre</td>
-        <td>@item.Cuenta</td>
-        <td>@item.Contraseña</td>
-        <td>@item.VencimientoC</td>
-        <td>@item.VencimientoP</td>
-        <td>@item.Pantallas</td>
-        <td>@item.Comentario</td>
+        <tr id="@item.Id" class="DataRows">
+            <td>@item.Tipo.ToString()</td>
+            @*<td>@item.Id</td>*@
+            <td>@item.Nombre</td>
+            <td>@item.Cuenta</td>
+            <td>@item.Contraseña</td>
+            <td>@item.VencimientoC</td>
+            <td>@item.VencimientoP</td>
+            <td>@item.Pantallas</td>
+            <td>@item.Comentario</td>
 
-        <td>
-            <a onclick="Borrar('@item.Id')" class="IconBtn"><i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Eliminar"></i></a>
-        </td>
-        <td>
-            <a onclick="Editar('@item.Id')" class="IconBtn" data-toggle="tooltip"><i class="far fa-edit" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>
-        </td>
-    </tr>
+            <td>
+                <a onclick="Borrar('@item.Id')" class="IconBtn"><i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Eliminar"></i></a>
+            </td>
+            <td>
+                <a onclick="Editar('@item.Id')" class="IconBtn" data-toggle="tooltip"><i class="far fa-edit" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>
+            </td>
+        </tr>
 
 
-        }
+    }
 
 </table>
 

@@ -258,5 +258,39 @@ namespace Clientes.Services
 
         }
 
+        public List<ClienteModel>FiltrarCuenta(string Cuenta, List<ClienteModel> filtrarCuenta)
+        {
+            List<ClienteModel> Cuentasfiltradas = new List<ClienteModel>();
+
+            if (!string.IsNullOrEmpty(Cuenta))
+            {
+                foreach (var item in Cuentasfiltradas)
+                {
+                    if (string.IsNullOrEmpty(item.Cuenta))
+                    {
+                        item.Cuenta = "";
+                    }
+                }
+
+                Cuentasfiltradas = filtrarCuenta.Where(x => x.Cuenta.ToLower().StartsWith(Cuenta.ToLower())).ToList();
+
+            }
+            else
+            {
+                Cuentasfiltradas = filtrarCuenta;
+            }
+
+            return Cuentasfiltradas;
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }
