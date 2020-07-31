@@ -38,14 +38,14 @@ namespace Clientes.Services
                 ClienteModel cliente = new ClienteModel()
                 {
                     Id = item.Id,
-                    Cuenta = item.Cuenta,
-                    Contraseña = item.Contraseña,
-                    Email = item.Email,
-                    Nombre = item.Nombre,
-                    Pantallas = item.Pantallas,
-                    VencimientoC = item.VencimientoC.Value.ToString("dd/MM/yyyy"),
-                    VencimientoP = item.VencimientoP.Value.ToString("dd/MM/yyyy"),
-                    Comentario = item.Comentario,
+                    Cuenta = string.IsNullOrEmpty(item.Cuenta)?"":item.Cuenta,
+                    Contraseña = string.IsNullOrEmpty(item.Contraseña)?"":item.Contraseña,
+                    Email = string.IsNullOrEmpty(item.Email)?"":item.Email,
+                    Nombre = string.IsNullOrEmpty(item.Nombre)?"":item.Nombre,
+                    Pantallas = string.IsNullOrEmpty(item.Pantallas)?"":item.Pantallas,
+                    VencimientoC = item.VencimientoC.HasValue?item.VencimientoC.Value.ToString("dd/MM/yyyy"):"",
+                    VencimientoP = item.VencimientoP.HasValue?item.VencimientoP.Value.ToString("dd/MM/yyyy"):"",
+                    Comentario = string.IsNullOrEmpty(item.Comentario)?"":item.Comentario,
                    
 
                 };
@@ -253,7 +253,6 @@ namespace Clientes.Services
             {
                 ClientesFiltrados = ListaClientes;
             }
-
 
             return ClientesFiltrados;
 

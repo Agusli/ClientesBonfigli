@@ -161,11 +161,11 @@ namespace Clientes.Controllers
         {
             List<ClienteModel> listaNombres = new List<ClienteModel>();
 
-            var list=ClienteService.Obtener();
+            List<ClienteModel> list = ClienteService.Obtener();
 
-            var filtrarNombre = ClienteService.FiltrarNombre(Search, list);
+            listaNombres = ClienteService.FiltrarNombre(Search, list);
 
-            return filtrarNombre;
+            return listaNombres;
         }
 
 
