@@ -27,12 +27,29 @@ namespace Clientes.Controllers
         {
             string Token = HttpContext.Session.GetObjectFromJson<string>("SessionToken");
             string id = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
+            string FilterStateKey = HttpContext.Session.GetObjectFromJson<string>("FilterStateKey");
+            string FilterStateValue = HttpContext.Session.GetObjectFromJson<string>("FilterStateValue");
+            List<ClienteModel> ListaClientes = ClienteService.Obtener();
 
             if (Token != null)
             {
                 if (ClienteService.ValidateToken(Token, id))
                 {
-                    return View(ClienteService.Obtener());
+                    if(string.IsNullOrEmpty(FilterStateKey) || string.IsNullOrEmpty(FilterStateValue))
+                    {
+                        return View(ListaClientes);
+                    }
+                    else
+                    {
+                        if(FilterStateKey.Equals("Nombre"))
+                        {
+                            return View(ClienteService.FiltrarNombre(FilterStateValue, ListaClientes));
+                        }
+                        else if(FilterStateKey.Equals("Cuenta"))
+                        {
+                            return View(ClienteService.FiltrarCuenta(FilterStateValue, ListaClientes));
+                        }
+                    }
                 }
             }
             return RedirectToAction("Login", "User");
@@ -165,6 +182,19 @@ namespace Clientes.Controllers
 
             listaNombres = ClienteService.FiltrarNombre(Search, list);
 
+            if(!string.IsNullOrEmpty(Search))
+            {
+                HttpContext.Session.SetObjectAsJson("FilterStateKey", "Nombre");
+                HttpContext.Session.SetObjectAsJson("FilterStateValue", Search);
+            }
+            else
+            {
+                HttpContext.Session.Remove("FilterStateKey");
+                HttpContext.Session.Remove("FilterStateValue");
+
+            }
+
+
             return listaNombres;
         }
 
@@ -175,6 +205,17 @@ namespace Clientes.Controllers
             var lista = ClienteService.Obtener();
             
             ListaCuentas = ClienteService.FiltrarCuenta(Cuenta, lista);
+
+            if(!string.IsNullOrEmpty(Cuenta))
+            {
+                HttpContext.Session.SetObjectAsJson("FilterStateKey", "Cuenta");
+                HttpContext.Session.SetObjectAsJson("FilterStateValue", Cuenta);
+            }
+            else
+            {
+                HttpContext.Session.Remove("FilterStateValue");
+                HttpContext.Session.Remove("FilterStateKey");
+            }
 
             return ListaCuentas;
             
