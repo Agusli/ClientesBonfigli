@@ -14,7 +14,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Remotion.Linq.Clauses;
 using Microsoft.Extensions.DependencyInjection;
-
+using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
 
 namespace Clientes.Services
 {
@@ -38,15 +39,15 @@ namespace Clientes.Services
                 ClienteModel cliente = new ClienteModel()
                 {
                     Id = item.Id,
-                    Cuenta = string.IsNullOrEmpty(item.Cuenta)?"":item.Cuenta,
-                    Contraseña = string.IsNullOrEmpty(item.Contraseña)?"":item.Contraseña,
-                    Email = string.IsNullOrEmpty(item.Email)?"":item.Email,
-                    Nombre = string.IsNullOrEmpty(item.Nombre)?"":item.Nombre,
-                    Pantallas = string.IsNullOrEmpty(item.Pantallas)?"":item.Pantallas,
-                    VencimientoC = item.VencimientoC.HasValue?item.VencimientoC.Value.ToString("dd/MM/yyyy"):"",
-                    VencimientoP = item.VencimientoP.HasValue?item.VencimientoP.Value.ToString("dd/MM/yyyy"):"",
-                    Comentario = string.IsNullOrEmpty(item.Comentario)?"":item.Comentario,
-                   
+                    Cuenta = string.IsNullOrEmpty(item.Cuenta) ? "" : item.Cuenta,
+                    Contraseña = string.IsNullOrEmpty(item.Contraseña) ? "" : item.Contraseña,
+                    Email = string.IsNullOrEmpty(item.Email) ? "" : item.Email,
+                    Nombre = string.IsNullOrEmpty(item.Nombre) ? "" : item.Nombre,
+                    Pantallas = string.IsNullOrEmpty(item.Pantallas) ? "" : item.Pantallas,
+                    VencimientoC = item.VencimientoC.HasValue ? item.VencimientoC.Value.ToString("dd/MM/yyyy") : "",
+                    VencimientoP = item.VencimientoP.HasValue ? item.VencimientoP.Value.ToString("dd/MM/yyyy") : "",
+                    Comentario = string.IsNullOrEmpty(item.Comentario) ? "" : item.Comentario,
+
 
                 };
 
@@ -63,17 +64,17 @@ namespace Clientes.Services
                         break;
                     case 4:
                         cliente.Tipo = Tipo.DirecTVGo;
-                            break;
+                        break;
                     case 5:
                         cliente.Tipo = Tipo.AmazonPrime;
-                            break;
+                        break;
 
                     case 6:
                         cliente.Tipo = Tipo.Spotify;
-                            break;
+                        break;
                 }
 
-     
+
                 clientes.Add(cliente);
             }
 
@@ -236,7 +237,7 @@ namespace Clientes.Services
         {
             List<ClienteModel> ClientesFiltrados = new List<ClienteModel>();
 
-            if(!string.IsNullOrEmpty(Nombre))
+            if (!string.IsNullOrEmpty(Nombre))
             {
 
                 foreach (var item in ListaClientes)
@@ -258,7 +259,7 @@ namespace Clientes.Services
 
         }
 
-        public List<ClienteModel>FiltrarCuenta(string Cuenta, List<ClienteModel> filtrarCuenta)
+        public List<ClienteModel> FiltrarCuenta(string Cuenta, List<ClienteModel> filtrarCuenta)
         {
             List<ClienteModel> Cuentasfiltradas = new List<ClienteModel>();
 
@@ -283,10 +284,22 @@ namespace Clientes.Services
             return Cuentasfiltradas;
         }
 
+        //ver que cuentas tienen el nombre null o estan anotadas en el comentario para filtrarlas
+
+    
+   
 
 
 
-
+        public List<ClienteModel> ListaLibres(List<ClienteModel>filtrarCuentasLibres)
+        {
+            List<ClienteModel> FiltrarCuentasLibres = new List<ClienteModel>();
+    
+            FiltrarCuentasLibres=filtrarCuentasLibres.Where(x => x.Nombre == "" || x.Comentario == "Libre").ToList();
+            
+            return FiltrarCuentasLibres;
+            
+        }
 
 
 

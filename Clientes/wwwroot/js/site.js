@@ -168,6 +168,47 @@ function Filtro(){
 }
 
 
+
+function cuentasLibre() {
+    $.ajax({
+        url: '/Home/CuentaLibre', //'urlcontroller',ruta de controller
+        dataType: 'json',
+        type: "POST",
+        data: {
+            Libres: $("#Libres").val(),
+
+        },
+        error: function (data) {
+
+        },
+        success: function (data) {
+            if (data!== null) {
+                $(".DataRows").remove("");
+                data.forEach(function (element) {
+                    $("#customers").append(
+                        "<tr id='" + element.id + "' class='DataRows'>"
+                        + "<td>" + getTipo(element.tipo) + "</td>"
+                        //+ "<td>" + element.id + "</td>"
+                        + "<td>" + element.nombre + "</td>"
+                        + "<td>" + element.cuenta + "</td>"
+                        //+ "<td>" + element.email + "</td>"
+                        + "<td>" + element.contraseña + "</td >"
+                        + "<td>" + element.vencimientoC + "</td >"
+                        + "<td>" + element.vencimientoP + "</td>"
+                        + "<td>" + element.pantallas + "</td >"
+                        + "<td>" + element.comentario + "</td>"
+                        + "<td>" + "<a onclick='Borrar(" + element.id + ")' class='IconBtn'> <i class='fas fa-trash-alt'> </i></a ></td>"
+                        + "<td>" + "<a onclick='Editar(" + element.id + ")' class='IconBtn'> <i class='far fa-edit'> </i></a></td>"
+                        + "<tr/>");
+                })
+            }
+
+        },
+
+    });
+
+}
+
 function BuscarCliente() {
     $.ajax({
         url: '/Home/Filtrar', //'urlcontroller',ruta de controller

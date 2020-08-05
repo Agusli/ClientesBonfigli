@@ -180,6 +180,17 @@ namespace Clientes.Controllers
             
         }
 
+        public List<ClienteModel> CuentaLibre()
+        { List<ClienteModel> cuentaslibres = new List<ClienteModel>();
+
+            var lista = ClienteService.Obtener();
+           
+                cuentaslibres = ClienteService.ListaLibres(lista);
+         
+
+            return cuentaslibres;
+        }
 
     }
 }
+//ambos parametros se tienen que comparar con los de la lista del service
