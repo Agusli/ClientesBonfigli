@@ -16,6 +16,7 @@ using Remotion.Linq.Clauses;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
+using Microsoft.AspNetCore.Rewrite.Internal.PatternSegments;
 
 namespace Clientes.Services
 {
@@ -295,7 +296,7 @@ namespace Clientes.Services
         {
             List<ClienteModel> FiltrarCuentasLibres = new List<ClienteModel>();
     
-            FiltrarCuentasLibres=filtrarCuentasLibres.Where(x => x.Nombre == "" || x.Comentario == "Libre").ToList();
+            FiltrarCuentasLibres=filtrarCuentasLibres.Where(x => x.Nombre == "" || x.Comentario.ToLower() == "libre").ToList();
             
             return FiltrarCuentasLibres;
             

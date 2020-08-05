@@ -14,25 +14,25 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>07/27/2020 21:31:22</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>07/27/2020 21:29:43</publishTime>
+      <publishTime>08/04/2020 19:58:02</publishTime>
     </File>
     <File Include="Clientes.deps.json">
-      <publishTime>07/31/2020 17:10:24</publishTime>
+      <publishTime>08/04/2020 23:15:38</publishTime>
     </File>
     <File Include="Clientes.dll">
-      <publishTime>07/31/2020 17:10:03</publishTime>
+      <publishTime>08/04/2020 23:15:10</publishTime>
     </File>
     <File Include="Clientes.pdb">
-      <publishTime>07/31/2020 17:10:03</publishTime>
+      <publishTime>08/04/2020 23:15:10</publishTime>
     </File>
     <File Include="Clientes.runtimeconfig.json">
       <publishTime>07/29/2020 18:49:11</publishTime>
     </File>
     <File Include="Clientes.Views.dll">
-      <publishTime>07/31/2020 17:10:06</publishTime>
+      <publishTime>08/04/2020 23:15:11</publishTime>
     </File>
     <File Include="Clientes.Views.pdb">
-      <publishTime>07/31/2020 17:10:06</publishTime>
+      <publishTime>08/04/2020 23:15:11</publishTime>
     </File>
     <File Include="Microsoft.Data.SqlClient.dll">
       <publishTime>06/16/2020 19:22:20</publishTime>
@@ -59,7 +59,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/15/2019 08:36:52</publishTime>
     </File>
     <File Include="Newtonsoft.Json.dll">
-      <publishTime>11/09/2019 00:56:44</publishTime>
+      <publishTime>09/11/2019 00:56:44</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp2.1/Microsoft.Data.SqlClient.dll">
       <publishTime>06/16/2020 19:22:20</publishTime>
@@ -164,7 +164,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/15/2019 08:37:52</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>07/31/2020 17:10:24</publishTime>
+      <publishTime>08/04/2020 23:15:38</publishTime>
     </File>
     <File Include="wwwroot/css/all.css">
       <publishTime>07/15/2020 16:59:48</publishTime>
@@ -185,7 +185,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>07/21/2020 17:25:09</publishTime>
     </File>
     <File Include="wwwroot/js/site.js">
-      <publishTime>07/31/2020 16:20:01</publishTime>
+      <publishTime>08/04/2020 22:57:33</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
       <publishTime>07/20/2020 10:49:43</publishTime>
