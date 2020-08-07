@@ -173,6 +173,12 @@ namespace Clientes.Services
             {
                 Models.Clientes cliente = _clientesContext.Clientes.FirstOrDefault(x => x.Id == data.Id);
 
+                var comentario = Models.Clientes.
+
+                if (comentario != null)
+                {
+                    
+                }
                 _clientesContext.Clientes.Remove(cliente);
 
                 _clientesContext.Clientes.Add(data);
@@ -301,9 +307,6 @@ namespace Clientes.Services
             return FiltrarCuentasLibres;
             
         }
-
-
-
 
 
     }
