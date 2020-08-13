@@ -30,12 +30,17 @@ namespace Clientes.Services
 
         public List<ClienteModel> Obtener()
         {
+            var sortedList = _clientesContext.Clientes.ToList();
             var resultado = _clientesContext.Clientes.ToList();
             List<ClienteModel> clientes = new List<ClienteModel>();
 
+          
+            sortedList = sortedList.OrderBy(x => x.Cuenta).ToList();
+
             resultado = resultado.OrderBy(x => x.VencimientoP).ToList();
 
-            foreach (var item in resultado)
+
+            foreach (var item in sortedList)// en el caso que el quiera le fecha de vencimiento hay que colocar la variable resultado
             {
                 ClienteModel cliente = new ClienteModel()
                 {
@@ -49,6 +54,7 @@ namespace Clientes.Services
                     VencimientoP = item.VencimientoP.HasValue ? item.VencimientoP.Value.ToString("dd/MM/yyyy") : "",
                     Comentario = string.IsNullOrEmpty(item.Comentario) ? "" : item.Comentario,
 
+                    
 
                 };
 

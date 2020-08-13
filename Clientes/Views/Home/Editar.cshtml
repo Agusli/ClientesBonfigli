@@ -32,9 +32,9 @@
         <label for="exampleFormControlSelect1">Tipo</label>
         <select id="Tipo" class="form-control">
             <option value="@Model.Tipo">@(((Tipo)Model.Tipo).ToString())</option>
+            <option value="1">@Tipo.Netflix</option>
             <option value="2">@Tipo.Flow</option>
             <option value="3">@Tipo.IPTV</option>
-            <option value="1">@Tipo.Netflix</option>
             <option value="5">@Tipo.AmazonPrime</option>
             <option value="4">@Tipo.DirecTVGo</option>
             <option value="6">@Tipo.Spotify</option>
