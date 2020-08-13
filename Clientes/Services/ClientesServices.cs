@@ -173,16 +173,10 @@ namespace Clientes.Services
             {
                 Models.Clientes cliente = _clientesContext.Clientes.FirstOrDefault(x => x.Id == data.Id);
 
-                var comentario = Models.Clientes.
-
-                if (comentario != null)
-                {
-                    
-                }
                 _clientesContext.Clientes.Remove(cliente);
 
                 _clientesContext.Clientes.Add(data);
-
+         
                 _clientesContext.SaveChanges();
 
                 return true;
@@ -291,7 +285,7 @@ namespace Clientes.Services
             return Cuentasfiltradas;
         }
 
-        //ver que cuentas tienen el nombre null o estan anotadas en el comentario para filtrarlas
+       
 
     
    
