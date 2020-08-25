@@ -232,6 +232,27 @@ namespace Clientes.Controllers
             return cuentaslibres;
         }
 
+
+        public List<ClienteModel> BuscarPorFecha()
+        {
+            List<ClienteModel> FechasVencimiento = new List<ClienteModel>();
+            var vencimiento = ClienteService.ObtenerFecha();
+            return vencimiento;
+        }
+
+        public List<ClienteModel>BuscarCuenta()
+        {
+            List<ClienteModel>CuentasAlfabeticas = new List<ClienteModel>();
+            var cuenta =ClienteService.Obtener();
+            return cuenta;
+        }
+
     }
+
+
+
+  
+
+
+
 }
-//ambos parametros se tienen que comparar con los de la lista del service

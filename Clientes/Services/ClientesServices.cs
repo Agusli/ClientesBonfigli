@@ -28,17 +28,12 @@ namespace Clientes.Services
             _clientesContext = db;
         }
 
-        public List<ClienteModel> Obtener()
+        public List<ClienteModel>Obtener()
         {
             var sortedList = _clientesContext.Clientes.ToList();
-            var resultado = _clientesContext.Clientes.ToList();
             List<ClienteModel> clientes = new List<ClienteModel>();
 
-          
             sortedList = sortedList.OrderBy(x => x.Cuenta).ToList();
-
-            resultado = resultado.OrderBy(x => x.VencimientoP).ToList();
-
 
             foreach (var item in sortedList)// en el caso que el quiera le fecha de vencimiento hay que colocar la variable resultado
             {
@@ -85,9 +80,71 @@ namespace Clientes.Services
                 clientes.Add(cliente);
             }
 
+
             return clientes;
 
         }
+
+
+
+        public List<ClienteModel> ObtenerFecha()
+        {
+            var resultado = _clientesContext.Clientes.ToList();
+            List<ClienteModel> clientes = new List<ClienteModel>();
+
+            resultado = resultado.OrderBy(x => x.VencimientoP).ToList();
+
+
+            foreach (var item in resultado)// en el caso que el quiera le fecha de vencimiento hay que colocar la variable resultado
+            {
+                ClienteModel cliente = new ClienteModel()
+                {
+                    Id = item.Id,
+                    Cuenta = string.IsNullOrEmpty(item.Cuenta) ? "" : item.Cuenta,
+                    Contraseña = string.IsNullOrEmpty(item.Contraseña) ? "" : item.Contraseña,
+                    Email = string.IsNullOrEmpty(item.Email) ? "" : item.Email,
+                    Nombre = string.IsNullOrEmpty(item.Nombre) ? "" : item.Nombre,
+                    Pantallas = string.IsNullOrEmpty(item.Pantallas) ? "" : item.Pantallas,
+                    VencimientoC = item.VencimientoC.HasValue ? item.VencimientoC.Value.ToString("dd/MM/yyyy") : "",
+                    VencimientoP = item.VencimientoP.HasValue ? item.VencimientoP.Value.ToString("dd/MM/yyyy") : "",
+                    Comentario = string.IsNullOrEmpty(item.Comentario) ? "" : item.Comentario,
+
+
+
+                };
+
+                switch (item.Tipo)
+                {
+                    case 1:
+                        cliente.Tipo = Tipo.Netflix;
+                        break;
+                    case 2:
+                        cliente.Tipo = Tipo.Flow;
+                        break;
+                    case 3:
+                        cliente.Tipo = Tipo.IPTV;
+                        break;
+                    case 4:
+                        cliente.Tipo = Tipo.DirecTVGo;
+                        break;
+                    case 5:
+                        cliente.Tipo = Tipo.AmazonPrime;
+                        break;
+
+                    case 6:
+                        cliente.Tipo = Tipo.Spotify;
+                        break;
+                }
+
+
+                clientes.Add(cliente);
+            }
+
+
+            return clientes;
+
+        }
+
 
         internal static void Buscar()
         {
@@ -158,6 +215,8 @@ namespace Clientes.Services
             var _cliente = data;
             try
             {
+                var cuenta = _clientesContext.Clientes.Where(x => x.Cuenta == data.Cuenta).ToList();
+
                 _clientesContext.Clientes.Add(_cliente);
                 _clientesContext.SaveChanges();
 

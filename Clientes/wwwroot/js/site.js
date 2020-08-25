@@ -8,29 +8,28 @@
 function Borrar(id) {
     var bool = confirm("Seguro de eliminar el dato?");
     if (bool === true) {
-      
-    $.ajax({
-        url: '/Home/Borrar', //'urlcontroller',ruta de controller
-        dataType: 'json',
-        type: "POST",
-        data: { Id: id },
-        error: function (data) {
 
-        },
-        success: function (data) {
-            if (data === true) {
-                $("#" + id).remove();
-                alert('se elimino con exito')
+        $.ajax({
+            url: '/Home/Borrar', //'urlcontroller',ruta de controller
+            dataType: 'json',
+            type: "POST",
+            data: { Id: id },
+            error: function (data) {
+
+            },
+            success: function (data) {
+                if (data === true) {
+                    $("#" + id).remove();
+                    alert('se elimino con exito')
+                }
+                else {
+                    return alert('Error');
+                }
             }
-            else {
-                return alert('Error');
-            }
-        }
-    });
+        });
 
     }
-    else
-    {
+    else {
         alert("cancelo la solicitud");
     }
 
@@ -68,11 +67,11 @@ function Nuevo() {
         type: "POST",
         data: { data: data },
         error: function (data) {
- 
+
 
         },
         success: function (data) {
-            if (data === true){
+            if (data === true) {
                 window.location.href = '/Home/Index/';
             }
 
@@ -97,20 +96,19 @@ function EnviarEdicion(id) {
         VencimientoC: $("#VencimientoC").val(),
         Tipo: $("#Tipo").val(),
         Pantallas: $("#Pantallas").val(),
-        Comentario:$("#Comentario").val(),
+        Comentario: $("#Comentario").val(),
 
     }
     $.ajax({
         url: '/Home/Editar', //'urlcontroller',ruta de controller
         dataType: 'json',
         type: "POST",
-        data: { data: data},
+        data: { data: data },
         error: function (data) {
-        
+
         },
         success: function (data) {
-            if (data ===true)
-            {
+            if (data === true) {
                 window.location.href = '/Home/Index';
             }
             else {
@@ -120,9 +118,9 @@ function EnviarEdicion(id) {
         },
 
     });
-    
+
 }
-$("#LogInBtn").click(function (){
+$("#LogInBtn").click(function () {
 
     console.log("Hola");
     data = {
@@ -131,37 +129,34 @@ $("#LogInBtn").click(function (){
     }
 
     $.ajax({
-        url:'/User/Login', //'urlcontroller',ruta de controller
+        url: '/User/Login', //'urlcontroller',ruta de controller
         dataType: 'json',
-          type: "POST",
-          data: { Data: data },
-      error: function (data) {
-  
-      },
-      success: function (data) {
-          if (data === true) {
-              window.location.href = "/Home/Index";
-          }
-          else
-          {
-              $("#Message").removeAttr('hidden');
-              $("#Message").html("Usuario o contraseña incorrecto");
-          }
-         }
-      }); 
+        type: "POST",
+        data: { Data: data },
+        error: function (data) {
+
+        },
+        success: function (data) {
+            if (data === true) {
+                window.location.href = "/Home/Index";
+            }
+            else {
+                $("#Message").removeAttr('hidden');
+                $("#Message").html("Usuario o contraseña incorrecto");
+            }
+        }
+    });
 })
 
 
-function Filtro(){
+function Filtro() {
     console.log($("#opciFiltro").val());
 
-    if ($("#opciFiltro").val() === "Nombre")
-    {
+    if ($("#opciFiltro").val() === "Nombre") {
         BuscarCliente();
     }
 
-    if ($("#opciFiltro").val() === "Cuenta")
-    {
+    if ($("#opciFiltro").val() === "Cuenta") {
         filtrarCuenta();
     }
 
@@ -182,7 +177,7 @@ function cuentasLibre() {
 
         },
         success: function (data) {
-            if (data!== null) {
+            if (data !== null) {
                 $(".DataRows").remove("");
                 data.forEach(function (element) {
                     $("#customers").append(
@@ -229,7 +224,7 @@ function BuscarCliente() {
                         "<tr id='" + element.id + "' class='DataRows'>"
                         + "<td>" + getTipo(element.tipo) + "</td>"
                         //+ "<td>" + element.id + "</td>"
-                        +"<td>" + element.nombre + "</td>"
+                        + "<td>" + element.nombre + "</td>"
                         + "<td>" + element.cuenta + "</td>"
                         //+ "<td>" + element.email + "</td>"
                         + "<td>" + element.contraseña + "</td >"
@@ -237,8 +232,8 @@ function BuscarCliente() {
                         + "<td>" + element.vencimientoP + "</td>"
                         + "<td>" + element.pantallas + "</td >"
                         + "<td>" + element.comentario + "</td>"
-                        + "<td>" + "<a onclick='Borrar("+element.id+")' class='IconBtn'> <i class='fas fa-trash-alt'> </i></a ></td>"
-                        + "<td>" + "<a onclick='Editar("+element.id+")' class='IconBtn'> <i class='far fa-edit'> </i></a></td>"
+                        + "<td>" + "<a onclick='Borrar(" + element.id + ")' class='IconBtn'> <i class='fas fa-trash-alt'> </i></a ></td>"
+                        + "<td>" + "<a onclick='Editar(" + element.id + ")' class='IconBtn'> <i class='far fa-edit'> </i></a></td>"
                         + "<tr/>");
                 })
             }
@@ -256,7 +251,7 @@ function getTipo(id) {
     switch (id) {
 
         case 1:
-             Tipo = "Netflix"
+            Tipo = "Netflix"
             break;
         case 2:
             Tipo = "Flow"
@@ -279,10 +274,99 @@ function getTipo(id) {
     return Tipo;
 }
 
+function BuscarPorFecha() {
+
+    $.ajax({
+        url: '/Home/BuscarPorFecha', //'urlcontroller',ruta de controller
+        dataType: 'json',
+        type: "POST",
+        data: {
+            Cuenta: $("#FechaVenci").val(),
+        },
+        error: function (data) {
+
+        },
+        success: function (data) {
+            if (data !== null) {
+                $(".DataRows").remove("");
+                data.forEach(function (element) {
+                    $("#customers").append(
+                        "<tr id='" + element.id + "' class='DataRows'>"
+                        + "<td>" + getTipo(element.tipo) + "</td>"
+                        //+ "<td>" + element.id + "</td>"
+                        + "<td>" + element.nombre + "</td>"
+                        + "<td>" + element.cuenta + "</td>"
+                        //+ "<td>" + element.email + "</td>"
+                        + "<td>" + element.contraseña + "</td >"
+                        + "<td>" + element.vencimientoC + "</td >"
+                        + "<td>" + element.vencimientoP + "</td>"
+                        + "<td>" + element.pantallas + "</td >"
+                        + "<td>" + element.comentario + "</td>"
+                        + "<td>" + "<a onclick='Borrar(" + element.id + ")' class='IconBtn'> <i class='fas fa-trash-alt'> </i></a ></td>"
+                        + "<td>" + "<a onclick='Editar(" + element.id + ")' class='IconBtn'> <i class='far fa-edit'> </i></a></td>"
+                        + "<tr/>");
+                })
+            }
+
+        },
+
+    });
+}
 
 
-function filtrarCuenta()
-{
+function BuscarCuenta() {
+
+    $.ajax({
+        url: '/Home/BuscarCuenta', //'urlcontroller',ruta de controller
+        dataType: 'json',
+        type: "POST",
+        data: {
+            Cuenta: $("#CuentaN").val(),
+        },
+        error: function (data) {
+
+        },
+        success: function (data) {
+            if (data !== null) {
+                $(".DataRows").remove("");
+                data.forEach(function (element) {
+                    $("#customers").append(
+                        "<tr id='" + element.id + "' class='DataRows'>"
+                        + "<td>" + getTipo(element.tipo) + "</td>"
+                        //+ "<td>" + element.id + "</td>"
+                        + "<td>" + element.nombre + "</td>"
+                        + "<td>" + element.cuenta + "</td>"
+                        //+ "<td>" + element.email + "</td>"
+                        + "<td>" + element.contraseña + "</td >"
+                        + "<td>" + element.vencimientoC + "</td >"
+                        + "<td>" + element.vencimientoP + "</td>"
+                        + "<td>" + element.pantallas + "</td >"
+                        + "<td>" + element.comentario + "</td>"
+                        + "<td>" + "<a onclick='Borrar(" + element.id + ")' class='IconBtn'> <i class='fas fa-trash-alt'> </i></a ></td>"
+                        + "<td>" + "<a onclick='Editar(" + element.id + ")' class='IconBtn'> <i class='far fa-edit'> </i></a></td>"
+                        + "<tr/>");
+                })
+            }
+
+        },
+
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function filtrarCuenta() {
     $.ajax({
         url: '/Home/FiltrarCuenta', //'urlcontroller',ruta de controller
         dataType: 'json',
