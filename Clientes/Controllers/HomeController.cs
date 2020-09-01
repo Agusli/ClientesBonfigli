@@ -29,7 +29,7 @@ namespace Clientes.Controllers
             string id = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
             string FilterStateKey = HttpContext.Session.GetObjectFromJson<string>("FilterStateKey");
             string FilterStateValue = HttpContext.Session.GetObjectFromJson<string>("FilterStateValue");
-            List<ClienteModel> ListaClientes = ClienteService.Obtener();
+            List<ClienteModel> ListaClientes = ClienteService.ObtenerFecha();
 
             if (Token != null)
             {
