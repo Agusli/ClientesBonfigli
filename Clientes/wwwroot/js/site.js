@@ -269,6 +269,8 @@ function getTipo(id) {
         case 6:
             Tipo = "Spotify"
             break;
+        case 7:
+            Tipo = "DisneyPlus"
     }
 
     return Tipo;

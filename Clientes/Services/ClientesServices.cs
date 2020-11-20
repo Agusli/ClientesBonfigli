@@ -74,6 +74,9 @@ namespace Clientes.Services
                     case 6:
                         cliente.Tipo = Tipo.Spotify;
                         break;
+                    case 7:
+                        cliente.Tipo = Tipo.DisneyPlus;
+                           break;
                 }
 
 
@@ -134,6 +137,9 @@ namespace Clientes.Services
                     case 6:
                         cliente.Tipo = Tipo.Spotify;
                         break;
+                    case 7:
+                        cliente.Tipo = Tipo.DisneyPlus;
+                            break;
                 }
 
 
