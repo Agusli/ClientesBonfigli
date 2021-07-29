@@ -13,6 +13,7 @@ namespace Clientes.Models
         DirecTVGo = 4,
         AmazonPrime =5,                   
         Spotify= 6,
-        DisneyPlus = 7
+        DisneyPlus = 7,
+        HBOMax = 8
     }
 }

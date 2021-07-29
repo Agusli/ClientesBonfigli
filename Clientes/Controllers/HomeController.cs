@@ -29,7 +29,7 @@ namespace Clientes.Controllers
             string id = HttpContext.Session.GetObjectFromJson<string>("SessionUserID");
             string FilterStateKey = HttpContext.Session.GetObjectFromJson<string>("FilterStateKey");
             string FilterStateValue = HttpContext.Session.GetObjectFromJson<string>("FilterStateValue");
-            List<ClienteModel> ListaClientes = ClienteService.ObtenerFecha();
+            List<ClienteModel> ListaClientes = ClienteService.ObtenerFecha("V");
 
             if (Token != null)
             {
@@ -236,7 +236,14 @@ namespace Clientes.Controllers
         public List<ClienteModel> BuscarPorFecha()
         {
             List<ClienteModel> FechasVencimiento = new List<ClienteModel>();
-            var vencimiento = ClienteService.ObtenerFecha();
+            var vencimiento = ClienteService.ObtenerFecha("V");
+            return vencimiento;
+        }        
+        
+        public List<ClienteModel> BuscarPorFechaCuenta()
+        {
+            List<ClienteModel> FechasVencimiento = new List<ClienteModel>();
+            var vencimiento = ClienteService.ObtenerFecha("VC");
             return vencimiento;
         }
 
@@ -244,6 +251,13 @@ namespace Clientes.Controllers
         {
             List<ClienteModel>CuentasAlfabeticas = new List<ClienteModel>();
             var cuenta =ClienteService.Obtener();
+            return cuenta;
+        }        
+        
+        public List<ClienteModel>FiltrarTipo(string Tipo)
+        {
+            var cuenta = ClienteService.Obtener(int.Parse(Tipo));
+
             return cuenta;
         }
 

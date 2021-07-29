@@ -30,11 +30,26 @@
 
 <table id="customers" class="table table-responsive table-hover">
     <tr id="tableHeader">
-        <th scope="col">Tipo</th>
+        <th scope="col">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Tipo</label>
+                <select id="Tipo" class="form-control" onchange="FiltroTipo()">
+                    <option value="1">@Tipo.Netflix</option>
+                    <option value="2">@Tipo.Flow</option>
+                    <option value="3">@Tipo.IPTV</option>
+                    <option value="5">@Tipo.AmazonPrime</option>
+                    <option value="4">@Tipo.DirecTVGo</option>
+                    <option value="6">@Tipo.Spotify</option>
+                    <option value="7">@Tipo.DisneyPlus</option>
+                    <option value="8">@Tipo.HBOMax</option>
+                    <option value="0">Todas</option>
+                </select>
+            </div>
+        </th>
         <th scope="col">Nombre</th>
         <th scope="col"><button class="btn-success"onclick="BuscarCuenta()"id="CuentaN">Cuenta</button></th>
         <th scope="col">Contraseña</th>
-        <th scope="col">Vencimiento Cuenta</th>
+        <th scope="col"><button class="btn-success" onclick="BuscarPorFechaCuenta()" id="FechaVenciCuenta">Vencimiento Cuenta</button></th>
         <th scope="col"><button class="btn-success" onclick="BuscarPorFecha()" id="FechaVenci">Vencimiento Cliente</button></th>
         <th scope="col">Pantallas</th>
         <th scope="col">Comentario</th>

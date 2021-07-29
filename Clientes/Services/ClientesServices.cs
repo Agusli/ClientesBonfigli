@@ -28,12 +28,13 @@ namespace Clientes.Services
             _clientesContext = db;
         }
 
-        public List<ClienteModel>Obtener()
+        public List<ClienteModel>Obtener(int TipoFiltro = 0)
         {
             var sortedList = _clientesContext.Clientes.ToList();
             List<ClienteModel> clientes = new List<ClienteModel>();
 
-            sortedList = sortedList.OrderBy(x => x.Cuenta).ToList();
+            if(TipoFiltro != 0)
+            sortedList = sortedList.Where(x => x.Tipo == TipoFiltro).OrderBy(x => x.Cuenta).ToList();
 
             foreach (var item in sortedList)// en el caso que el quiera le fecha de vencimiento hay que colocar la variable resultado
             {
@@ -47,9 +48,7 @@ namespace Clientes.Services
                     Pantallas = string.IsNullOrEmpty(item.Pantallas) ? "" : item.Pantallas,
                     VencimientoC = item.VencimientoC.HasValue ? item.VencimientoC.Value.ToString("dd/MM/yyyy") : "",
                     VencimientoP = item.VencimientoP.HasValue ? item.VencimientoP.Value.ToString("dd/MM/yyyy") : "",
-                    Comentario = string.IsNullOrEmpty(item.Comentario) ? "" : item.Comentario,
-
-                    
+                    Comentario = string.IsNullOrEmpty(item.Comentario) ? "" : item.Comentario,                    
 
                 };
 
@@ -77,6 +76,9 @@ namespace Clientes.Services
                     case 7:
                         cliente.Tipo = Tipo.DisneyPlus;
                            break;
+                    case 8:
+                        cliente.Tipo = Tipo.HBOMax;
+                        break;
                 }
 
 
@@ -90,12 +92,19 @@ namespace Clientes.Services
 
 
 
-        public List<ClienteModel> ObtenerFecha()
+        public List<ClienteModel> ObtenerFecha(string TipoOrden)
         {
             var resultado = _clientesContext.Clientes.ToList();
             List<ClienteModel> clientes = new List<ClienteModel>();
 
-            resultado = resultado.OrderBy(x => x.VencimientoP).ToList();
+            if(TipoOrden.Equals("V"))
+            {
+                resultado = resultado.OrderBy(x => x.VencimientoP).ToList();
+            }
+            else if(TipoOrden.Equals("VC"))
+            {
+                resultado = resultado.OrderBy(x => x.VencimientoC).ToList();
+            }
 
 
             foreach (var item in resultado)// en el caso que el quiera le fecha de vencimiento hay que colocar la variable resultado
@@ -139,6 +148,9 @@ namespace Clientes.Services
                         break;
                     case 7:
                         cliente.Tipo = Tipo.DisneyPlus;
+                            break; 
+                    case 8:
+                        cliente.Tipo = Tipo.HBOMax;
                             break;
                 }
 
