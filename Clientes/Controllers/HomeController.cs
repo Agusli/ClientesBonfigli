@@ -49,6 +49,10 @@ namespace Clientes.Controllers
                         {
                             return View(ClienteService.FiltrarCuenta(FilterStateValue, ListaClientes));
                         }
+                        else if(FilterStateKey.Equals("Comentario"))
+                        {
+                            return View(ClienteService.FiltrarCuenta(FilterStateValue, ListaClientes));
+                        }
                     }
                 }
             }
@@ -219,6 +223,30 @@ namespace Clientes.Controllers
 
             return ListaCuentas;
             
+        }
+
+
+        public List<ClienteModel> FiltrarComentario(string Coment)
+        {
+            List<ClienteModel> ListaComentarios = new List<ClienteModel>();
+
+            var lista = ClienteService.Obtener();
+
+            ListaComentarios = ClienteService.FiltrarComentario(Coment, lista);
+
+            if (!string.IsNullOrEmpty(Coment))
+            {
+                HttpContext.Session.SetObjectAsJson("FilterStateKey", "Comentario");
+                HttpContext.Session.SetObjectAsJson("FilterStateValue", Coment);
+            }
+            else
+            {
+                HttpContext.Session.Remove("FilterStateValue");
+                HttpContext.Session.Remove("FilterStateKey");
+            }
+
+            return ListaComentarios;
+
         }
 
         public List<ClienteModel> CuentaLibre()

@@ -1,31 +1,38 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {}
+    "C:\\Users\\syste\\Documents\\Visual Studio 2019\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {
+    "C:\\Users\\syste\\Documents\\Visual Studio 2019\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
+        "projectUniqueName": "C:\\Users\\syste\\Documents\\Visual Studio 2019\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
         "projectName": "Clientes",
-        "projectPath": "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
+        "projectPath": "C:\\Users\\syste\\Documents\\Visual Studio 2019\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
         "packagesPath": "C:\\Users\\syste\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\obj\\",
+        "outputPath": "C:\\Users\\syste\\Documents\\Visual Studio 2019\\Repos\\ClientesBonfigli\\Clientes\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
           "C:\\Users\\syste\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -36,22 +43,12 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "Microsoft.AspNetCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
-            },
-            "Microsoft.AspNetCore.Razor.Design": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[2.0.0, )"
+              "version": "[4.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -75,11 +72,9 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
+            "Microsoft.NET.Sdk.Razor": {
               "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
+              "version": "[3.1.22, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -100,7 +95,15 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
