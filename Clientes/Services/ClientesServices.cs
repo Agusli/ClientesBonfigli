@@ -6,7 +6,6 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Clientes.Controllers;
 using Clientes.Models;
-using Microsoft.AspNetCore.JsonPatch.Internal;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +15,6 @@ using Remotion.Linq.Clauses;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
-using Microsoft.AspNetCore.Rewrite.Internal.PatternSegments;
 
 namespace Clientes.Services
 {
@@ -28,13 +26,13 @@ namespace Clientes.Services
             _clientesContext = db;
         }
 
-        public List<ClienteModel>Obtener(int TipoFiltro = 0)
+        public List<ClienteModel> Obtener(int TipoFiltro = 0)
         {
             var sortedList = _clientesContext.Clientes.ToList();
             List<ClienteModel> clientes = new List<ClienteModel>();
 
-            if(TipoFiltro != 0)
-            sortedList = sortedList.Where(x => x.Tipo == TipoFiltro).OrderBy(x => x.Cuenta).ToList();
+            if (TipoFiltro != 0)
+                sortedList = sortedList.Where(x => x.Tipo == TipoFiltro).OrderBy(x => x.Cuenta).ToList();
 
             foreach (var item in sortedList)// en el caso que el quiera le fecha de vencimiento hay que colocar la variable resultado
             {
@@ -48,7 +46,7 @@ namespace Clientes.Services
                     Pantallas = string.IsNullOrEmpty(item.Pantallas) ? "" : item.Pantallas,
                     VencimientoC = item.VencimientoC.HasValue ? item.VencimientoC.Value.ToString("dd/MM/yyyy") : "",
                     VencimientoP = item.VencimientoP.HasValue ? item.VencimientoP.Value.ToString("dd/MM/yyyy") : "",
-                    Comentario = string.IsNullOrEmpty(item.Comentario) ? "" : item.Comentario,                    
+                    Comentario = string.IsNullOrEmpty(item.Comentario) ? "" : item.Comentario,
 
                 };
 
@@ -75,7 +73,7 @@ namespace Clientes.Services
                         break;
                     case 7:
                         cliente.Tipo = Tipo.DisneyPlus;
-                           break;
+                        break;
                     case 8:
                         cliente.Tipo = Tipo.HBOMax;
                         break;
@@ -97,11 +95,11 @@ namespace Clientes.Services
             var resultado = _clientesContext.Clientes.ToList();
             List<ClienteModel> clientes = new List<ClienteModel>();
 
-            if(TipoOrden.Equals("V"))
+            if (TipoOrden.Equals("V"))
             {
                 resultado = resultado.OrderBy(x => x.VencimientoP).ToList();
             }
-            else if(TipoOrden.Equals("VC"))
+            else if (TipoOrden.Equals("VC"))
             {
                 resultado = resultado.OrderBy(x => x.VencimientoC).ToList();
             }
@@ -148,10 +146,10 @@ namespace Clientes.Services
                         break;
                     case 7:
                         cliente.Tipo = Tipo.DisneyPlus;
-                            break; 
+                        break;
                     case 8:
                         cliente.Tipo = Tipo.HBOMax;
-                            break;
+                        break;
                 }
 
 
@@ -259,7 +257,7 @@ namespace Clientes.Services
                 _clientesContext.Clientes.Remove(cliente);
 
                 _clientesContext.Clientes.Add(data);
-         
+
                 _clientesContext.SaveChanges();
 
                 return true;
@@ -368,21 +366,40 @@ namespace Clientes.Services
             return Cuentasfiltradas;
         }
 
-       
+        public List<ClienteModel> FiltrarComentario(string Coment, List<ClienteModel> FiltrarComent)
+        {
+            List<ClienteModel> Comentarios = new List<ClienteModel>();
 
-    
-   
+            if (!string.IsNullOrEmpty(Coment))
+            {
+                foreach (var item in Comentarios)
+                {
+                    if (string.IsNullOrEmpty(item.Cuenta))
+                    {
+                        item.Cuenta = "";
+                    }
+                }
+
+                Comentarios = FiltrarComent.Where(x => x.Comentario.ToLower().StartsWith(Coment.ToLower())).ToList();
+
+            }
+            else
+            {
+                Comentarios = FiltrarComent;
+            }
+
+            return Comentarios;
+        }
 
 
-
-        public List<ClienteModel> ListaLibres(List<ClienteModel>filtrarCuentasLibres)
+        public List<ClienteModel> ListaLibres(List<ClienteModel> filtrarCuentasLibres)
         {
             List<ClienteModel> FiltrarCuentasLibres = new List<ClienteModel>();
-    
-            FiltrarCuentasLibres=filtrarCuentasLibres.Where(x => x.Nombre == "" || x.Comentario.ToLower() == "libre").ToList();
-            
+
+            FiltrarCuentasLibres = filtrarCuentasLibres.Where(x => x.Nombre == "" || x.Comentario.ToLower() == "libre").ToList();
+
             return FiltrarCuentasLibres;
-            
+
         }
 
 

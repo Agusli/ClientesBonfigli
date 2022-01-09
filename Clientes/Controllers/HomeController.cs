@@ -20,7 +20,8 @@ namespace Clientes.Controllers
     public class HomeController : Controller
     {
         public ClientesServices ClienteService;
-        public HomeController (ClientesContext db){
+        public HomeController(ClientesContext db)
+        {
             ClienteService = new ClientesServices(db);
         }
         public IActionResult Index()
@@ -35,17 +36,21 @@ namespace Clientes.Controllers
             {
                 if (ClienteService.ValidateToken(Token, id))
                 {
-                    if(string.IsNullOrEmpty(FilterStateKey) || string.IsNullOrEmpty(FilterStateValue))
+                    if (string.IsNullOrEmpty(FilterStateKey) || string.IsNullOrEmpty(FilterStateValue))
                     {
                         return View(ListaClientes);
                     }
                     else
                     {
-                        if(FilterStateKey.Equals("Nombre"))
+                        if (FilterStateKey.Equals("Nombre"))
                         {
                             return View(ClienteService.FiltrarNombre(FilterStateValue, ListaClientes));
                         }
-                        else if(FilterStateKey.Equals("Cuenta"))
+                        else if (FilterStateKey.Equals("Cuenta"))
+                        {
+                            return View(ClienteService.FiltrarCuenta(FilterStateValue, ListaClientes));
+                        }
+                        else if (FilterStateKey.Equals("Comentario"))
                         {
                             return View(ClienteService.FiltrarCuenta(FilterStateValue, ListaClientes));
                         }
@@ -54,7 +59,7 @@ namespace Clientes.Controllers
             }
             return RedirectToAction("Login", "User");
 
-        } 
+        }
 
         [HttpGet]
         public IActionResult Editar(int id)
@@ -182,7 +187,7 @@ namespace Clientes.Controllers
 
             listaNombres = ClienteService.FiltrarNombre(Search, list);
 
-            if(!string.IsNullOrEmpty(Search))
+            if (!string.IsNullOrEmpty(Search))
             {
                 HttpContext.Session.SetObjectAsJson("FilterStateKey", "Nombre");
                 HttpContext.Session.SetObjectAsJson("FilterStateValue", Search);
@@ -198,15 +203,15 @@ namespace Clientes.Controllers
             return listaNombres;
         }
 
-        public List<ClienteModel> FiltrarCuenta(string Cuenta) 
+        public List<ClienteModel> FiltrarCuenta(string Cuenta)
         {
             List<ClienteModel> ListaCuentas = new List<ClienteModel>();
 
             var lista = ClienteService.Obtener();
-            
+
             ListaCuentas = ClienteService.FiltrarCuenta(Cuenta, lista);
 
-            if(!string.IsNullOrEmpty(Cuenta))
+            if (!string.IsNullOrEmpty(Cuenta))
             {
                 HttpContext.Session.SetObjectAsJson("FilterStateKey", "Cuenta");
                 HttpContext.Session.SetObjectAsJson("FilterStateValue", Cuenta);
@@ -218,16 +223,41 @@ namespace Clientes.Controllers
             }
 
             return ListaCuentas;
-            
+
+        }
+
+
+        public List<ClienteModel> FiltrarComentario(string Coment)
+        {
+            List<ClienteModel> ListaComentarios = new List<ClienteModel>();
+
+            var lista = ClienteService.Obtener();
+
+            ListaComentarios = ClienteService.FiltrarComentario(Coment, lista);
+
+            if (!string.IsNullOrEmpty(Coment))
+            {
+                HttpContext.Session.SetObjectAsJson("FilterStateKey", "Comentario");
+                HttpContext.Session.SetObjectAsJson("FilterStateValue", Coment);
+            }
+            else
+            {
+                HttpContext.Session.Remove("FilterStateValue");
+                HttpContext.Session.Remove("FilterStateKey");
+            }
+
+            return ListaComentarios;
+
         }
 
         public List<ClienteModel> CuentaLibre()
-        { List<ClienteModel> cuentaslibres = new List<ClienteModel>();
+        {
+            List<ClienteModel> cuentaslibres = new List<ClienteModel>();
 
             var lista = ClienteService.Obtener();
-           
-                cuentaslibres = ClienteService.ListaLibres(lista);
-         
+
+            cuentaslibres = ClienteService.ListaLibres(lista);
+
 
             return cuentaslibres;
         }
@@ -238,8 +268,8 @@ namespace Clientes.Controllers
             List<ClienteModel> FechasVencimiento = new List<ClienteModel>();
             var vencimiento = ClienteService.ObtenerFecha("V");
             return vencimiento;
-        }        
-        
+        }
+
         public List<ClienteModel> BuscarPorFechaCuenta()
         {
             List<ClienteModel> FechasVencimiento = new List<ClienteModel>();
@@ -247,14 +277,14 @@ namespace Clientes.Controllers
             return vencimiento;
         }
 
-        public List<ClienteModel>BuscarCuenta()
+        public List<ClienteModel> BuscarCuenta()
         {
-            List<ClienteModel>CuentasAlfabeticas = new List<ClienteModel>();
-            var cuenta =ClienteService.Obtener();
+            List<ClienteModel> CuentasAlfabeticas = new List<ClienteModel>();
+            var cuenta = ClienteService.Obtener();
             return cuenta;
-        }        
-        
-        public List<ClienteModel>FiltrarTipo(string Tipo)
+        }
+
+        public List<ClienteModel> FiltrarTipo(string Tipo)
         {
             var cuenta = ClienteService.Obtener(int.Parse(Tipo));
 
@@ -265,7 +295,7 @@ namespace Clientes.Controllers
 
 
 
-  
+
 
 
 

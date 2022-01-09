@@ -122,7 +122,6 @@ function EnviarEdicion(id) {
 }
 $("#LogInBtn").click(function () {
 
-    console.log("Hola");
     data = {
         Usuario1: $("#UserInput").val(),
         Password: $("#PasswordInput").val()
@@ -150,7 +149,6 @@ $("#LogInBtn").click(function () {
 
 
 function Filtro() {
-    console.log($("#opciFiltro").val());
 
     if ($("#opciFiltro").val() === "Nombre") {
         BuscarCliente();
@@ -158,6 +156,10 @@ function Filtro() {
 
     if ($("#opciFiltro").val() === "Cuenta") {
         filtrarCuenta();
+    }
+
+    if ($("#opciFiltro").val() === "Comentario") {
+        filtrarComentario();
     }
 
 }
@@ -436,16 +438,6 @@ function BuscarCuenta() {
 
 
 
-
-
-
-
-
-
-
-
-
-
 function filtrarCuenta() {
     $.ajax({
         url: '/Home/FiltrarCuenta', //'urlcontroller',ruta de controller
@@ -483,6 +475,46 @@ function filtrarCuenta() {
         },
 
     });
-
 }
+
+function filtrarComentario() {
+    $.ajax({
+        url: '/Home/FiltrarComentario', //'urlcontroller',ruta de controller
+        dataType: 'json',
+        type: "POST",
+        data: {
+            Coment: $("#Search").val(),
+
+        },
+        error: function (data) {
+
+        },
+        success: function (data) {
+            if (data !== null) {
+                $(".DataRows").remove("");
+                data.forEach(function (element) {
+                    $("#customers").append(
+                        "<tr id='" + element.id + "' class='DataRows'>"
+                        + "<td>" + getTipo(element.tipo) + "</td>"
+                        //+ "<td>" + element.id + "</td>"
+                        + "<td>" + element.nombre + "</td>"
+                        + "<td>" + element.cuenta + "</td>"
+                        //+ "<td>" + element.email + "</td>"
+                        + "<td>" + element.contraseña + "</td >"
+                        + "<td>" + element.vencimientoC + "</td >"
+                        + "<td>" + element.vencimientoP + "</td>"
+                        + "<td>" + element.pantallas + "</td >"
+                        + "<td>" + element.comentario + "</td>"
+                        + "<td>" + "<a onclick='Borrar(" + element.id + ")' class='IconBtn'> <i class='fas fa-trash-alt'> </i></a ></td>"
+                        + "<td>" + "<a onclick='Editar(" + element.id + ")' class='IconBtn'> <i class='far fa-edit'> </i></a></td>"
+                        + "<tr/>");
+                })
+            }
+
+        },
+
+    });
+}
+
+
 
