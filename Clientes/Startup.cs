@@ -37,16 +37,12 @@ namespace Clientes
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc(options => options.EnableEndpointRouting = false);
-
-            services.AddRazorPages().SetCompatibilityVersion(CompatibilityVersion.Latest);
-
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<Models.ClientesContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Produccion"));
             });
-
-
+            
 
             services.AddSession();
 
@@ -70,7 +66,6 @@ namespace Clientes
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

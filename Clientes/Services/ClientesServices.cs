@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Clientes.Controllers;
 using Clientes.Models;
+using Microsoft.AspNetCore.JsonPatch.Internal;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ using Remotion.Linq.Clauses;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
+using Microsoft.AspNetCore.Rewrite.Internal.PatternSegments;
 
 namespace Clientes.Services
 {
@@ -366,30 +368,11 @@ namespace Clientes.Services
             return Cuentasfiltradas;
         }
 
-        public List<ClienteModel> FiltrarComentario(string Coment, List<ClienteModel> FiltrarComent)
-        {
-            List<ClienteModel> Comentarios = new List<ClienteModel>();
+       
 
-            if (!string.IsNullOrEmpty(Coment))
-            {
-                foreach (var item in Comentarios)
-                {
-                    if (string.IsNullOrEmpty(item.Cuenta))
-                    {
-                        item.Cuenta = "";
-                    }
-                }
+    
+   
 
-                Comentarios = FiltrarComent.Where(x => x.Comentario.ToLower().StartsWith(Coment.ToLower())).ToList();
-
-            }
-            else
-            {
-                Comentarios = FiltrarComent;
-            }
-
-            return Comentarios;
-        }
 
 
         public List<ClienteModel> ListaLibres(List<ClienteModel>filtrarCuentasLibres)
