@@ -14,6 +14,9 @@ namespace Clientes.Models
         AmazonPrime =5,                   
         Spotify= 6,
         DisneyPlus = 7,
-        HBOMax = 8
+        HBOMax = 8,
+        StarPlus=9,
+        ParamountPlus=10,
+        Telecentro=11
     }
 }

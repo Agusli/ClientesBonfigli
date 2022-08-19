@@ -77,6 +77,15 @@ namespace Clientes.Services
                     case 8:
                         cliente.Tipo = Tipo.HBOMax;
                         break;
+                    case 9:
+                        cliente.Tipo = Tipo.StarPlus;
+                        break;
+                    case 10:
+                        cliente.Tipo = Tipo.ParamountPlus;
+                        break;
+                    case 11:
+                        cliente.Tipo = Tipo.Telecentro;
+                        break;
                 }
 
 
@@ -149,6 +158,15 @@ namespace Clientes.Services
                         break;
                     case 8:
                         cliente.Tipo = Tipo.HBOMax;
+                        break;
+                    case 9:
+                        cliente.Tipo = Tipo.StarPlus;
+                        break;
+                    case 10:
+                        cliente.Tipo = Tipo.ParamountPlus;
+                        break;
+                    case 11:
+                        cliente.Tipo = Tipo.Telecentro;
                         break;
                 }
 

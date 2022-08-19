@@ -267,12 +267,24 @@ function getTipo(id) {
         case 5:
             Tipo = "AmazonPrime"
             break;
-
         case 6:
             Tipo = "Spotify"
             break;
         case 7:
             Tipo = "DisneyPlus"
+            break;
+        case 8:
+            Tipo = "HBOMax";
+            break;
+        case 9:
+            Tipo = "StarPlus";
+            break;
+        case 10:
+            Tipo = "ParamountPlus";
+            break;
+        case 11:
+            Tipo = "Telecentro";
+            break;
     }
 
     return Tipo;
