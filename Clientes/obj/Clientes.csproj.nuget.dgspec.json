@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {}
+    "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {
+    "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
+        "projectUniqueName": "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
         "projectName": "Clientes",
-        "projectPath": "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
+        "projectPath": "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
         "packagesPath": "C:\\Users\\syste\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\obj\\",
+        "outputPath": "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\syste\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp2.2": {
+            "targetAlias": "netcoreapp2.2",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
           "dependencies": {
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
@@ -96,11 +98,12 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
