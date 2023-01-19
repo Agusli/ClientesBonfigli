@@ -17,6 +17,8 @@ namespace Clientes.Models
         HBOMax = 8,
         StarPlus=9,
         ParamountPlus=10,
-        Telecentro=11
+        Telecentro=11,
+        CinemaPlus=12,
+        TvMundosDigital=13
     }
 }
