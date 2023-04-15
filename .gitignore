@@ -3,3 +3,4 @@ Clientes/appsettings.Development.json
 Clientes/publish/
 /Clientes/bin/Release
 Clientes/obj/Release
+/Clientes

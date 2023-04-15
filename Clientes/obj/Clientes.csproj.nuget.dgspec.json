@@ -1,31 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {}
+    "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {
+    "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\Clientes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
+        "projectUniqueName": "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
         "projectName": "Clientes",
-        "projectPath": "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
+        "projectPath": "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
         "packagesPath": "C:\\Users\\syste\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\syste\\Source\\Repos\\ClientesBonfigli\\Clientes\\obj\\",
+        "outputPath": "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\syste\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -36,58 +37,38 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "Microsoft.AspNetCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
-            },
-            "Microsoft.AspNetCore.Razor.Design": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[2.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[3.1.32, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[3.1.32, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[3.1.32, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
+              "version": "[3.1.32, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[12.0.3, )"
+              "version": "[13.0.2, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[4.8.1, )"
+              "version": "[4.8.5, )"
             }
           },
           "imports": [
@@ -96,11 +77,20 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

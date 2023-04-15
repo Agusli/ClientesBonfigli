@@ -11,10 +11,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using Remotion.Linq.Clauses;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.CompilerServices;
-using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
 
 namespace Clientes.Services
 {
@@ -85,6 +83,12 @@ namespace Clientes.Services
                         break;
                     case 11:
                         cliente.Tipo = Tipo.Telecentro;
+                        break;
+                    case 12:
+                        cliente.Tipo = Tipo.CinemaPlus;
+                        break;
+                    case 13:
+                        cliente.Tipo = Tipo.TvMundosDigital;
                         break;
                 }
 
@@ -167,6 +171,12 @@ namespace Clientes.Services
                         break;
                     case 11:
                         cliente.Tipo = Tipo.Telecentro;
+                        break;
+                    case 12:
+                        cliente.Tipo = Tipo.CinemaPlus;
+                        break;
+                    case 13:
+                        cliente.Tipo = Tipo.TvMundosDigital;
                         break;
                 }
 

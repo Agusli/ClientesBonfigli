@@ -285,6 +285,12 @@ function getTipo(id) {
         case 11:
             Tipo = "Telecentro";
             break;
+        case 12:
+            Tipo = "CinemaPlus";
+            break;
+        case 13:
+            Tipo = "TvMundosDigital";
+            break;
     }
 
     return Tipo;
