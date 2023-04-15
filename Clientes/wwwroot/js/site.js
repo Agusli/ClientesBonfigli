@@ -286,10 +286,13 @@ function getTipo(id) {
             Tipo = "Telecentro";
             break;
         case 12:
-            Tipo = "CinemaPlus";
+            Tipo = "WOW";
             break;
         case 13:
             Tipo = "TvMundosDigital";
+            break;
+        case 13:
+            Tipo = "Devex";
             break;
     }
 

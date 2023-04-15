@@ -85,10 +85,13 @@ namespace Clientes.Services
                         cliente.Tipo = Tipo.Telecentro;
                         break;
                     case 12:
-                        cliente.Tipo = Tipo.CinemaPlus;
+                        cliente.Tipo = Tipo.WOW;
                         break;
                     case 13:
                         cliente.Tipo = Tipo.TvMundosDigital;
+                        break;
+                    case 14:
+                        cliente.Tipo = Tipo.Devex;
                         break;
                 }
 
@@ -173,10 +176,13 @@ namespace Clientes.Services
                         cliente.Tipo = Tipo.Telecentro;
                         break;
                     case 12:
-                        cliente.Tipo = Tipo.CinemaPlus;
+                        cliente.Tipo = Tipo.WOW;
                         break;
                     case 13:
                         cliente.Tipo = Tipo.TvMundosDigital;
+                        break;
+                    case 14:
+                        cliente.Tipo = Tipo.Devex;
                         break;
                 }
 
