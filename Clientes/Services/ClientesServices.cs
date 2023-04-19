@@ -85,10 +85,10 @@ namespace Clientes.Services
                         cliente.Tipo = Tipo.Telecentro;
                         break;
                     case 12:
-                        cliente.Tipo = Tipo.WOW;
+                        cliente.Tipo = Tipo.WOWPlus;
                         break;
                     case 13:
-                        cliente.Tipo = Tipo.TvMundosDigital;
+                        cliente.Tipo = Tipo.WOWTV;
                         break;
                     case 14:
                         cliente.Tipo = Tipo.Devex;
@@ -176,10 +176,10 @@ namespace Clientes.Services
                         cliente.Tipo = Tipo.Telecentro;
                         break;
                     case 12:
-                        cliente.Tipo = Tipo.WOW;
+                        cliente.Tipo = Tipo.WOWPlus;
                         break;
                     case 13:
-                        cliente.Tipo = Tipo.TvMundosDigital;
+                        cliente.Tipo = Tipo.WOWTV;
                         break;
                     case 14:
                         cliente.Tipo = Tipo.Devex;

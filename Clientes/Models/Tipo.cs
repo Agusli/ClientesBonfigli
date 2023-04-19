@@ -18,8 +18,8 @@ namespace Clientes.Models
         StarPlus=9,
         ParamountPlus=10,
         Telecentro=11,
-        WOW=12,
-        TvMundosDigital=13,
+        WOWPlus=12,
+        WOWTV=13,
         Devex=14
     }
 }
