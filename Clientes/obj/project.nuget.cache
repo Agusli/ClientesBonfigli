@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0oNXMgwUj4OcLWk6dD4R2uM10XZFHeFqnEodMqcwo6mtEoNiniv//I6Lwkvbw+3KLFpgwNydSSoVQ4UR1tH+rQ==",
+  "dgSpecHash": "gYPiUq7H7ZrLy6fWWNPHo6IzrHligCPudWjQ6LHRdEsdrdPFEjxn7bXJvRCG0iuPJFjhQ0CHG5nXcYfrdzxZEw==",
   "success": true,
   "projectFilePath": "C:\\Users\\syste\\source\\repos\\ClientesBonfigli\\Clientes\\Clientes.csproj",
   "expectedPackageFiles": [
@@ -66,7 +66,6 @@
     "C:\\Users\\syste\\.nuget\\packages\\system.resources.resourcemanager\\4.3.0\\system.resources.resourcemanager.4.3.0.nupkg.sha512",
     "C:\\Users\\syste\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\syste\\.nuget\\packages\\system.runtime.caching\\5.0.0\\system.runtime.caching.5.0.0.nupkg.sha512",
-    "C:\\Users\\syste\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "C:\\Users\\syste\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\syste\\.nuget\\packages\\system.security.cryptography.cng\\5.0.0\\system.security.cryptography.cng.5.0.0.nupkg.sha512",
     "C:\\Users\\syste\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0\\system.security.cryptography.protecteddata.5.0.0.nupkg.sha512",

@@ -308,7 +308,9 @@ namespace Clientes.Services
         {
             try
             {
-                return _clientesContext.Usuario.FirstOrDefault(u => u.Usuario1 == data.Usuario1 && u.Password == data.Password);
+                var cliente = _clientesContext.Usuario.FirstOrDefault(u => u.Usuario1 == data.Usuario1 && u.Password == data.Password);
+
+                return cliente;
             }
             catch (System.Exception e)
             {

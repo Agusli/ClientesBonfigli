@@ -8,7 +8,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword />
     <_PublishTargetUrl>ftp://ClientesBonfigli.somee.com/www.ClientesBonfigli.somee.com</_PublishTargetUrl>
-    <History>True|2023-01-19T19:43:43.8386935Z;</History>
+    <History>False|2023-04-19T12:33:48.5866380Z;True|2023-01-19T16:43:43.8386935-03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -22,82 +22,82 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/04/2022 18:38:52</publishTime>
     </File>
     <File Include="Azure.Identity.dll">
-      <publishTime>05/04/2022 17:26:00</publishTime>
+      <publishTime>04/05/2022 17:26:00</publishTime>
     </File>
     <File Include="Clientes.deps.json">
-      <publishTime>01/19/2023 16:52:56</publishTime>
+      <publishTime>04/19/2023 09:15:06</publishTime>
     </File>
     <File Include="Clientes.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/19/2023 09:14:54</publishTime>
     </File>
     <File Include="Clientes.exe">
-      <publishTime>01/19/2023 16:52:55</publishTime>
+      <publishTime>04/19/2023 09:14:54</publishTime>
     </File>
     <File Include="Clientes.pdb">
-      <publishTime>01/19/2023 16:52:55</publishTime>
+      <publishTime>04/19/2023 09:14:54</publishTime>
     </File>
     <File Include="Clientes.runtimeconfig.json">
-      <publishTime>01/19/2023 15:57:34</publishTime>
+      <publishTime>04/15/2023 14:41:49</publishTime>
     </File>
     <File Include="Clientes.Views.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/19/2023 09:14:55</publishTime>
     </File>
     <File Include="Clientes.Views.pdb">
-      <publishTime>01/19/2023 16:52:55</publishTime>
+      <publishTime>04/19/2023 09:14:55</publishTime>
     </File>
     <File Include="Microsoft.Bcl.AsyncInterfaces.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>04/14/2020 19:39:12</publishTime>
     </File>
     <File Include="Microsoft.Bcl.HashCode.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2020 18:15:52</publishTime>
     </File>
     <File Include="Microsoft.Data.SqlClient.dll">
-      <publishTime>07/10/2022 20:35:40</publishTime>
+      <publishTime>10/07/2022 20:35:40</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Abstractions.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 17:06:14</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 17:06:32</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Relational.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 17:06:36</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.SqlServer.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 17:06:38</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Caching.Abstractions.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:41:46</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Caching.Memory.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:42:24</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Configuration.Abstractions.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:42:04</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Configuration.Binder.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:42:12</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Configuration.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:42:08</publishTime>
     </File>
     <File Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:42:48</publishTime>
     </File>
     <File Include="Microsoft.Extensions.DependencyInjection.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:42:08</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Logging.Abstractions.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:42:54</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Logging.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:42:46</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Options.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:42:10</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Primitives.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/16/2022 15:42:20</publishTime>
     </File>
     <File Include="Microsoft.Identity.Client.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -106,25 +106,25 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Abstractions.dll">
-      <publishTime>01/07/2022 15:47:38</publishTime>
+      <publishTime>07/01/2022 15:47:38</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.JsonWebTokens.dll">
-      <publishTime>01/07/2022 15:25:42</publishTime>
+      <publishTime>07/01/2022 15:25:42</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Logging.dll">
-      <publishTime>01/07/2022 15:27:42</publishTime>
+      <publishTime>07/01/2022 15:27:42</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Protocols.dll">
-      <publishTime>01/07/2022 15:29:36</publishTime>
+      <publishTime>07/01/2022 15:29:36</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll">
-      <publishTime>01/07/2022 15:39:20</publishTime>
+      <publishTime>07/01/2022 15:39:20</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Tokens.dll">
-      <publishTime>01/07/2022 15:33:56</publishTime>
+      <publishTime>07/01/2022 15:33:56</publishTime>
     </File>
     <File Include="Microsoft.SqlServer.Server.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>01/27/2022 14:19:08</publishTime>
     </File>
     <File Include="Microsoft.Win32.Registry.dll">
       <publishTime>10/19/2020 15:37:46</publishTime>
@@ -133,7 +133,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/19/2020 15:40:26</publishTime>
     </File>
     <File Include="Newtonsoft.Json.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>11/23/2022 23:10:26</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp2.1/Microsoft.Data.SqlClient.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -148,43 +148,43 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/19/2020 15:49:58</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll">
-      <publishTime>07/10/2022 20:35:40</publishTime>
+      <publishTime>10/07/2022 20:35:40</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>03/10/2022 19:45:42</publishTime>
+      <publishTime>10/03/2022 19:45:42</publishTime>
     </File>
     <File Include="runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.pdb">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>03/10/2022 19:45:32</publishTime>
+      <publishTime>10/03/2022 19:45:32</publishTime>
     </File>
     <File Include="runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.pdb">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-arm64/native/sni.dll">
-      <publishTime>12/07/2017 08:24:24</publishTime>
+      <publishTime>07/12/2017 08:24:24</publishTime>
     </File>
     <File Include="runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>03/10/2022 19:45:32</publishTime>
+      <publishTime>10/03/2022 19:45:32</publishTime>
     </File>
     <File Include="runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.pdb">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-x64/native/sni.dll">
-      <publishTime>12/07/2017 08:24:22</publishTime>
+      <publishTime>07/12/2017 08:24:22</publishTime>
     </File>
     <File Include="runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>03/10/2022 19:45:32</publishTime>
+      <publishTime>10/03/2022 19:45:32</publishTime>
     </File>
     <File Include="runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.pdb">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-x86/native/sni.dll">
-      <publishTime>12/07/2017 08:24:22</publishTime>
+      <publishTime>07/12/2017 08:24:22</publishTime>
     </File>
     <File Include="runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll">
       <publishTime>10/19/2020 15:46:06</publishTime>
@@ -214,7 +214,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/19/2020 15:53:36</publishTime>
     </File>
     <File Include="runtimes/win/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll">
-      <publishTime>07/10/2022 20:35:52</publishTime>
+      <publishTime>10/07/2022 20:35:52</publishTime>
     </File>
     <File Include="runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll">
       <publishTime>10/19/2020 15:38:06</publishTime>
@@ -229,13 +229,13 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/14/2020 19:38:40</publishTime>
     </File>
     <File Include="System.Configuration.ConfigurationManager.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/19/2020 15:52:30</publishTime>
     </File>
     <File Include="System.Data.SqlClient.dll">
       <publishTime>10/17/2022 20:16:04</publishTime>
     </File>
     <File Include="System.Diagnostics.DiagnosticSource.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/19/2020 15:38:16</publishTime>
     </File>
     <File Include="System.Drawing.Common.dll">
       <publishTime>10/19/2020 15:50:02</publishTime>
@@ -244,28 +244,28 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/19/2020 15:38:32</publishTime>
     </File>
     <File Include="System.IdentityModel.Tokens.Jwt.dll">
-      <publishTime>01/07/2022 15:23:16</publishTime>
+      <publishTime>07/01/2022 15:23:16</publishTime>
     </File>
     <File Include="System.Memory.Data.dll">
-      <publishTime>08/04/2021 13:45:54</publishTime>
+      <publishTime>04/08/2021 13:45:54</publishTime>
     </File>
     <File Include="System.Runtime.Caching.dll">
       <publishTime>10/19/2020 15:52:34</publishTime>
     </File>
     <File Include="System.Runtime.CompilerServices.Unsafe.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/19/2020 15:47:52</publishTime>
     </File>
     <File Include="System.Security.AccessControl.dll">
       <publishTime>10/19/2020 15:37:22</publishTime>
     </File>
     <File Include="System.Security.Cryptography.Cng.dll">
-      <publishTime>10/19/2020 15:47:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Security.Cryptography.ProtectedData.dll">
       <publishTime>10/19/2020 15:52:26</publishTime>
     </File>
     <File Include="System.Security.Permissions.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/19/2020 15:53:40</publishTime>
     </File>
     <File Include="System.Security.Principal.Windows.dll">
       <publishTime>10/19/2020 15:37:20</publishTime>
@@ -283,7 +283,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/19/2020 15:53:38</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>01/19/2023 16:52:56</publishTime>
+      <publishTime>04/19/2023 09:15:07</publishTime>
     </File>
     <File Include="wwwroot/css/all.css">
       <publishTime>01/19/2023 14:58:10</publishTime>
@@ -304,7 +304,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/19/2023 14:58:10</publishTime>
     </File>
     <File Include="wwwroot/js/site.js">
-      <publishTime>01/19/2023 16:34:36</publishTime>
+      <publishTime>04/18/2023 21:44:43</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
       <publishTime>01/19/2023 14:58:10</publishTime>
@@ -379,7 +379,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/19/2023 14:58:10</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.js">
-      <publishTime>01/19/2023 14:58:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.min.js">
       <publishTime>01/19/2023 14:58:10</publishTime>
@@ -418,7 +418,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/19/2023 14:58:10</publishTime>
     </File>
     <File Include="wwwroot/webfonts/fa-brands-400.woff2">
-      <publishTime>01/19/2023 14:58:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/webfonts/fa-regular-400.eot">
       <publishTime>01/19/2023 14:58:10</publishTime>
