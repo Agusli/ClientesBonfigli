@@ -1,67 +1,96 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Clientes
 @{
+    ViewData["Title"] = "Editar cliente";
+    var tipos = ViewBag.Tipos as List<TipoCuenta> ?? new List<TipoCuenta>();
+    var vencimientoP = Model.VencimientoP.HasValue ? Model.VencimientoP.Value.ToString("yyyy-MM-ddTHH:mm") : string.Empty;
+    var vencimientoC = Model.VencimientoC.HasValue ? Model.VencimientoC.Value.ToString("yyyy-MM-ddTHH:mm") : string.Empty;
+    var tipoActual = Model.Tipo.HasValue ? Model.Tipo.Value : 0;
 }
-@model Clientes
 
-<h1>Editar</h1>
-<form>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Nombre</label>
-    </div>        <input id="Nombre" type="text" class="form-control" placeholder="@Model.Nombre" value="@Model.Nombre" required>
+<div class="form-page">
+    <div class="form-card card shadow-sm border-0">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-4">
+                <div>
+                    <p class="eyebrow mb-1">Editar cliente</p>
+                    <h1 class="section-title mb-0">Actualizar registro</h1>
+                </div>
+                <button type="button" onclick="MostrarTodas()" class="btn btn-outline-secondary">Volver</button>
+            </div>
 
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Cuenta</label>
-        <input id="Cuenta" type="text" class="form-control" placeholder="@Model.Cuenta" value="@Model.Cuenta">
-    </div>
+            <form class="form-grid">
+                <div class="form-group">
+                    <label for="Nombre">Nombre</label>
+                    <input id="Nombre" type="text" class="form-control form-control-lg" value="@Model.Nombre" placeholder="Nombre">
+                </div>
 
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Contraseña</label>
-        <input id="Contraseña" type="text" class="form-control" placeholder="@Model.Contraseña" value="@Model.Contraseña">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Fecha de vencimiento de la Cuenta</label>@*validacion datetime*@
-        <input id="VencimientoC" type="datetime" class="form-control" placeholder="@Model.VencimientoC" value="@Model.VencimientoC">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Fecha de vencimiento del Cliente</label>@*validacion datetime*@
-        <input id="VencimientoP" type="datetime" class="form-control" placeholder="@Model.VencimientoP" value="@Model.VencimientoP">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect1">Tipo</label>
-        <select id="Tipo" class="form-control">
-            <option value="@Model.Tipo">@(((Tipo)Model.Tipo).ToString())</option>
-            <option value="1">@Tipo.Netflix</option>
-            <option value="2">@Tipo.Flow</option>
-            <option value="3">@Tipo.IPTV</option>
-            <option value="5">@Tipo.AmazonPrime</option>
-            <option value="4">@Tipo.DirecTVGo</option>
-            <option value="6">@Tipo.Spotify</option>
-            <option value="7">@Tipo.DisneyPlus</option>
-            <option value="8">@Tipo.HBOMax</option>
-            <option value="9">@Tipo.StarPlus</option>
-            <option value="10">@Tipo.ParamountPlus</option>
-            <option value="11">@Tipo.Telecentro</option>
-            <option value="12">@Tipo.WOWPlus</option>
-            <option value="13">@Tipo.WOWTV</option>
-            <option value="14">@Tipo.Devex</option>
-        </select>
-    </div>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input id="Email" type="email" class="form-control form-control-lg" value="@Model.Email" placeholder="correo@ejemplo.com">
+                </div>
 
+                <div class="form-group">
+                    <label for="Cuenta">Cuenta</label>
+                    <input id="Cuenta" type="text" class="form-control form-control-lg" value="@Model.Cuenta" placeholder="Cuenta">
+                </div>
 
-    <div class="form-group">
-        <label for="exampleFormControlSelect1">Cantidad de pantallas</label>
-        <input id="Pantallas" type="text" class="form-control" placeholder="@Model.Pantallas" value="@Model.Pantallas">
-    </div>
+                <div class="form-group">
+                    <label for="Contraseña">Contraseña</label>
+                    <input id="Contraseña" type="text" class="form-control form-control-lg" value="@Model.Contraseña" placeholder="Contraseña">
+                </div>
 
-    <div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Comentario</label>
-            <input id="Comentario" value="@Model.Comentario"class="form-control"  rows="3" placeholder="@Model.Comentario">
+                <div class="form-group">
+                    <label for="VencimientoC">Fecha de vencimiento de la cuenta</label>
+                    <input id="VencimientoC" type="datetime-local" class="form-control form-control-lg" value="@vencimientoC">
+                </div>
+
+                <div class="form-group">
+                    <label for="VencimientoP">Fecha de vencimiento del cliente</label>
+                    <input id="VencimientoP" type="datetime-local" class="form-control form-control-lg" value="@vencimientoP">
+                </div>
+
+                <div class="form-group">
+                    <label for="Tipo">Tipo</label>
+                    <div class="input-group">
+                        <select id="Tipo" class="form-control form-control-lg">
+                            @if (tipoActual == 0)
+                            {
+                                <option value="">Seleccionar tipo</option>
+                            }
+                            @foreach (var tipo in tipos)
+                            {
+                                if (tipo.Id == tipoActual)
+                                {
+                                    <option value="@tipo.Id" selected="selected">@tipo.Nombre</option>
+                                }
+                                else
+                                {
+                                    <option value="@tipo.Id">@tipo.Nombre</option>
+                                }
+                            }
+                        </select>
+                        <div class="input-group-append">
+                            <a asp-action="Tipos" class="btn btn-outline-primary d-flex align-items-center" title="Gestionar Tipos">
+                                <i class="fas fa-cog"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Pantallas">Cantidad de pantallas</label>
+                    <input id="Pantallas" type="text" class="form-control form-control-lg" value="@Model.Pantallas" placeholder="Pantallas">
+                </div>
+
+                <div class="form-group form-group-full">
+                    <label for="Comentario">Comentario</label>
+                    <textarea id="Comentario" class="form-control form-control-lg" rows="4" placeholder="Comentario">@Model.Comentario</textarea>
+                </div>
+            </form>
+
+            <div class="form-actions mt-4">
+                <button type="button" onclick="EnviarEdicion('@Model.Id')" class="btn btn-primary btn-lg">Guardar cambios</button>
+            </div>
         </div>
     </div>
-
-
-</form>
-<button onclick="EnviarEdicion('@Model.Id')"class="btn btn-outline-success btn-lg">Enviar</button>
+</div>

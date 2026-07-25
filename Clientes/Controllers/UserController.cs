@@ -1,20 +1,21 @@
 using System;
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
 using Clientes.Models;
 using Clientes.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
-
-
-namespace User.Controllers
+namespace Clientes.Controllers
 {
     public class UserController : Controller
     {
-        private ClientesServices _ClienteServices { get; set; }
+        private ClientesServices _ClienteServices { get; }
 
         public UserController(ClientesContext db)
         {
-            this._ClienteServices = new ClientesServices(db);
+            var tiposService = new TiposService();
+            this._ClienteServices = new ClientesServices(db, tiposService);
         }
 
         public IActionResult Login()
@@ -30,8 +31,15 @@ namespace User.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-            return View();
+            return View("~/Views/User/Login.cshtml");
 
+        }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
 
         //Metodo para leer data de un archivo y cargarlo a la bd
@@ -80,23 +88,24 @@ namespace User.Controllers
         //        HttpContext.Session.Remove("UserInfo");
 
         [HttpPost]
-        public bool Login(Usuario Data)
+        public IActionResult Login(Usuario Data)
         {
             Usuario userFinded = _ClienteServices.GetUserByCredentials(Data);
 
             if (userFinded != null)
             {
-                string token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
-                // userFinded.Token = token;
+                string token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
                 _ClienteServices.UpdateUserToken(userFinded, token);
                 HttpContext.Session.SetObjectAsJson("SessionToken", token);
                 HttpContext.Session.SetObjectAsJson("SessionUserID", userFinded.Id);
 
-                return true;
+                return Json(true);
             }
             else
             {
-                return false;
+                HttpContext.Session.Remove("SessionToken");
+                HttpContext.Session.Remove("SessionUserID");
+                return Json(false);
             }
         }
 

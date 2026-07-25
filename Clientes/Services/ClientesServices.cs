@@ -1,249 +1,115 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Globalization;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
-using Clientes.Controllers;
 using Clientes.Models;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using Microsoft.Extensions.DependencyInjection;
-using System.Runtime.CompilerServices;
 
 namespace Clientes.Services
 {
     public class ClientesServices
     {
-        public readonly ClientesContext _clientesContext;
-        public ClientesServices(ClientesContext db)
+        private readonly ClientesContext _clientesContext;
+        private readonly TiposService _tiposService;
+
+        public ClientesServices(ClientesContext db, TiposService tiposService)
         {
             _clientesContext = db;
+            _tiposService = tiposService;
         }
 
-        public List<ClienteModel> Obtener(int TipoFiltro = 0)
+        public List<TipoCuenta> ObtenerTipos()
         {
-            var sortedList = _clientesContext.Clientes.ToList();
-            List<ClienteModel> clientes = new List<ClienteModel>();
-
-            if (TipoFiltro != 0)
-                sortedList = sortedList.Where(x => x.Tipo == TipoFiltro).OrderBy(x => x.Cuenta).ToList();
-
-            foreach (var item in sortedList)// en el caso que el quiera le fecha de vencimiento hay que colocar la variable resultado
-            {
-                ClienteModel cliente = new ClienteModel()
-                {
-                    Id = item.Id,
-                    Cuenta = string.IsNullOrEmpty(item.Cuenta) ? "" : item.Cuenta,
-                    Contraseña = string.IsNullOrEmpty(item.Contraseña) ? "" : item.Contraseña,
-                    Email = string.IsNullOrEmpty(item.Email) ? "" : item.Email,
-                    Nombre = string.IsNullOrEmpty(item.Nombre) ? "" : item.Nombre,
-                    Pantallas = string.IsNullOrEmpty(item.Pantallas) ? "" : item.Pantallas,
-                    VencimientoC = item.VencimientoC.HasValue ? item.VencimientoC.Value.ToString("dd/MM/yyyy") : "",
-                    VencimientoP = item.VencimientoP.HasValue ? item.VencimientoP.Value.ToString("dd/MM/yyyy") : "",
-                    Comentario = string.IsNullOrEmpty(item.Comentario) ? "" : item.Comentario,
-
-                };
-
-                switch (item.Tipo)
-                {
-                    case 1:
-                        cliente.Tipo = Tipo.Netflix;
-                        break;
-                    case 2:
-                        cliente.Tipo = Tipo.Flow;
-                        break;
-                    case 3:
-                        cliente.Tipo = Tipo.IPTV;
-                        break;
-                    case 4:
-                        cliente.Tipo = Tipo.DirecTVGo;
-                        break;
-                    case 5:
-                        cliente.Tipo = Tipo.AmazonPrime;
-                        break;
-
-                    case 6:
-                        cliente.Tipo = Tipo.Spotify;
-                        break;
-                    case 7:
-                        cliente.Tipo = Tipo.DisneyPlus;
-                        break;
-                    case 8:
-                        cliente.Tipo = Tipo.HBOMax;
-                        break;
-                    case 9:
-                        cliente.Tipo = Tipo.StarPlus;
-                        break;
-                    case 10:
-                        cliente.Tipo = Tipo.ParamountPlus;
-                        break;
-                    case 11:
-                        cliente.Tipo = Tipo.Telecentro;
-                        break;
-                    case 12:
-                        cliente.Tipo = Tipo.WOWPlus;
-                        break;
-                    case 13:
-                        cliente.Tipo = Tipo.WOWTV;
-                        break;
-                    case 14:
-                        cliente.Tipo = Tipo.Devex;
-                        break;
-                }
-
-
-                clientes.Add(cliente);
-            }
-
-
-            return clientes;
-
+            return _tiposService.ObtenerTodos();
         }
 
-
-
-        public List<ClienteModel> ObtenerFecha(string TipoOrden)
+        public bool AgregarTipo(string nombre)
         {
-            var resultado = _clientesContext.Clientes.ToList();
-            List<ClienteModel> clientes = new List<ClienteModel>();
-
-            if (TipoOrden.Equals("V"))
-            {
-                resultado = resultado.OrderBy(x => x.VencimientoP).ToList();
-            }
-            else if (TipoOrden.Equals("VC"))
-            {
-                resultado = resultado.OrderBy(x => x.VencimientoC).ToList();
-            }
-
-
-            foreach (var item in resultado)// en el caso que el quiera le fecha de vencimiento hay que colocar la variable resultado
-            {
-                ClienteModel cliente = new ClienteModel()
-                {
-                    Id = item.Id,
-                    Cuenta = string.IsNullOrEmpty(item.Cuenta) ? "" : item.Cuenta,
-                    Contraseña = string.IsNullOrEmpty(item.Contraseña) ? "" : item.Contraseña,
-                    Email = string.IsNullOrEmpty(item.Email) ? "" : item.Email,
-                    Nombre = string.IsNullOrEmpty(item.Nombre) ? "" : item.Nombre,
-                    Pantallas = string.IsNullOrEmpty(item.Pantallas) ? "" : item.Pantallas,
-                    VencimientoC = item.VencimientoC.HasValue ? item.VencimientoC.Value.ToString("dd/MM/yyyy") : "",
-                    VencimientoP = item.VencimientoP.HasValue ? item.VencimientoP.Value.ToString("dd/MM/yyyy") : "",
-                    Comentario = string.IsNullOrEmpty(item.Comentario) ? "" : item.Comentario,
-
-
-
-                };
-
-                switch (item.Tipo)
-                {
-                    case 1:
-                        cliente.Tipo = Tipo.Netflix;
-                        break;
-                    case 2:
-                        cliente.Tipo = Tipo.Flow;
-                        break;
-                    case 3:
-                        cliente.Tipo = Tipo.IPTV;
-                        break;
-                    case 4:
-                        cliente.Tipo = Tipo.DirecTVGo;
-                        break;
-                    case 5:
-                        cliente.Tipo = Tipo.AmazonPrime;
-                        break;
-
-                    case 6:
-                        cliente.Tipo = Tipo.Spotify;
-                        break;
-                    case 7:
-                        cliente.Tipo = Tipo.DisneyPlus;
-                        break;
-                    case 8:
-                        cliente.Tipo = Tipo.HBOMax;
-                        break;
-                    case 9:
-                        cliente.Tipo = Tipo.StarPlus;
-                        break;
-                    case 10:
-                        cliente.Tipo = Tipo.ParamountPlus;
-                        break;
-                    case 11:
-                        cliente.Tipo = Tipo.Telecentro;
-                        break;
-                    case 12:
-                        cliente.Tipo = Tipo.WOWPlus;
-                        break;
-                    case 13:
-                        cliente.Tipo = Tipo.WOWTV;
-                        break;
-                    case 14:
-                        cliente.Tipo = Tipo.Devex;
-                        break;
-                }
-
-
-                clientes.Add(cliente);
-            }
-
-
-            return clientes;
-
+            return _tiposService.Agregar(nombre);
         }
 
-
-        internal static void Buscar()
+        public bool RenombrarTipo(int id, string nombre)
         {
-            throw new NotImplementedException();
+            return _tiposService.Renombrar(id, nombre);
         }
 
-        public Boolean Agregar(Models.Clientes _clientes)
+        public bool EliminarTipo(int id)
+        {
+            return _tiposService.Eliminar(id);
+        }
+
+        public bool TipoEnUso(int tipoId)
+        {
+            return _clientesContext.Clientes.Any(x => x.Tipo == tipoId);
+        }
+
+        public List<ClienteModel> Obtener(int tipoFiltro = 0)
+        {
+            var query = _clientesContext.Clientes.AsQueryable();
+
+            if (tipoFiltro != 0)
+            {
+                query = query.Where(x => x.Tipo == tipoFiltro);
+            }
+
+            return query
+                .OrderBy(x => x.Cuenta)
+                .Select(MapCliente)
+                .ToList();
+        }
+
+        public List<ClienteModel> ObtenerFecha(string tipoOrden)
+        {
+            var query = _clientesContext.Clientes.AsQueryable();
+
+            if (tipoOrden.Equals("VC", StringComparison.OrdinalIgnoreCase))
+            {
+                query = query.OrderBy(x => x.VencimientoC).ThenBy(x => x.Cuenta);
+            }
+            else
+            {
+                query = query.OrderBy(x => x.VencimientoP).ThenBy(x => x.Cuenta);
+            }
+
+            return query.Select(MapCliente).ToList();
+        }
+
+        public bool Agregar(Models.Clientes clientes)
         {
             try
             {
-                _clientesContext.Clientes.Add(_clientes);
+                _clientesContext.Clientes.Add(clientes);
                 _clientesContext.SaveChanges();
                 return true;
-
             }
-            catch (Exception error)
+            catch
             {
                 return false;
             }
-
         }
 
-        public Boolean AgregarVarios(List<Models.Clientes> _clientes)
+        public bool AgregarVarios(List<Models.Clientes> clientes)
         {
             try
             {
-                _clientesContext.Clientes.AddRange(_clientes);
+                _clientesContext.Clientes.AddRange(clientes);
                 _clientesContext.SaveChanges();
                 return true;
-
             }
-            catch (Exception error)
+            catch
             {
                 return false;
             }
-
         }
 
-        public Boolean Delete(Models.Clientes clientes)
+        public bool Delete(Models.Clientes clientes)
         {
             try
             {
                 _clientesContext.Clientes.Remove(clientes);
                 _clientesContext.SaveChanges();
                 return true;
-
             }
-
-            catch (Exception error)
+            catch
             {
                 return false;
             }
@@ -251,193 +117,206 @@ namespace Clientes.Services
 
         public Models.Clientes Buscar(int id)
         {
-            var x = _clientesContext.Clientes.FirstOrDefault(l => l.Id == id);
-
-            return x;
-
-
+            return _clientesContext.Clientes.FirstOrDefault(l => l.Id == id);
         }
 
-
-
-        public Boolean Nuevo(Models.Clientes data)
+        public bool Nuevo(Models.Clientes data)
         {
-            var _cliente = data;
             try
             {
-                var cuenta = _clientesContext.Clientes.Where(x => x.Cuenta == data.Cuenta).ToList();
+                var cuentaNormalizada = (data.Cuenta ?? string.Empty).Trim();
+                if (string.IsNullOrWhiteSpace(cuentaNormalizada))
+                {
+                    return false;
+                }
 
-                _clientesContext.Clientes.Add(_cliente);
+                var existeCuenta = _clientesContext.Clientes.Any(x =>
+                    x.Cuenta != null && x.Cuenta.Trim().ToLower() == cuentaNormalizada.ToLower());
+
+                if (existeCuenta)
+                {
+                    return false;
+                }
+
+                if (data.Tipo.HasValue && _tiposService.Buscar(data.Tipo.Value) == null)
+                {
+                    return false;
+                }
+
+                data.Cuenta = cuentaNormalizada;
+                _clientesContext.Clientes.Add(data);
                 _clientesContext.SaveChanges();
-
                 return true;
             }
-            catch (Exception)
+            catch
             {
-
                 return false;
             }
-
-
-
         }
 
         public bool Actualizar(Models.Clientes data)
         {
             try
             {
-                Models.Clientes cliente = _clientesContext.Clientes.FirstOrDefault(x => x.Id == data.Id);
+                var cliente = _clientesContext.Clientes.FirstOrDefault(x => x.Id == data.Id);
+                if (cliente == null)
+                {
+                    return false;
+                }
 
-                _clientesContext.Clientes.Remove(cliente);
+                if (data.Tipo.HasValue && _tiposService.Buscar(data.Tipo.Value) == null)
+                {
+                    return false;
+                }
 
-                _clientesContext.Clientes.Add(data);
+                cliente.Cuenta = data.Cuenta?.Trim();
+                cliente.Email = data.Email?.Trim();
+                cliente.Contraseña = data.Contraseña;
+                cliente.VencimientoP = data.VencimientoP;
+                cliente.VencimientoC = data.VencimientoC;
+                cliente.Nombre = data.Nombre?.Trim();
+                cliente.Tipo = data.Tipo;
+                cliente.Pantallas = data.Pantallas?.Trim();
+                cliente.Comentario = data.Comentario?.Trim();
 
                 _clientesContext.SaveChanges();
-
                 return true;
-
             }
-            catch (Exception e)
+            catch
             {
                 return false;
             }
-
         }
 
         public Models.Usuario GetUserByCredentials(Models.Usuario data)
         {
             try
             {
-                var cliente = _clientesContext.Usuario.FirstOrDefault(u => u.Usuario1 == data.Usuario1 && u.Password == data.Password);
-
-                return cliente;
+                var usuario = (data.Usuario1 ?? string.Empty).Trim();
+                var password = data.Password ?? string.Empty;
+                return _clientesContext.Usuario.FirstOrDefault(u => u.Usuario1 == usuario && u.Password == password);
             }
-            catch (System.Exception e)
+            catch
             {
                 return null;
             }
         }
 
-
         public bool UpdateUserToken(Models.Usuario data, string token)
         {
             try
             {
-                _clientesContext.Usuario.FirstOrDefault(u => u.Id == data.Id).Token = token;
+                var usuario = _clientesContext.Usuario.FirstOrDefault(u => u.Id == data.Id);
+                if (usuario == null)
+                {
+                    return false;
+                }
+
+                usuario.Token = token;
                 _clientesContext.SaveChanges();
                 return true;
             }
-            catch (Exception e)
+            catch
             {
                 return false;
             }
         }
 
-
-
         public bool ValidateToken(string token, string id)
         {
-            Usuario user = _clientesContext.Usuario.FirstOrDefault(u => u.Id == int.Parse(id));
-
-            if (user != null)
+            if (string.IsNullOrWhiteSpace(token) || !int.TryParse(id, out var userId))
             {
-                if (user.Token == token)
-                {
-                    return true;
-                }
+                return false;
             }
 
-            return false;
-
+            var user = _clientesContext.Usuario.FirstOrDefault(u => u.Id == userId);
+            return user != null && user.Token == token;
         }
 
-        public List<ClienteModel> FiltrarNombre(string Nombre, List<ClienteModel> ListaClientes)
+        public List<ClienteModel> FiltrarNombre(string nombre, List<ClienteModel> listaClientes)
         {
-            List<ClienteModel> ClientesFiltrados = new List<ClienteModel>();
-
-            if (!string.IsNullOrEmpty(Nombre))
+            if (string.IsNullOrWhiteSpace(nombre))
             {
-
-                foreach (var item in ListaClientes)
-                {
-                    if (string.IsNullOrEmpty(item.Nombre))
-                    {
-                        item.Nombre = "";
-                    }
-                }
-
-                ClientesFiltrados = ListaClientes.Where(x => x.Nombre.ToLower().StartsWith(Nombre.ToLower())).ToList();
-            }
-            else
-            {
-                ClientesFiltrados = ListaClientes;
+                return listaClientes;
             }
 
-            return ClientesFiltrados;
-
+            return listaClientes
+                .Where(x => !string.IsNullOrWhiteSpace(x.Nombre) &&
+                            x.Nombre.Contains(nombre, StringComparison.OrdinalIgnoreCase))
+                .ToList();
         }
 
-        public List<ClienteModel> FiltrarCuenta(string Cuenta, List<ClienteModel> filtrarCuenta)
+        public List<ClienteModel> FiltrarCuenta(string cuenta, List<ClienteModel> listaClientes)
         {
-            List<ClienteModel> Cuentasfiltradas = new List<ClienteModel>();
-
-            if (!string.IsNullOrEmpty(Cuenta))
+            if (string.IsNullOrWhiteSpace(cuenta))
             {
-                foreach (var item in Cuentasfiltradas)
-                {
-                    if (string.IsNullOrEmpty(item.Cuenta))
-                    {
-                        item.Cuenta = "";
-                    }
-                }
-
-                Cuentasfiltradas = filtrarCuenta.Where(x => x.Cuenta.ToLower().StartsWith(Cuenta.ToLower())).ToList();
-
-            }
-            else
-            {
-                Cuentasfiltradas = filtrarCuenta;
+                return listaClientes;
             }
 
-            return Cuentasfiltradas;
+            return listaClientes
+                .Where(x => !string.IsNullOrWhiteSpace(x.Cuenta) &&
+                            x.Cuenta.Contains(cuenta, StringComparison.OrdinalIgnoreCase))
+                .ToList();
         }
 
-        public List<ClienteModel> FiltrarComentario(string Coment, List<ClienteModel> FiltrarComent)
+        public List<ClienteModel> FiltrarComentario(string comentario, List<ClienteModel> listaClientes)
         {
-            List<ClienteModel> Comentarios = new List<ClienteModel>();
-
-            if (!string.IsNullOrEmpty(Coment))
+            if (string.IsNullOrWhiteSpace(comentario))
             {
-                foreach (var item in Comentarios)
-                {
-                    if (string.IsNullOrEmpty(item.Cuenta))
-                    {
-                        item.Cuenta = "";
-                    }
-                }
-
-                Comentarios = FiltrarComent.Where(x => x.Comentario.ToLower().StartsWith(Coment.ToLower())).ToList();
-
-            }
-            else
-            {
-                Comentarios = FiltrarComent;
+                return listaClientes;
             }
 
-            return Comentarios;
+            return listaClientes
+                .Where(x => !string.IsNullOrWhiteSpace(x.Comentario) &&
+                            x.Comentario.Contains(comentario, StringComparison.OrdinalIgnoreCase))
+                .ToList();
         }
 
-
-        public List<ClienteModel> ListaLibres(List<ClienteModel> filtrarCuentasLibres)
+        public List<ClienteModel> ListaLibres(List<ClienteModel> clientes)
         {
-            List<ClienteModel> FiltrarCuentasLibres = new List<ClienteModel>();
-
-            FiltrarCuentasLibres = filtrarCuentasLibres.Where(x => x.Nombre == "" || x.Comentario.ToLower() == "libre").ToList();
-
-            return FiltrarCuentasLibres;
-
+            return clientes
+                .Where(x => string.IsNullOrWhiteSpace(x.Nombre) ||
+                            string.Equals(x.Comentario, "libre", StringComparison.OrdinalIgnoreCase))
+                .ToList();
         }
 
+        public List<ClienteModel> FiltrarUnificado(string search, List<ClienteModel> listaClientes)
+        {
+            if (string.IsNullOrWhiteSpace(search))
+            {
+                return listaClientes;
+            }
 
+            return listaClientes
+                .Where(x => (!string.IsNullOrWhiteSpace(x.Nombre) && x.Nombre.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                            (!string.IsNullOrWhiteSpace(x.Cuenta) && x.Cuenta.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                            (!string.IsNullOrWhiteSpace(x.Email) && x.Email.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                            (!string.IsNullOrWhiteSpace(x.Contraseña) && x.Contraseña.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                            (!string.IsNullOrWhiteSpace(x.VencimientoC) && x.VencimientoC.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                            (!string.IsNullOrWhiteSpace(x.VencimientoP) && x.VencimientoP.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                            (!string.IsNullOrWhiteSpace(x.Pantallas) && x.Pantallas.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                            (!string.IsNullOrWhiteSpace(x.Comentario) && x.Comentario.Contains(search, StringComparison.OrdinalIgnoreCase)))
+                .ToList();
+        }
+
+        private ClienteModel MapCliente(Models.Clientes item)
+        {
+            var tipo = item.Tipo.HasValue ? _tiposService.Buscar(item.Tipo.Value) : null;
+
+            return new ClienteModel
+            {
+                Id = item.Id,
+                Cuenta = item.Cuenta ?? string.Empty,
+                Contraseña = item.Contraseña ?? string.Empty,
+                Email = item.Email ?? string.Empty,
+                Nombre = item.Nombre ?? string.Empty,
+                Pantallas = item.Pantallas ?? string.Empty,
+                VencimientoC = item.VencimientoC.HasValue ? item.VencimientoC.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) : string.Empty,
+                VencimientoP = item.VencimientoP.HasValue ? item.VencimientoP.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) : string.Empty,
+                Comentario = item.Comentario ?? string.Empty,
+                TipoId = item.Tipo,
+                TipoNombre = tipo?.Nombre ?? (item.Tipo.HasValue ? $"Tipo {item.Tipo.Value}" : "Sin tipo")
+            };
+        }
     }
 }

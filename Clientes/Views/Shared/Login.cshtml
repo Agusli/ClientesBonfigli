@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="auth-shell">
+    <div class="auth-card card shadow-lg border-0">
+        <div class="card-body">
+            <p class="eyebrow mb-2">Gestor de cuentas</p>
+            <h1 class="auth-title">Ingresar</h1>
+            <p class="auth-text">Accedé con tu usuario para administrar clientes y tipos de cuenta.</p>
+
+            <div id="Message" class="alert alert-danger mt-4" role="alert" hidden></div>
+
+            <div class="form-group mt-4">
+                <label for="UserInput">Usuario</label>
+                <input type="text" class="form-control form-control-lg" id="UserInput" autocomplete="username" placeholder="Tu usuario">
+            </div>
+            <div class="form-group">
+                <label for="PasswordInput">Contraseña</label>
+                <input type="password" class="form-control form-control-lg" id="PasswordInput" autocomplete="current-password" placeholder="Tu contraseña">
+            </div>
+            <button id="LogInBtn" class="btn btn-primary btn-lg btn-block">Entrar</button>
+        </div>
+    </div>
+</div>

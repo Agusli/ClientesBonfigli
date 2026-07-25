@@ -1,65 +1,81 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Nuevo cliente";
+    var tipos = ViewBag.Tipos as List<TipoCuenta> ?? new List<TipoCuenta>();
 }
 
-<h1>Nuevo Cliente</h1>
+<div class="form-page">
+    <div class="form-card card shadow-sm border-0">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-4">
+                <div>
+                    <p class="eyebrow mb-1">Nuevo cliente</p>
+                    <h1 class="section-title mb-0">Crear registro</h1>
+                </div>
+                <button type="button" onclick="MostrarTodas()" class="btn btn-outline-secondary">Volver</button>
+            </div>
 
-<form>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Nombre</label>
-        <input id="Nombre" type="text" class="form-control" placeholder="Nombre" >
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Cuenta</label>
-        <input id="Cuenta" type="text" class="form-control" placeholder="Cuenta">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Contraseña</label>
-        <input id="Contraseña" type="text" class="form-control" placeholder="Contraseña">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Fecha de vencimiento de la Cuenta</label>@*validacion datetime*@
-        <input id="VencimientoC" type="datetime" class="form-control" placeholder="VencimientoC">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Fecha de vencimiento del Cliente</label>@*validacion datetime*@
-        <input id="VencimientoP" type="datetime" class="form-control" placeholder="VencimientoP">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect1">Tipo</label>
-        <select class="form-control" id="Tipo">
-            <option value="1">@Tipo.Netflix</option>
-            <option value="2">@Tipo.Flow</option>
-            <option value="3">@Tipo.IPTV</option>
-            <option value="5">@Tipo.AmazonPrime</option>
-            <option value="4">@Tipo.DirecTVGo</option>
-            <option value="6">@Tipo.Spotify</option>
-            <option value="7">@Tipo.DisneyPlus</option>
-            <option value="8">@Tipo.HBOMax</option>
-            <option value="9">@Tipo.StarPlus</option>
-            <option value="10">@Tipo.ParamountPlus</option>
-            <option value="11">@Tipo.Telecentro</option>
-            <option value="12">@Tipo.WOWPlus</option>
-            <option value="13">@Tipo.WOWTV</option>
-            <option value="14">@Tipo.Devex</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect1">Cantidad de pantallas</label>
-            <input id="Pantallas" type="text" class="form-control" placeholder="Pantallas">
-    </div>
+            <form class="form-grid">
+                <div class="form-group">
+                    <label for="Nombre">Nombre</label>
+                    <input id="Nombre" type="text" class="form-control form-control-lg" placeholder="Nombre">
+                </div>
 
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input id="Email" type="email" class="form-control form-control-lg" placeholder="correo@ejemplo.com">
+                </div>
 
-    <div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Comentario</label>
-            <textarea class="form-control" id="Comentario" rows="3"></textarea>
+                <div class="form-group">
+                    <label for="Cuenta">Cuenta</label>
+                    <input id="Cuenta" type="text" class="form-control form-control-lg" placeholder="Cuenta">
+                </div>
+
+                <div class="form-group">
+                    <label for="Contraseña">Contraseña</label>
+                    <input id="Contraseña" type="text" class="form-control form-control-lg" placeholder="Contraseña">
+                </div>
+
+                <div class="form-group">
+                    <label for="VencimientoC">Fecha de vencimiento de la cuenta</label>
+                    <input id="VencimientoC" type="datetime-local" class="form-control form-control-lg">
+                </div>
+
+                <div class="form-group">
+                    <label for="VencimientoP">Fecha de vencimiento del cliente</label>
+                    <input id="VencimientoP" type="datetime-local" class="form-control form-control-lg">
+                </div>
+
+                <div class="form-group">
+                    <label for="Tipo">Tipo</label>
+                    <div class="input-group">
+                        <select class="form-control form-control-lg" id="Tipo">
+                            @foreach (var tipo in tipos)
+                            {
+                                <option value="@tipo.Id">@tipo.Nombre</option>
+                            }
+                        </select>
+                        <div class="input-group-append">
+                            <a asp-action="Tipos" class="btn btn-outline-primary d-flex align-items-center" title="Gestionar Tipos">
+                                <i class="fas fa-cog mr-1"></i> Gestionar Tipos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Pantallas">Cantidad de pantallas</label>
+                    <input id="Pantallas" type="text" class="form-control form-control-lg" placeholder="Pantallas">
+                </div>
+
+                <div class="form-group form-group-full">
+                    <label for="Comentario">Comentario</label>
+                    <textarea class="form-control form-control-lg" id="Comentario" rows="4" placeholder="Comentario"></textarea>
+                </div>
+            </form>
+
+            <div class="form-actions mt-4">
+                <button type="button" onclick="Nuevo()" class="btn btn-primary btn-lg">Guardar cliente</button>
+            </div>
         </div>
     </div>
-
-</form>
-
-
-<button onclick="Nuevo()" class="btn btn-outline-success btn-lg">Enviar</button>
+</div>

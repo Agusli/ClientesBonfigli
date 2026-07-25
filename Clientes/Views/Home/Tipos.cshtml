@@ -1,0 +1,59 @@
+@model List<TipoCuenta>
+@{
+    ViewData["Title"] = "Gestionar Tipos";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 class="mb-0 text-primary">Gestionar Tipos de Cuenta</h4>
+                            <p class="text-muted mb-0 small">Administra los servicios disponibles (Netflix, Spotify, etc.)</p>
+                        </div>
+                        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">Volver</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="input-group mb-4">
+                        <input id="NuevoTipoNombre" type="text" class="form-control" placeholder="Nombre del nuevo tipo (ej: Disney+)">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-primary" onclick="agregarTipo()">Agregar</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th class="text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var tipo in Model.OrderBy(x => x.Nombre))
+                                {
+                                    <tr>
+                                        <td>
+                                            <span id="tipo-name-@tipo.Id" class="font-weight-bold">@tipo.Nombre</span>
+                                        </td>
+                                        <td class="text-right">
+                                            <button type="button" class="btn btn-sm btn-outline-primary mr-1" onclick="editarTipo(@tipo.Id)">
+                                                <i class="fas fa-pencil-alt"></i> Editar
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="eliminarTipo(@tipo.Id)">
+                                                <i class="fas fa-trash"></i> Eliminar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

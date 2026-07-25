@@ -1,95 +1,88 @@
 ﻿@model List<ClienteModel>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Clientes";
+    var tipos = ViewBag.Tipos as List<TipoCuenta> ?? new List<TipoCuenta>();
+    var total = Model?.Count ?? 0;
 }
 
-
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand"><h2>Buscar Cliente</h2></a>
-    <div class="form-inline">
-        <input class="form-control" onkeyup="Filtro()" type="search" aria-label="Search" id="Search">
-        <select id="opciFiltro" class="form-control">
-            <option>Nombre</option>
-            <option>Cuenta</option>
-            <option>Comentario</option>
-        </select>
-    </div>
-</nav>
-
-<div>
-    <button onclick="cuentasLibre()" class="btn-success" id="Libres">Libres</button>
-    <button onclick="BuscarCliente()" class="btn-success" id="Search">Todas</button>
-</div>
-
-
-<div class="row">
-    <div class="col">
-        <a onclick="agregar()" id="nuevo" class="btn btn-" data-toggle="tooltip" data-placement="top" title="Agregar"><i class="fas fa-plus-circle"></i></a>
-        <a class="btn btn-" data-toggle="tooltip" data-placement="top" title="Buscar" href="#" id="buscar"><i class="fas fa-search"></i></a>
-    </div>
-</div>
-
-<table id="customers" class="table table-responsive table-hover">
-    <tr id="tableHeader">
-        <th scope="col">
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Tipo</label>
-                <select id="Tipo" class="form-control" onchange="FiltroTipo()">
-                    <option value="1">@Tipo.Netflix</option>
-                    <option value="2">@Tipo.Flow</option>
-                    <option value="3">@Tipo.IPTV</option>
-                    <option value="5">@Tipo.AmazonPrime</option>
-                    <option value="4">@Tipo.DirecTVGo</option>
-                    <option value="6">@Tipo.Spotify</option>
-                    <option value="7">@Tipo.DisneyPlus</option>
-                    <option value="8">@Tipo.HBOMax</option>
-                    <option value="9">@Tipo.StarPlus</option>
-                    <option value="10">@Tipo.ParamountPlus</option>
-                    <option value="11">@Tipo.Telecentro</option>
-                    <option value="12">@Tipo.WOWPlus</option>
-                    <option value="13">@Tipo.WOWTV</option>
-                    <option value="14">@Tipo.Devex</option>
-                    <option value="0">Todas</option>
-                </select>
+<div class="page-shell">
+    <section class="toolbar-panel mt-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="section-title mb-0">Listado de Clientes</h2>
+            <div class="hero-stats d-flex">
+                <div class="stat-card mr-3">
+                    <span class="stat-label">Total:</span>
+                    <strong>@total</strong>
+                </div>
             </div>
-        </th>
-        <th scope="col">Nombre</th>
-        <th scope="col"><button class="btn-success" onclick="BuscarCuenta()" id="CuentaN">Cuenta</button></th>
-        <th scope="col">Contraseña</th>
-        <th scope="col"><button class="btn-success" onclick="BuscarPorFechaCuenta()" id="FechaVenciCuenta">Vencimiento Cuenta</button></th>
-        <th scope="col"><button class="btn-success" onclick="BuscarPorFecha()" id="FechaVenci">Vencimiento Cliente</button></th>
-        <th scope="col">Pantallas</th>
-        <th scope="col">Comentario</th>
-        <th scope="col" style="background-color:red">Borrar</th>
-        <th scope="col" style="background-color:darkblue">Editar</th>
-    </tr>
+        </div>
+        <div class="toolbar-search">
+            <label class="toolbar-label" for="searchText">Buscar cliente</label>
+            <div class="toolbar-row">
+                <input class="form-control form-control-lg" onkeyup="UnifiedSearch()" type="search" id="searchText" placeholder="Buscar por nombre, cuenta o comentario">
+            </div>
+        </div>
 
-    @foreach (var item in Model)//desconfigure la exepcion
-    {
+        <div class="toolbar-actions">
+            <select id="filtroTipo" class="form-control form-control-lg" onchange="filtrarPorTipo()" style="min-width: 200px;">
+                <option value="0">Todos los tipos</option>
+                @foreach (var tipo in tipos.OrderBy(t => t.Nombre))
+                {
+                    <option value="@tipo.Id">@tipo.Nombre</option>
+                }
+            </select>
+            <button type="button" onclick="MostrarTodas()" class="btn btn-outline-secondary btn-lg">Todas</button>
+            <button type="button" onclick="cuentasLibre()" class="btn btn-outline-success btn-lg">Libres</button>
+        </div>
+    </section>
 
-        <tr id="@item.Id" class="DataRows">
-            <td>@item.Tipo.ToString()</td>
-            @*<td>@item.Id</td>*@
-            <td>@item.Nombre</td>
-            <td>@item.Cuenta</td>
-            <td>@item.Contraseña</td>
-            <td>@item.VencimientoC</td>
-            <td>@item.VencimientoP</td>
-            <td>@item.Pantallas</td>
-            <td>@item.Comentario</td>
+    <button type="button" onclick="agregar()" class="btn-floating" title="Nuevo cliente">
+        <i class="fas fa-plus"></i>
+    </button>
 
-            <td>
-                <a onclick="Borrar('@item.Id')" class="IconBtn"><i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Eliminar"></i></a>
-            </td>
-            <td>
-                <a onclick="Editar('@item.Id')" class="IconBtn" data-toggle="tooltip"><i class="far fa-edit" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>
-            </td>
-        </tr>
-
-
-    }
-
-</table>
-
-
-
+    <section class="table-card shadow-sm">
+        <div class="table-responsive">
+            <table id="customers" class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col" data-sort="TipoNombre">Tipo <i class="fas fa-sort"></i></th>
+                        <th scope="col" data-sort="Nombre">Nombre <i class="fas fa-sort"></i></th>
+                        <th scope="col" data-sort="Cuenta">Cuenta <i class="fas fa-sort"></i></th>
+                        <th scope="col" data-sort="Contraseña">Contraseña <i class="fas fa-sort"></i></th>
+                        <th scope="col" data-sort="VencimientoC">Vencimiento cuenta <i class="fas fa-sort"></i></th>
+                        <th scope="col" data-sort="VencimientoP">Vencimiento cliente <i class="fas fa-sort"></i></th>
+                        <th scope="col" data-sort="Pantallas">Pantallas <i class="fas fa-sort"></i></th>
+                        <th scope="col" data-sort="Comentario">Comentario <i class="fas fa-sort"></i></th>
+                        <th scope="col" class="action-col action-danger">Borrar</th>
+                        <th scope="col" class="action-col action-primary">Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model ?? new List<ClienteModel>())
+                    {
+                        <tr id="@item.Id" class="DataRows">
+                            <td>@item.TipoNombre</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Cuenta</td>
+                            <td>@item.Contraseña</td>
+                            <td>@item.VencimientoC</td>
+                            <td>@item.VencimientoP</td>
+                            <td>@item.Pantallas</td>
+                            <td>@item.Comentario</td>
+                            <td>
+                                <button type="button" onclick="Borrar('@item.Id')" class="IconBtn IconBtn-danger" title="Eliminar">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" onclick="Editar('@item.Id')" class="IconBtn IconBtn-primary" title="Editar">
+                                    <i class="far fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

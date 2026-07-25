@@ -1,0 +1,9 @@
+bin/
+obj/
+buildbin/
+buildobj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.cache

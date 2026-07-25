@@ -3,13 +3,31 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <GenerateRazorAssemblyInfo>false</GenerateRazorAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="wwwroot\css\img\**" />
+    <Compile Remove="buildobj\**" />
     <Content Remove="wwwroot\css\img\**" />
+    <Content Remove="buildobj\**" />
     <EmbeddedResource Remove="wwwroot\css\img\**" />
+    <EmbeddedResource Remove="buildobj\**" />
     <None Remove="wwwroot\css\img\**" />
+    <None Remove="buildobj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\**\*.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="App_Data\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +41,7 @@
 
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.36" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.32" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.32" />

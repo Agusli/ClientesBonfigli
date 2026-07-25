@@ -82,7 +82,7 @@ namespace Clientes.Models
 
                 entity.Property(e => e.Token)
                     .HasColumnName("Token")
-                    .HasMaxLength(40)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
             });
         }

@@ -15,8 +15,9 @@ namespace Clientes.Models
         public string VencimientoP { get; set; }
         public string VencimientoC { get; set; }
         public string Nombre { get; set; }
-        public Tipo Tipo { get; set; }
+        public int? TipoId { get; set; }
+        public string TipoNombre { get; set; }
         public string Pantallas { get; set; }
-        public string Comentario { get; internal set; }
+        public string Comentario { get; set; }
     }
 }
