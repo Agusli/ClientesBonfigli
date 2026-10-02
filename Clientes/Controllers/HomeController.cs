@@ -14,7 +14,7 @@ namespace Clientes.Controllers
         public ClientesServices ClienteService { get; }
         public HomeController(ClientesContext db)
         {
-            var tiposService = new TiposService();
+            var tiposService = new TiposService(db);
             ClienteService = new ClientesServices(db, tiposService);
         }
         public IActionResult Tipos()

@@ -17,6 +17,8 @@ namespace Clientes.Models
 
         public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<TipoCuenta> Tipos { get; set; }
+        public virtual DbSet<WhatsAppConfig> WhatsAppConfig { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -61,9 +63,16 @@ namespace Clientes.Models
 
                 entity.Property(e => e.VencimientoP).HasColumnType("datetime");
 
-                 entity.Property(e => e.Comentario)
+                entity.Property(e => e.Comentario)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Telefono)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UltimoAvisoPrevioUTC).HasColumnType("datetime");
+                entity.Property(e => e.UltimoAvisoVencimientoUTC).HasColumnType("datetime");
 
             });
 
@@ -84,6 +93,26 @@ namespace Clientes.Models
                     .HasColumnName("Token")
                     .HasMaxLength(100)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<TipoCuenta>(entity =>
+            {
+                entity.ToTable("Tipos");
+                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+                entity.Property(e => e.Activo).HasDefaultValue(true);
+            });
+
+            modelBuilder.Entity<WhatsAppConfig>(entity =>
+            {
+                entity.ToTable("WhatsAppConfig");
+                entity.Property(e => e.PrecioActual).HasColumnType("decimal(18,2)");
+                entity.Property(e => e.ServicioNombre).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.MetaVersion).HasDefaultValue("v20.0");
+                entity.Property(e => e.MetaLanguageCode).HasMaxLength(20).HasDefaultValue("es_AR");
             });
         }
 

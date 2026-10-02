@@ -15,5 +15,8 @@ namespace Clientes.Models
         public int? Tipo { get; set; }
         public string Pantallas { get; set; }
         public string Comentario {get; set;}
+        public string Telefono { get; set; }
+        public DateTime? UltimoAvisoPrevioUTC { get; set; }
+        public DateTime? UltimoAvisoVencimientoUTC { get; set; }
     }
 }

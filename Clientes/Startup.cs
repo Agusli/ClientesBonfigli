@@ -41,6 +41,10 @@ namespace Clientes
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
             services.AddRazorPages();
+            services.AddHttpClient();
+            services.AddScoped<Clientes.Services.WhatsAppService>();
+            services.AddScoped<Clientes.Services.WhatsAppConfigService>();
+            services.AddScoped<Clientes.Services.WhatsAppNotificationProcessor>();
 
             services.AddDbContext<Models.ClientesContext>(options =>
             {

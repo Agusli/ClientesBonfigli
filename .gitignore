@@ -408,3 +408,8 @@ FodyWeavers.xsd
 
 
 
+Clientes/WhatsAppFunction/appsettings.json
+Clientes/WhatsAppFunction/host.json
+Clientes/WhatsAppFunction/local.settings.json
+Clientes/script_tipos.sql
+Clientes/script_whatsapp.sql

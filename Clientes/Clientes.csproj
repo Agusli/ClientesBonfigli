@@ -1,13 +1,13 @@
-ï»¿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <GenerateRazorAssemblyInfo>false</GenerateRazorAssemblyInfo>
     
-    <!-- Forzar compilaciÃ³n e inclusiÃ³n de Razor en el paquete publicado -->
+    <!-- Forzar compilación e inclusión de Razor en el paquete publicado -->
     <RazorCompileOnBuild>true</RazorCompileOnBuild>
     <RazorCompileOnPublish>true</RazorCompileOnPublish>
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
@@ -15,7 +15,9 @@
 
   <ItemGroup>
     <Compile Remove="wwwroot\css\img\**" />
+    <Compile Remove="WhatsAppFunction\**" />
     <Compile Remove="buildobj\**" />
+    <None Remove="WhatsAppFunction\**" />
     <Content Remove="wwwroot\css\img\**" />
     <Content Remove="buildobj\**" />
     <EmbeddedResource Remove="wwwroot\css\img\**" />
@@ -25,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Mantenemos solo App_Data como archivo estÃ¡tico copiado -->
+    <!-- Mantenemos solo App_Data como archivo estático copiado -->
     <Content Update="App_Data\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

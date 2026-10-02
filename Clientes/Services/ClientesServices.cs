@@ -51,10 +51,13 @@ namespace Clientes.Services
                 query = query.Where(x => x.Tipo == tipoFiltro);
             }
 
-            return query
+            var lista = query
                 .OrderBy(x => x.Cuenta)
-                .Select(MapCliente)
                 .ToList();
+
+            var mappedList = lista.Select(MapCliente).ToList();
+            PopulateTipoNombres(mappedList);
+            return mappedList;
         }
 
         public List<ClienteModel> ObtenerFecha(string tipoOrden)
@@ -70,7 +73,29 @@ namespace Clientes.Services
                 query = query.OrderBy(x => x.VencimientoP).ThenBy(x => x.Cuenta);
             }
 
-            return query.Select(MapCliente).ToList();
+            var lista = query.ToList();
+
+            var mappedList = lista.Select(MapCliente).ToList();
+            PopulateTipoNombres(mappedList);
+            return mappedList;
+        }
+
+        private void PopulateTipoNombres(List<ClienteModel> mappedList)
+        {
+            if (!mappedList.Any()) return;
+
+            var tipos = _tiposService.ObtenerTodos().ToDictionary(t => t.Id, t => t.Nombre);
+            foreach (var item in mappedList)
+            {
+                if (item.TipoId.HasValue && tipos.TryGetValue(item.TipoId.Value, out var nombre))
+                {
+                    item.TipoNombre = nombre;
+                }
+                else if (item.TipoId.HasValue)
+                {
+                    item.TipoNombre = $"Tipo {item.TipoId.Value}";
+                }
+            }
         }
 
         public bool Agregar(Models.Clientes clientes)
@@ -171,6 +196,7 @@ namespace Clientes.Services
 
                 cliente.Cuenta = data.Cuenta?.Trim();
                 cliente.Email = data.Email?.Trim();
+                cliente.Telefono = data.Telefono?.Trim();
                 cliente.Contraseña = data.Contraseña;
                 cliente.VencimientoP = data.VencimientoP;
                 cliente.VencimientoC = data.VencimientoC;
@@ -301,8 +327,6 @@ namespace Clientes.Services
 
         private ClienteModel MapCliente(Models.Clientes item)
         {
-            var tipo = item.Tipo.HasValue ? _tiposService.Buscar(item.Tipo.Value) : null;
-
             return new ClienteModel
             {
                 Id = item.Id,
@@ -315,7 +339,7 @@ namespace Clientes.Services
                 VencimientoP = item.VencimientoP.HasValue ? item.VencimientoP.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) : string.Empty,
                 Comentario = item.Comentario ?? string.Empty,
                 TipoId = item.Tipo,
-                TipoNombre = tipo?.Nombre ?? (item.Tipo.HasValue ? $"Tipo {item.Tipo.Value}" : "Sin tipo")
+                TipoNombre = "Sin tipo"
             };
         }
     }

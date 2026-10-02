@@ -14,7 +14,7 @@ namespace Clientes.Controllers
 
         public UserController(ClientesContext db)
         {
-            var tiposService = new TiposService();
+            var tiposService = new TiposService(db);
             this._ClienteServices = new ClientesServices(db, tiposService);
         }
 
