@@ -21,9 +21,12 @@ namespace Clientes
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
         {
             Configuration = configuration;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IConfiguration Configuration { get; }
@@ -38,8 +41,11 @@ namespace Clientes
                 options.MinimumSameSitePolicy = SameSiteMode.Lax;
             });
 
-            services.AddControllersWithViews()
-                .AddRazorRuntimeCompilation();
+            var mvcBuilder = services.AddControllersWithViews();
+            if (_webHostEnvironment.IsDevelopment())
+            {
+                mvcBuilder.AddRazorRuntimeCompilation();
+            }
             services.AddRazorPages();
             services.AddHttpClient();
             services.AddScoped<Clientes.Services.WhatsAppService>();
